@@ -1,0 +1,1024 @@
+{% extends 'base.html' %}
+{% set active_page = 'overview' %}
+{% block title %}Overview{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* Local overrides or specific dashboard styles */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--sp-6);
+    margin-top: var(--sp-6);
+  }
+  
+  .main-col { display: flex; flex-direction: column; gap: var(--sp-6); }
+  .side-col { display: flex; flex-direction: column; gap: var(--sp-6); }
+
+  /* Camera Feed Overlays */
+  .camera-container {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  
+  .camera-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    padding: var(--sp-4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+  }
+
+  .overlay-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .rec-indicator { color: #ff0000; font-weight: 700; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+  .rec-dot { width: 8px; height: 8px; background: #ff0000; border-radius: 50%; animation: blink 1s infinite; }
+  .cam-stats { color: rgba(255,255,255,0.6); font-size: 10px; text-align: right; line-height: 1.2; }
+
+  .detection-box {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px; height: 280px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .detection-box::before, .detection-box::after, 
+  .detection-box span::before, .detection-box span::after {
+    content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--accent);
+  }
+  .detection-box::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+  .detection-box::after { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
+  .detection-box span::before { bottom: -2px; left: -2px; border-right: 0; border-top: 0; }
+  .detection-box span::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+  .detection-label {
+    background: var(--accent);
+    color: #000;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 900;
+    position: absolute;
+    top: -24px; left: -2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .overlay-bottom {
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    margin: 0 -16px -16px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .conf-bar-wrap { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+  .conf-bar-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Terminal Log Overhaul */
+  .history-list {
+    background: #060d0a;
+    border: 1px solid #1a3a2a;
+    border-radius: 8px;
+    padding: 8px;
+    font-family: var(--mono);
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .history-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    border-bottom: 1px solid #0d1f15;
+    animation: slideInRow 0.2s ease;
+  }
+  .history-row:hover {
+    background: rgba(0, 230, 118, 0.04);
+  }
+  @keyframes slideInRow {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .h-prompt   { color: #3d6b50; min-width: 10px; }
+  .h-time     { color: #3d6b50; min-width: 72px; }
+  .h-cat      { min-width: 80px; font-weight: 600; letter-spacing: 1px; }
+  .h-bar      { color: #3d6b50; min-width: 90px; letter-spacing: -1px; }
+  .h-conf     { color: #3d6b50; min-width: 35px; text-align: right; }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* Chart & Map Styling */
+  .chart-container { height: 220px; position: relative; margin-top: var(--sp-4); }
+  
+  .city-map-container { 
+    height: 260px; 
+    background: #080e1c; 
+    border-radius: var(--radius-md); 
+    position: relative; 
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .map-road { position: absolute; background: rgba(255,255,255,0.03); pointer-events: none; }
+  
+  .map-marker {
+    position: absolute;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(0,0,0,0.6);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  .map-marker:hover { transform: translate(-50%, -50%) scale(1.5); z-index: 20; }
+  
+  .map-marker::after {
+    content: attr(data-id);
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-top: 6px;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.4);
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  
+  .marker-pulse { animation: markerPulse 2s infinite; }
+  @keyframes markerPulse { 
+    0% { box-shadow: 0 0 0 0px rgba(244, 63, 94, 0.6); } 
+    100% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); } 
+  }
+
+  .alert-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #ef5350;
+    color: #fff;
+    padding: 12px 24px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 800;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .alert-blink { animation: blink 0.6s step-end infinite; }
+  
+  /* Section Headers All Caps */
+  .cardHeader h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 800;
+  }
+
+  /* Donut Center Override */
+  .donut-overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  /* --- NEW LANDING PAGE MODAL --- */
+  .details-modal {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+    z-index: 100000; align-items: center; justify-content: center;
+    padding: var(--sp-6);
+  }
+  .details-modal.active { display: flex; animation: fade-in 0.3s ease; }
+  
+  .details-content {
+    background: #060d0a; border: 1px solid #1a3a2a;
+    width: 100%; max-width: 900px; max-height: 90vh;
+    border-radius: var(--radius-md); box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  .details-header {
+    padding: var(--sp-4); border-bottom: 1px solid #1a3a2a;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #08120e;
+  }
+  .details-header h2 { font-size: 18px; text-transform: uppercase; margin:0; letter-spacing: 2px; }
+  .close-btn { background: none; border: none; color: #5a7499; font-size: 24px; cursor: pointer; }
+  .close-btn:hover { color: #fff; }
+
+  .details-body {
+    padding: var(--sp-6); overflow-y: auto; display: flex; flex-direction: column; gap: var(--sp-6);
+  }
+  .clickable-card { cursor: pointer; transition: transform 0.2s; }
+  .clickable-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,255,100,0.1); }
+  
+  /* Log Table */
+  .data-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+  .data-table th, .data-table td { padding: 8px; text-align: left; border-bottom: 1px solid #1a3a2a; }
+  .data-table th { color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="organic-alert" class="alert-bar">
+    <span><span class="alert-blink">⚠ ALERT:</span> ORGANIC BIN AT 90% CAPACITY — RECOVERY ACTION REQUIRED</span>
+    <button onclick="this.parentElement.style.display='none'" style="background:rgba(255,255,255,0.2); color:white; border:none; cursor:pointer; font-size:14px; padding:4px 10px; border-radius:4px; font-weight:700;">DISMISS</button>
+</div>
+
+<main class="dashboard-grid">
+  <!-- START MODAL -->
+  <div id="detailsModal" class="details-modal" onclick="if(event.target===this) this.classList.remove('active')">
+    <div class="details-content">
+      <div class="details-header">
+        <h2 id="modalTitle">Details</h2>
+        <button class="close-btn" onclick="document.getElementById('detailsModal').classList.remove('active')">&times;</button>
+      </div>
+      <div class="details-body" id="modalBody">
+        Loading data...
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
+
+  <div class="main-col">
+    <!-- Industrial Camera Card -->
+    <section class="camera-container card">
+<div class="video-wrap">
+
+  <img class="video" src="{{ url_for('video_feed') }}" alt="Webcam feed" style="width: 100%; opacity: 0.9;" />
+
+  <div class="cvo" id="cvScan"></div>
+
+  <div class="cvo cvo-tl" id="cvBadge">
+    <div id="cvCatLabel">Detected: — (—%)</div>
+    <div class="cvo-model">Model: gemini-vision</div>
+  </div>
+
+  <div class="cvo cvo-tr">
+    <span class="cvo-rec">● REC</span>
+    <span class="cvo-res">1280×720 &nbsp;30fps</span>
+  </div>
+
+  <div class="cvo cvo-corner corn-tl"></div>
+  <div class="cvo cvo-corner corn-tr"></div>
+  <div class="cvo cvo-corner corn-bl"></div>
+  <div class="cvo cvo-corner corn-br"></div>
+
+  <div class="cvo cvo-dbox" id="cvDbox"></div>
+
+  <div class="cvo cvo-bar" id="cvBar">
+    <span id="cvBarCat">DETECTION: —</span>
+    <span class="cvo-blocks" id="cvBlocks">░░░░░░░░░░</span>
+    <span id="cvBarPct">—%</span>
+  </div>
+
+</div>
+    </section>
+
+    <!-- Industrial Bins -->
+    <section class="bins" style="grid-template-columns: repeat(4, 1fr);">
+      {% for cat in ['Plastic', 'Paper', 'Metal', 'Organic'] %}
+      <div class="bin bin{{ cat }} clickable-card" id="bin-{{ cat }}" onclick="openCategoryModal('{{ cat }}')">
+        <div class="binVerticalBar">
+          <div class="binVerticalFill" id="fill-{{ cat }}"></div>
+        </div>
+        <div class="binInfo">
+          <div class="binTop">
+            <span class="binTitle">{{ cat }}</span>
+            <span class="binIcon">{% if cat=='Plastic' %}🧴{% elif cat=='Paper' %}📄{% elif cat=='Metal' %}🥫{% else %}🍌{% endif %}</span>
+          </div>
+          <div class="binCount" id="count-{{ cat }}">0</div>
+          <div class="binCapacity">CAPACITY: 60</div>
+          <div id="warn-{{ cat }}" style="display:none; color:var(--warning); font-size:10px; margin-top:4px;">⚠ HIGH FILL</div>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+
+    <!-- Confidence Graph -->
+    <section class="card clickable-card" onclick="openMonitorModal('CONFIDENCE')">
+      <div class="cardHeader">
+        <h2>CONFIDENCE LEVELS MONITOR</h2>
+        <div class="mono" style="font-size: 10px; color: var(--text-muted); font-weight: 600;">LAST CALIBRATED: TODAY 12:00</div>
+      </div>
+      <div class="chart-container">
+        <canvas id="confidenceGraph"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <div class="side-col">
+    <!-- KPIs Card -->
+    <section class="card clickable-card" onclick="openMonitorModal('KPI')">
+      <div class="cardHeader">
+        <h2>NETWORK KPI PERFORMANCE</h2>
+      </div>
+      <div class="kpis">
+        <div class="kpi">
+          <div class="kpiLabel">Total Items</div>
+          <div class="kpiValue mono" id="kpi-total">160</div>
+        </div>
+        <div class="kpi">
+          <div class="kpiLabel">Items / Min</div>
+          <div class="kpiValue mono" id="kpi-rate">3</div>
+        </div>
+        <div class="kpi" style="grid-column: span 2;">
+          <div class="kpiLabel">Processing Efficiency</div>
+          <div class="kpiValue mono" id="kpi-eff">75%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environmental Impact -->
+    <section class="card">
+      <div class="cardHeader">
+        <h2>ENVIRONMENTAL MONITOR</h2>
+      </div>
+      <div class="impactGrid" style="grid-template-columns: 1fr;">
+        <div class="impact">
+          <div class="impactLabel">CO2 REMOVAL EQUIVALENT</div>
+          <div class="impactValue mono"><span id="impact-co2">198.40</span><span class="impactUnit">KG</span></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);">
+          <div class="impact">
+            <div class="impactLabel">RECYCLING RATE</div>
+            <div class="impactValue mono" id="impact-rate" style="font-size: 20px;">75%</div>
+          </div>
+          <div class="impact">
+            <div class="impactLabel">PROCESSED (24H)</div>
+            <div class="impactValue mono" id="impact-today" style="font-size: 20px;">160</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- City Map -->
+    <section class="card clickable-card" onclick="openMapModal()">
+      <div class="cardHeader">
+        <h2>CITYOS SMART NETWORK MAP</h2>
+      </div>
+      <div class="city-map-container" id="city-map">
+        <!-- Roads and markers -->
+      </div>
+    </section>
+
+    <!-- Distribution Chart -->
+    <section class="card chartCard">
+      <div class="cardHeader">
+        <h2>WASTE DISTRIBUTION</h2>
+      </div>
+      <div style="position: relative; height: 180px;">
+        <canvas id="distChart"></canvas>
+        <div class="donut-overlay">
+          <div style="font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--text);" id="donut-total">160</div>
+          <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">TOTAL UNITS</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal History -->
+    <section class="card">
+      <div class="cardHeader">
+        <h2 style="font-family: var(--font-mono);">SESSION LOG  •  <span style="color: var(--plastic);" id="history-total">160</span> ENTRIES</h2>
+      </div>
+      <div class="history-list" id="history-log">
+        <!-- Entries will be pre-filled by JS -->
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // INDUSTRIAL DEMO DATA - AS REQUESTED
+  const DEMO_HISTORY = [
+    { time: "14:23:41", category: "Organic",  confidence: 94 },
+    { time: "14:23:38", category: "Plastic",  confidence: 87 },
+    { time: "14:23:35", category: "Organic",  confidence: 91 },
+    { time: "14:23:29", category: "Paper",    confidence: 78 },
+    { time: "14:23:24", category: "Metal",    confidence: 82 },
+    { time: "14:23:18", category: "Organic",  confidence: 89 },
+    { time: "14:23:11", category: "Plastic",  confidence: 93 },
+    { time: "14:23:05", category: "Plastic",  confidence: 76 },
+    { time: "14:22:58", category: "Organic",  confidence: 88 },
+    { time: "14:22:51", category: "Paper",    confidence: 71 },
+    { time: "14:22:44", category: "Metal",    confidence: 85 },
+    { time: "14:22:39", category: "Organic",  confidence: 92 },
+  ];
+
+  const DEMO_DATA = {
+    counts: { Plastic: 47, Paper: 31, Metal: 19, Organic: 63 },
+    fill: { Plastic: 78, Paper: 52, Metal: 32, Organic: 90 },
+    kpis: { total: 160, rate: 3, efficiency: 75 },
+    impact: { co2: 198.40, rate: 75, today: 160 },
+    confidence: Array.from({length: 40}, () => Math.floor(Math.random() * (95 - 78 + 1)) + 78).concat([87]),
+    map: [
+      { id: 'SC-101', x: 18, y: 34, fill: 45, status: 'green' },
+      { id: 'SC-102', x: 42, y: 28, fill: 78, status: 'yellow' },
+      { id: 'SC-103', x: 66, y: 36, fill: 23, status: 'green' },
+      { id: 'SC-104', x: 76, y: 62, fill: 91, status: 'red' },
+      { id: 'SC-105', x: 34, y: 66, fill: 67, status: 'yellow' },
+      { id: 'SC-106', x: 56, y: 56, fill: 34, status: 'green' }
+    ]
+  };
+
+  const CAT_COLORS = {
+    Plastic: '#29b6f6',
+    Paper: '#f5a623',
+    Metal: '#9e9eff',
+    Organic: '#4caf7d'
+  };
+
+  let charts = {};
+  let lastPredictionTs = Date.now() / 1000;
+
+const CCOLORS = {
+  Plastic:'#29b6f6', Paper:'#f5a623',
+  Metal:'#9e9eff',   Organic:'#4caf7d'
+};
+function confBar(c){
+  const f=Math.round(c/10);
+  return '█'.repeat(f)+'░'.repeat(10-f);
+}
+function updateCamOverlay(cat, confidence){
+  const col = CCOLORS[cat] || '#29b6f6';
+  const pct = Math.round((confidence||0)*100);
+  const badge = document.getElementById('cvBadge');
+  const lbl   = document.getElementById('cvCatLabel');
+  const bar   = document.getElementById('cvBar');
+  const bcat  = document.getElementById('cvBarCat');
+  const bblk  = document.getElementById('cvBlocks');
+  const bpct  = document.getElementById('cvBarPct');
+  const dbox  = document.getElementById('cvDbox');
+  const scan  = document.getElementById('cvScan');
+  if(badge){ badge.style.borderColor=col; }
+  if(lbl)  { lbl.textContent=`Detected: ${cat} (${pct}%)`;
+             lbl.style.color=col; }
+  if(bar)  { bar.style.borderTopColor=col; }
+  if(bcat) { bcat.textContent=`DETECTION: ${cat.toUpperCase()}`;
+             bcat.style.color=col; }
+  if(bblk) { bblk.textContent=confBar(pct);
+             bblk.style.color=col; }
+  if(bpct) { bpct.textContent=pct+'%'; }
+  if(dbox) { dbox.style.borderColor=col; }
+  if(scan) { scan.style.background=
+    `linear-gradient(90deg,transparent,${col},transparent)`; }
+  document.querySelectorAll('.cvo-corner').forEach(
+    el=>el.style.borderColor=col);
+}
+
+  function initUI() {
+    // 1. Fill Bins immediately
+    Object.entries(DEMO_DATA.counts).forEach(([cat, count]) => {
+      document.getElementById(`count-${cat}`).textContent = count;
+      const f = DEMO_DATA.fill[cat];
+      document.getElementById(`fill-${cat}`).style.height = `${f}%`;
+      if (f > 70) document.getElementById(`warn-${cat}`).style.display = 'block';
+      if (f >= 90) {
+        document.getElementById(`bin-${cat}`).classList.add('full-pulse');
+        document.getElementById('organic-alert').style.display = 'flex';
+      }
+    });
+
+    // 2. Terminal Log pre-fill
+    const log = document.getElementById('history-log');
+    DEMO_HISTORY.slice().reverse().forEach(entry => addLogEntry(entry));
+
+    // 3. Init Charts
+    initCharts();
+    
+    // 4. Init Map with roads
+    initMap();
+
+    // 5. Update KPI visuals
+    document.getElementById('kpi-total').textContent = DEMO_DATA.kpis.total;
+    document.getElementById('kpi-rate').textContent = DEMO_DATA.kpis.rate;
+    document.getElementById('kpi-eff').textContent = `${DEMO_DATA.kpis.efficiency}%`;
+    document.getElementById('impact-co2').textContent = DEMO_DATA.impact.co2.toFixed(2);
+    document.getElementById('impact-rate').textContent = `${DEMO_DATA.impact.rate}%`;
+    document.getElementById('impact-today').textContent = DEMO_DATA.impact.today;
+    document.getElementById('donut-total').textContent = DEMO_DATA.kpis.total;
+  }
+
+  function makeBar(conf) {
+    const val = Number(conf) || 0;
+    const filled = Math.round(val / 10);
+    const empty  = 10 - filled;
+    return "█".repeat(filled) + "░".repeat(empty);
+  }
+
+  function addLogEntry({time, category, confidence}) {
+    const log = document.getElementById('history-log');
+    if (!log) return;
+    
+    const div = document.createElement('div');
+    div.className = 'history-row';
+    
+    const catName = (category || 'Unknown').toUpperCase();
+    const confVal = confidence || 0;
+    
+    // Exact format: > [TIME] CATEGORY BAR CONF%
+    div.innerHTML = `
+      <span class="h-prompt">></span>
+      <span class="h-time">[${time}]</span>
+      <span class="h-cat" style="color:${CAT_COLORS[category] || '#4a7a4a'}">${catName}</span>
+      <span class="h-bar">${makeBar(confVal)}</span>
+      <span class="h-conf">${Math.round(confVal)}%</span>
+    `;
+    
+    log.prepend(div);
+    if(log.children.length > 15) log.lastChild.remove();
+  }
+
+  function initCharts() {
+    const ctxConf = document.getElementById('confidenceGraph').getContext('2d');
+    charts.conf = new Chart(ctxConf, {
+      type: 'line',
+      data: {
+        labels: Array.from({length: DEMO_DATA.confidence.length}, (_, i) => i),
+        datasets: [{
+          data: DEMO_DATA.confidence,
+          borderColor: '#4caf7d',
+          borderWidth: 2,
+          tension: 0.3,
+          pointRadius: (ctx) => ctx.raw < 75 ? 5 : 0,
+          pointBackgroundColor: '#ef5350',
+          pointBorderColor: '#0f1729',
+          fill: true,
+          backgroundColor: 'rgba(76,175,125,0.08)'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { 
+            min: 0, max: 100,
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            title: { display: true, text: 'CONFIDENCE %', color: '#5a7499', font: { family: 'IBM Plex Mono', size: 10, weight: 600 } },
+            ticks: { color: '#5a7499', font: { family: 'IBM Plex Mono', size: 10 } }
+          },
+          x: { display: false }
+        }
+      },
+      plugins: [{
+        afterDraw: (chart) => {
+          const {ctx, chartArea: {left, right}, scales: {y}} = chart;
+          const yPos = y.getPixelForValue(75);
+          ctx.save();
+          ctx.strokeStyle = '#ef5350';
+          ctx.setLineDash([6, 4]);
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(left, yPos); ctx.lineTo(right, yPos); ctx.stroke();
+          ctx.fillStyle = '#ef5350';
+          ctx.font = '600 9px IBM Plex Mono';
+          ctx.fillText('CRITICAL THRESHOLD: 75%', left + 10, yPos - 8);
+          ctx.restore();
+        }
+      }]
+    });
+
+    const ctxDist = document.getElementById('distChart').getContext('2d');
+    charts.dist = new Chart(ctxDist, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(DEMO_DATA.counts),
+        datasets: [{
+          data: Object.values(DEMO_DATA.counts),
+          backgroundColor: Object.values(CAT_COLORS),
+          borderWidth: 0,
+          hoverOffset: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        cutout: '85%'
+      }
+    });
+  }
+
+  function initMap() {
+    const map = document.getElementById('city-map');
+    
+    // Grid Lines (Roads)
+    for(let i=1; i<10; i++) {
+      const h = document.createElement('div'); h.className = 'map-road';
+      h.style.width = '100%'; h.style.height = '1px'; h.style.top = `${i*10}%`;
+      map.appendChild(h);
+      const v = document.createElement('div'); v.className = 'map-road';
+      v.style.height = '100%'; v.style.width = '1px'; v.style.left = `${i*10}%`;
+      map.appendChild(v);
+    }
+
+    DEMO_DATA.map.forEach(bin => {
+      const marker = document.createElement('div');
+      marker.className = `map-marker`;
+      if(bin.status === 'red') marker.classList.add('marker-pulse');
+      marker.style.left = `${bin.x}%`;
+      marker.style.top = `${bin.y}%`;
+      marker.setAttribute('data-id', bin.id);
+      marker.style.background = bin.status === 'green' ? '#4caf7d' : (bin.status === 'yellow' ? '#f5a623' : '#ef5350');
+      map.appendChild(marker);
+    });
+  }
+
+  // AP Polling
+  async function poll() {
+    try {
+      const resp = await fetch("/api/stats", { cache: "no-store" });
+      const data = await resp.json();
+      if (!data.ok) return;
+      
+      setStatus(true);
+
+      // Core Counts & Bins
+      const counts = data.counts || {};
+      const total = Object.values(counts).reduce((a, b) => (Number(a) || 0) + (Number(b) || 0), 0);
+      document.getElementById('donut-total').textContent = total;
+      document.getElementById('kpi-total').textContent = total;
+
+      for (const [cat, count] of Object.entries(counts)) {
+        document.getElementById(`count-${cat}`).textContent = count;
+        const fill = data.fill_pct?.[cat] ?? 0;
+        document.getElementById(`fill-${cat}`).style.height = `${fill}%`;
+        
+        const binEl = document.getElementById(`bin-${cat}`);
+        const warnEl = document.getElementById(`warn-${cat}`);
+        
+        warnEl.style.display = fill > 70 ? 'block' : 'none';
+        if (fill >= 90) {
+            binEl.classList.add('full-pulse');
+            document.getElementById('organic-alert').style.display = 'flex';
+        } else {
+            binEl.classList.remove('full-pulse');
+        }
+      }
+
+      // Detection handling
+      const latest = data.latest || {};
+      if (latest.ts > lastPredictionTs) {
+        lastPredictionTs = latest.ts;
+        handleDetection(latest);
+      }
+      
+      // Update history total
+      document.getElementById('history-total').textContent = total;
+      
+      // Update charts
+      charts.dist.data.datasets[0].data = Object.values(counts);
+      charts.dist.update('none');
+
+    } catch(e) {
+      setStatus(false);
+    }
+  }
+
+  function handleDetection(pred) {
+    const label = document.getElementById('cv-label');
+    const catText = document.getElementById('overlay-cat');
+    const confText = document.getElementById('overlay-conf');
+    const confFill = document.getElementById('overlay-conf-fill');
+    const box = document.getElementById('cv-box');
+
+    // Analysis Phase
+    label.textContent = "ANALYZING...";
+    label.style.background = "#fff";
+    
+    setTimeout(() => {
+        const cat = pred.category;
+        const conf = pred.confidence;
+        if(cat && cat !== '—') updateCamOverlay(cat, conf);
+        
+        const color = CAT_COLORS[pred.category] || '#29b6f6';
+        label.textContent = pred.category.toUpperCase();
+        label.style.background = color;
+        box.style.borderColor = color;
+        
+        catText.textContent = `DETECTION: ${pred.category.toUpperCase()}`;
+        confText.textContent = `${Math.round(pred.confidence * 100)}%`;
+        confFill.style.width = `${pred.confidence * 100}%`;
+        confFill.style.background = color;
+        
+        addLogEntry({
+          time: new Date().toTimeString().split(' ')[0],
+          category: pred.category,
+          confidence: Math.round(pred.confidence * 100)
+        });
+
+        charts.conf.data.datasets[0].data.push(Math.round(pred.confidence * 100));
+        if (charts.conf.data.datasets[0].data.length > 60) charts.conf.data.datasets[0].data.shift();
+        charts.conf.data.labels = Array.from({length: charts.conf.data.datasets[0].data.length}, (_, i) => i);
+        charts.conf.update('none');
+    }, 400);
+  }
+
+  // Ticker Logic (Dynamic Update)
+  let lastTickerUpdate = Date.now();
+  setInterval(() => {
+    const elapsed = Math.round((Date.now() - lastTickerUpdate) / 1000);
+    const items = document.querySelectorAll('.ticker-item');
+    items.forEach(item => {
+        if(item.textContent.includes('LAST DETECTION')) {
+            item.textContent = `LAST DETECTION: ${elapsed}s AGO`;
+        }
+    });
+  }, 1000);
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Bin counts
+  document.querySelectorAll('[data-cat]').forEach(el => {
+    const v = {Plastic:47, Paper:31, Metal:19, Organic:63};
+    el.textContent = v[el.dataset.cat] ?? 0;
+  });
+
+  // Fill bars + percentages
+  const fills = {Plastic:78, Paper:52, Metal:32, Organic:90};
+  document.querySelectorAll('[data-bar]').forEach(el => {
+    const pct = fills[el.dataset.bar] ?? 0;
+    el.style.width = pct + '%';
+    el.style.background = pct>=90 ? '#ef5350'
+      : pct>=70 ? '#f5a623'
+      : `var(--${el.dataset.bar.toLowerCase()})`;
+  });
+  document.querySelectorAll('[data-fill]').forEach(el => {
+    el.textContent = fills[el.dataset.fill] ?? 0;
+  });
+
+  // FULL badge on Organic
+  const fullBadge = document.getElementById('full-Organic');
+  if(fullBadge) fullBadge.hidden = false;
+
+  // KPIs
+  const kpiTotal = document.getElementById('kpiTotal');
+  const kpiRate  = document.getElementById('kpiRate');
+  const kpiEff   = document.getElementById('kpiEff');
+  if(kpiTotal) kpiTotal.textContent = '160';
+  if(kpiRate)  kpiRate.textContent  = '3';
+  if(kpiEff)   kpiEff.textContent   = '75%';
+
+  // Impact
+  const co2   = document.getElementById('impactCo2');
+  const eff   = document.getElementById('impactEff');
+  const today = document.getElementById('impactToday');
+  if(co2)   co2.textContent   = '198.40';
+  if(eff)   eff.textContent   = '75';
+  if(today) today.textContent = '160';
+
+  // Confidence bar
+  const confBar = document.getElementById('confBarFill');
+  const confCur = document.getElementById('confCurrent');
+  if(confBar){ confBar.style.width='87%';
+               confBar.style.background='#4caf7d'; }
+  if(confCur){ confCur.textContent='87%';
+               confCur.style.color='#4caf7d'; }
+
+  // Detection badge
+  updateCamOverlay('Organic', 0.87);
+
+  // Donut chart — update after chart is initialized
+  setTimeout(() => {
+    if(typeof distChart !== 'undefined'){
+      distChart.data.datasets[0].data = [30, 19, 12, 39];
+      distChart.update('none');
+    }
+    document.querySelectorAll('[data-pct]').forEach(el => {
+      const v = {Plastic:'30%',Paper:'19%',
+                 Metal:'12%',Organic:'39%'};
+      el.textContent = v[el.dataset.pct] ?? '0%';
+    });
+  }, 500);
+
+  // History log
+  const HISTORY = [
+    {time:'14:23:41', cat:'Organic',  conf:94},
+    {time:'14:23:38', cat:'Plastic',  conf:87},
+    {time:'14:23:35', cat:'Organic',  conf:91},
+    {time:'14:23:29', cat:'Paper',    conf:78},
+    {time:'14:23:24', cat:'Metal',    conf:82},
+    {time:'14:23:18', cat:'Organic',  conf:89},
+    {time:'14:23:11', cat:'Plastic',  conf:93},
+    {time:'14:23:05', cat:'Plastic',  conf:76},
+    {time:'14:22:58', cat:'Organic',  conf:88},
+    {time:'14:22:51', cat:'Paper',    conf:71},
+    {time:'14:22:44', cat:'Metal',    conf:85},
+    {time:'14:22:39', cat:'Organic',  conf:92},
+  ];
+  const histList = document.getElementById('historyList');
+  if(histList){
+    histList.innerHTML = '';
+    HISTORY.forEach(h => {
+      const col = (CCOLORS||
+        {Plastic:'#29b6f6',Paper:'#f5a623',
+         Metal:'#9e9eff',Organic:'#4caf7d'})[h.cat];
+      const row = document.createElement('div');
+      row.className = 'history-row';
+      row.innerHTML =
+        `<span class="h-prompt" style="color:#2a5a2a">></span>
+         <span class="h-time">[${h.time}]</span>
+         <span class="h-type" style="color:${col}">
+           ${h.cat.toUpperCase()}</span>
+         <span class="h-conf" style="color:#5a7499">
+           ${h.conf}%</span>`;
+      histList.appendChild(row);
+    });
+    const hCount = document.getElementById('historyCount');
+    if(hCount) hCount.textContent = '160';
+  }
+
+  // Alert banner
+  const alertBanner = document.getElementById('alertBanner');
+  const alertMsg    = document.getElementById('alertMsg');
+  if(alertBanner) alertBanner.hidden = false;
+  if(alertMsg)    alertMsg.textContent =
+    'Organic bin at 90% — Bin Full - Collection Required';
+
+  // Confidence chart pre-fill
+  setTimeout(() => {
+    if(typeof confChart !== 'undefined'){
+      const demo = [
+        72,78,81,85,88,91,87,83,79,75,
+        80,84,88,92,89,86,82,78,74,70,
+        75,79,83,87,91,88,85,81,77,73,
+        78,82,86,90,87,84,80,76,82,87
+      ];
+      confChart.data.datasets[0].data = demo;
+      confChart.update('none');
+    }
+  }, 600);
+
+});
+
+  // --- MODAL & API HANDLERS ---
+  const modal = document.getElementById('detailsModal');
+  const mTitle = document.getElementById('modalTitle');
+  const mBody = document.getElementById('modalBody');
+
+  async function fetchAPI(url) {
+    try {
+      mBody.innerHTML = '<div style="color:var(--text-muted); padding:20px;">Fetching live database records...</div>';
+      const r = await fetch(url);
+      return await r.json();
+    } catch(e) {
+      mBody.innerHTML = `<div style="color:#ef5350;">Failed to load data.</div>`;
+      return null;
+    }
+  }
+
+  window.openCategoryModal = async function(cat) {
+    mTitle.textContent = `${cat.toUpperCase()} SECTION: DATABASE LOGS & ANALYTICS`;
+    modal.classList.add('active');
+    
+    // Fetch newly generated logs
+    const data = await fetchAPI('/api/data/logs');
+    if(!data) return;
+
+    // Filter by cat
+    const filtered = data.filter(d => d.waste_type.toLowerCase() === cat.toLowerCase()).slice(0, 15);
+    
+    let html = `
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:var(--sp-4);">
+        <div class="card" style="padding:16px;">
+           <div style="font-size:10px; color:var(--text-muted);">TOTAL LOGS (30D)</div>
+           <div style="font-size:24px; color:${CAT_COLORS[cat]}; font-weight:800; font-family:var(--font-mono);">${filtered.length * 14}</div>
+        </div>
+        <div class="card" style="padding:16px;">
+           <div style="font-size:10px; color:var(--text-muted);">AVG WEIGHT/COLLECTION</div>
+           <div style="font-size:24px; color:#fff; font-weight:800; font-family:var(--font-mono);">${(filtered.reduce((a,b)=>a+b.weight_kg,0)/filtered.length || 0).toFixed(1)} KG</div>
+        </div>
+        <div class="card" style="padding:16px;">
+           <div style="font-size:10px; color:var(--text-muted);">CARBON SAVED</div>
+           <div style="font-size:24px; color:#4caf7d; font-weight:800; font-family:var(--font-mono);">${(filtered.reduce((a,b)=>a+b.carbon_saved_kg,0)).toFixed(1)} KG</div>
+        </div>
+      </div>
+      <h3 style="margin-top:20px; font-size:14px; border-bottom:1px solid #1a3a2a; padding-bottom:8px;">RECENT COLLECTION LOGS</h3>
+      <table class="data-table">
+        <thead><tr><th>LOG ID</th><th>TIME</th><th>COLLECTOR</th><th>TRUCK</th><th>WEIGHT</th></tr></thead>
+        <tbody>
+    `;
+    
+    filtered.forEach(r => {
+      html += `<tr><td>${r.log_id}</td><td>${r.collected_at}</td><td>${r.collector_name}</td><td>${r.truck_id}</td><td style="color:${CAT_COLORS[cat]}">${r.weight_kg} kg</td></tr>`;
+    });
+    
+    html += `</tbody></table>`;
+    mBody.innerHTML = html;
+  };
+
+  window.openMonitorModal = async function(type) {
+    mTitle.textContent = `${type} MONITOR : DEEP DIVE`;
+    modal.classList.add('active');
+    
+    if (type === 'CONFIDENCE' || type === 'KPI') {
+       const analytics = await fetchAPI('/api/data/analytics');
+       if(!analytics) return;
+       
+       let html = `
+         <p style="color:var(--text-muted);">Showing 30-day predictive timeseries data for sampled bins.</p>
+         <div class="chart-container" style="height:300px;">
+           <canvas id="modalChart"></canvas>
+         </div>
+         <h3 style="margin-top:20px; font-size:14px; border-bottom:1px solid #1a3a2a; padding-bottom:8px;">RAW TIMESERIES SUMMARY</h3>
+         <table class="data-table">
+          <thead><tr><th>TIME</th><th>BIN ID</th><th>FILL %</th><th>TEMP °C</th><th>HUMIDITY</th></tr></thead>
+          <tbody>
+       `;
+       // just show 10 latest
+       analytics.slice(-10).reverse().forEach(r => {
+         html += `<tr><td>${r.timestamp}</td><td>${r.bin_id}</td><td>${r.fill_percent}%</td><td>${r.temperature}°</td><td>${r.humidity}%</td></tr>`;
+       });
+       html += `</tbody></table>`;
+       mBody.innerHTML = html;
+
+       // Render chart for modal
+       const ctx = document.getElementById('modalChart').getContext('2d');
+       const sampled = analytics.filter(a => a.bin_id === 'BIN_100').slice(-30);
+       new Chart(ctx, {
+         type: 'line',
+         data: {
+           labels: sampled.map(a => a.timestamp.split(' ')[0].substring(5)),
+           datasets: [{
+             label: 'Fill %',
+             data: sampled.map(a => a.fill_percent),
+             borderColor: '#f5a623', backgroundColor: 'rgba(245,166,35,0.1)', fill: true, tension: 0.4
+           }]
+         },
+         options: { responsive: true, maintainAspectRatio: false }
+       });
+    }
+  };
+
+  window.openMapModal = async function() {
+    mTitle.textContent = `CITY ZONE AGGREGATION : INDORE`;
+    modal.classList.add('active');
+    const zones = await fetchAPI('/api/data/zones');
+    if(!zones) return;
+    
+    let html = `
+      <table class="data-table">
+        <thead>
+          <tr><th>ZONE</th><th>TOTAL BINS</th><th>AVG FILL</th><th>COMPLIANCE</th><th>MO. WASTE</th><th>ALERTS</th></tr>
+        </thead>
+        <tbody>
+    `;
+    zones.forEach(z => {
+      let fColor = z.avg_fill_percent > 70 ? '#ef5350' : '#4caf7d';
+      html += `<tr>
+        <td><strong>${z.zone_name.toUpperCase()}</strong></td>
+        <td>${z.total_bins}</td>
+        <td style="color:${fColor}">${z.avg_fill_percent}%</td>
+        <td>${z.compliance_score}%</td>
+        <td>${z.monthly_waste_kg} kg</td>
+        <td style="color:${z.active_alerts > 0 ? '#ef5350' : '#4caf7d'}">${z.active_alerts}</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    
+    html += `<h3 style="margin-top:20px; font-size:14px; border-bottom:1px solid #1a3a2a; padding-bottom:8px;">GAMIFICATION TOP USERS</h3>`;
+    const dusers = await fetchAPI('/api/data/gamification');
+    html += `<div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">`;
+    dusers.slice(0, 5).forEach(u => {
+      html += `<div style="background:#0a1a12; border:1px solid #4caf7d; padding:10px; border-radius:4px; flex:1; min-width:150px;">
+        <div style="color:#4caf7d; font-size:10px;">RANK #${u.monthly_rank}</div>
+        <div style="font-weight:700;">${u.name}</div>
+        <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">${u.green_coins_earned} Coins</div>
+      </div>`;
+    });
+    html += `</div>`;
+    mBody.innerHTML = html;
+  };
+
+  // Initial Boot
+  window.addEventListener('load', () => {
+    initUI();
+    setInterval(poll, 3000);
+  });
+</script>
+{% endblock %}

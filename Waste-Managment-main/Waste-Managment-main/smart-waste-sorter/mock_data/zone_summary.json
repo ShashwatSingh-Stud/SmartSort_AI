@@ -1,0 +1,98 @@
+[
+    {
+        "zone_id": "ZON_1",
+        "zone_name": "Palasia",
+        "total_bins": 29,
+        "avg_fill_percent": 67.4,
+        "compliance_score": 81.2,
+        "monthly_waste_kg": 1043,
+        "recycled_percent": 73.1,
+        "carbon_offset_kg": 417.2,
+        "overflow_incidents": 0,
+        "active_alerts": 3
+    },
+    {
+        "zone_id": "ZON_2",
+        "zone_name": "Vijay Nagar",
+        "total_bins": 48,
+        "avg_fill_percent": 37.7,
+        "compliance_score": 88.3,
+        "monthly_waste_kg": 2083,
+        "recycled_percent": 79.5,
+        "carbon_offset_kg": 833.2,
+        "overflow_incidents": 5,
+        "active_alerts": 0
+    },
+    {
+        "zone_id": "ZON_3",
+        "zone_name": "Rajwada",
+        "total_bins": 19,
+        "avg_fill_percent": 69.5,
+        "compliance_score": 81.4,
+        "monthly_waste_kg": 2162,
+        "recycled_percent": 73.3,
+        "carbon_offset_kg": 864.8,
+        "overflow_incidents": 10,
+        "active_alerts": 2
+    },
+    {
+        "zone_id": "ZON_4",
+        "zone_name": "Bhawarkuan",
+        "total_bins": 21,
+        "avg_fill_percent": 42.5,
+        "compliance_score": 93.2,
+        "monthly_waste_kg": 950,
+        "recycled_percent": 83.9,
+        "carbon_offset_kg": 380.0,
+        "overflow_incidents": 4,
+        "active_alerts": 3
+    },
+    {
+        "zone_id": "ZON_5",
+        "zone_name": "Super Corridor",
+        "total_bins": 43,
+        "avg_fill_percent": 64.9,
+        "compliance_score": 86.1,
+        "monthly_waste_kg": 1402,
+        "recycled_percent": 77.5,
+        "carbon_offset_kg": 560.8,
+        "overflow_incidents": 2,
+        "active_alerts": 0
+    },
+    {
+        "zone_id": "ZON_6",
+        "zone_name": "Rau",
+        "total_bins": 14,
+        "avg_fill_percent": 60.6,
+        "compliance_score": 90.8,
+        "monthly_waste_kg": 2247,
+        "recycled_percent": 81.7,
+        "carbon_offset_kg": 898.8,
+        "overflow_incidents": 10,
+        "active_alerts": 3
+    },
+    {
+        "zone_id": "ZON_7",
+        "zone_name": "Nipania",
+        "total_bins": 48,
+        "avg_fill_percent": 68.4,
+        "compliance_score": 87.0,
+        "monthly_waste_kg": 1375,
+        "recycled_percent": 78.3,
+        "carbon_offset_kg": 550.0,
+        "overflow_incidents": 1,
+        "active_alerts": 2
+    },
+    {
+        "zone_id": "ZON_8",
+        "zone_name": "Geeta Bhawan",
+        "total_bins": 30,
+        "avg_fill_percent": 62.0,
+        "compliance_score": 71.3,
+        "monthly_waste_kg": 2301,
+        "recycled_percent": 64.2,
+        "carbon_offset_kg": 920.4,
+        "overflow_incidents": 7,
+        "active_alerts": 3
+    }
+]

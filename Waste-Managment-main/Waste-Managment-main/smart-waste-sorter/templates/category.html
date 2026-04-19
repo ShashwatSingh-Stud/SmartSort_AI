@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% set active_page = category.lower() %}
+{% block page_title %}{{ category }}{% endblock %}
+{% block page_sub %}Category Details{% endblock %}
+
+{% block content %}
+<div class="kpis" style="margin-bottom: 20px;">
+  <div class="kpi"><div class="kpiLabel">Total Weight Collected</div><div class="kpiValue" id="catWeight">0kg</div></div>
+  <div class="kpi"><div class="kpiLabel">Total Collections (30D)</div><div class="kpiValue" id="catCount">0</div></div>
+  <div class="kpi"><div class="kpiLabel">Avg Truck Load</div><div class="kpiValue" id="catAvg">0kg</div></div>
+  <div class="kpi"><div class="kpiLabel" style="color:#6cffc5;">CO2 Saved (kg)</div><div class="kpiValue" id="catCo2">0</div></div>
+</div>
+
+<div class="bin bin{{ category }}" style="margin-bottom: 20px;">
+  <div class="binBar" style="height: 20px; border-radius: 10px; margin-top: 0;"><div class="binBarFill" id="catBar" style="width: 100%; border-radius: 10px; height: 100%;"></div></div>
+</div>
+
+<div class="card insightsCard" style="margin-bottom: 20px;">
+  <div class="cardHeader"><h2>AI Guidelines for {{ category }}</h2>
+    <div class="insightsRight"><span class="bioBadge" id="bioBadge" style="display:none;">—</span></div>
+  </div>
+  <div class="suggestionsGrid" id="suggestionsGrid"></div>
+  <div id="loading" style="padding: 20px; text-align: center; color: var(--accent); font-family: var(--mono);">Loading AI tips...</div>
+</div>
+
+<div class="card historyCard">
+  <div class="cardHeader">
+    <h2>30-Day {{ category|capitalize }} Collections</h2>
+  </div>
+  <div style="overflow-x:auto;">
+    <table class="data-table" style="width:100%; border-collapse:collapse; margin-top:20px;">
+      <thead>
+        <tr style="border-bottom:1px solid #1a3a2a; color:#5a7499; font-size:12px; text-align:left;">
+          <th style="padding:10px;">TIMESTAMP</th>
+          <th style="padding:10px;">BIN ID</th>
+          <th style="padding:10px;">COLLECTOR</th>
+          <th style="padding:10px;">WEIGHT</th>
+          <th style="padding:10px;">CO₂ SAVED</th>
+        </tr>
+      </thead>
+      <tbody id="historyTableBody">
+        <tr><td colspan="5" style="padding:20px; text-align:center;">Fetching Database...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function loadData() {
+    try {
+      const r = await fetch('/api/data/logs');
+      const allLogs = await r.json();
+      const currentCat = '{{ category }}'.toLowerCase();
+      
+      const filtered = allLogs.filter(l => l.waste_type.toLowerCase() === currentCat);
+      filtered.sort((a,b) => new Date(b.collected_at) - new Date(a.collected_at));
+      
+      const totalW = filtered.reduce((a, b) => a + b.weight_kg, 0);
+      const totalC = filtered.reduce((a, b) => a + b.carbon_saved_kg, 0);
+      const avgD   = filtered.length ? (totalW / filtered.length) : 0;
+      
+      document.getElementById('catWeight').textContent = totalW.toFixed(1) + 'kg';
+      document.getElementById('catCount').textContent = filtered.length;
+      document.getElementById('catAvg').textContent = avgD.toFixed(1) + 'kg';
+      document.getElementById('catCo2').textContent = totalC.toFixed(1) + ' kg';
+      
+      const tbody = document.getElementById('historyTableBody');
+      tbody.innerHTML = '';
+      if(filtered.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px; color:#5a7499;">No collections found for this category.</td></tr>';
+      } else {
+          filtered.forEach(log => {
+              tbody.innerHTML += `
+               <tr style="border-bottom:1px solid #0b1120;">
+                 <td style="padding:10px; font-family:var(--font-mono); font-size:10px;">${log.collected_at}</td>
+                 <td style="padding:10px; font-family:var(--font-mono); font-size:11px; color:#5a7499;">${log.bin_id}</td>
+                 <td style="padding:10px;">${log.collector_name}</td>
+                 <td style="padding:10px; font-weight:700;">${log.weight_kg} kg</td>
+                 <td style="padding:10px; color:#6cffc5;">${log.carbon_saved_kg} kg</td>
+               </tr>
+              `;
+          });
+      }
+    } catch(e) {}
+  }
+  loadData(); setInterval(loadData, 30000);
+  
+  async function loadTips() {
+    document.getElementById('loading').style.display='block';
+    try {
+      const r = await fetch('/api/tips/{{ category }}'); const data = await r.json();
+      document.getElementById('loading').style.display='none';
+      const badge = document.getElementById('bioBadge');
+      badge.style.display = 'inline-flex'; badge.textContent = data.biodegradable ? "Biodegradable ✓" : "Non-Biodegradable ✗";
+      badge.className = data.biodegradable ? "bioBadge bioYes" : "bioBadge bioNo";
+      
+      const grid = document.getElementById('suggestionsGrid'); grid.innerHTML = '';
+      (data.tips || []).forEach((tip, i) => {
+         const card = document.createElement("div"); card.className = "suggestionCard";
+         card.innerHTML = `<div class="suggestionIcon">♻️</div><div class="suggestionText"><div class="suggestionTitle">Tip #${i+1}</div><div class="suggestionDesc">${tip}</div></div>`;
+         grid.appendChild(card);
+      });
+      grid.classList.add("fadeIn");
+    } catch(e) { document.getElementById('loading').textContent='Failed to load tips'; }
+  }
+  loadTips();
+</script>
+{% endblock %}

@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Waste Sorting System (Admin)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+  <div class="bgGlow"></div>
+  <div class="container">
+    <header class="header">
+      <div class="titleBlock">
+        <div class="logoMark">S</div>
+        <div>
+          <h1>Smart Waste Sorting System (Admin View)</h1>
+          <p class="sub">Hackathon dashboard • live webcam • simulated AI</p>
+        </div>
+      </div>
+      <div class="rightHeader">
+        <div class="pill" id="status">Connecting…</div>
+      </div>
+    </header>
+
+    <div class="alertBanner" id="alertBanner" hidden>
+      <div class="alertTitle">City alert</div>
+      <div class="alertText" id="alertText">—</div>
+    </div>
+
+    <div class="toast" id="toast" hidden>
+      <div class="toastTitle">Bin capacity warning</div>
+      <div class="toastText" id="toastText">—</div>
+    </div>
+
+    <main class="layout">
+      <section class="card cameraCard">
+        <div class="cardHeader">
+          <h2>Live Camera</h2>
+          <div class="latestChip" id="latestValue">—</div>
+        </div>
+
+        <div class="videoWrap">
+          <img class="video" src="{{ url_for('video_feed') }}" alt="Webcam feed" />
+          <div class="dropZone" id="dropZone">
+            <div class="dropHint">Waste animation</div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <div class="legendItem"><span class="dot dotPlastic"></span> Plastic</div>
+          <div class="legendItem"><span class="dot dotPaper"></span> Paper</div>
+          <div class="legendItem"><span class="dot dotMetal"></span> Metal</div>
+          <div class="legendItem"><span class="dot dotOrganic"></span> Organic</div>
+        </div>
+      </section>
+
+      <section class="bins">
+        <div class="card kpiCard" style="grid-column: 1 / -1;">
+          <div class="kpis">
+            <div class="kpi">
+              <div class="kpiLabel">Total items</div>
+              <div class="kpiValue" id="kpiTotal">0</div>
+            </div>
+            <div class="kpi">
+              <div class="kpiLabel">Items / minute</div>
+              <div class="kpiValue" id="kpiRate">0</div>
+            </div>
+            <div class="kpi">
+              <div class="kpiLabel">Fullest bin</div>
+              <div class="kpiValue" id="kpiFullest">—</div>
+            </div>
+            <div class="kpi">
+              <div class="kpiLabel">Network</div>
+              <div class="kpiValue"><span class="kpiDot"></span> City sensors online</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card impactCard" style="grid-column: 1 / -1;">
+          <div class="cardHeader">
+            <h2>Environmental impact</h2>
+            <div class="mutedSmall">Estimated benefits from smart sorting</div>
+          </div>
+          <div class="impactGrid">
+            <div class="impact">
+              <div class="impactLabel">CO2 saved</div>
+              <div class="impactValue"><span id="impactCo2">0</span> <span class="impactUnit">kg</span></div>
+            </div>
+            <div class="impact">
+              <div class="impactLabel">Recycling efficiency</div>
+              <div class="impactValue"><span id="impactEff">0</span><span class="impactUnit">%</span></div>
+            </div>
+            <div class="impact">
+              <div class="impactLabel">Processed today</div>
+              <div class="impactValue"><span id="impactToday">0</span> <span class="impactUnit">items</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card chartCard" style="grid-column: 1 / -1;">
+          <div class="cardHeader">
+            <h2>Waste distribution</h2>
+            <div class="mutedSmall">Live share by category</div>
+          </div>
+          <div class="chartRow">
+            <canvas id="distChart" width="460" height="220" aria-label="Waste distribution chart" role="img"></canvas>
+            <div class="chartLegend">
+              <div class="legendLine"><span class="dot dotPlastic"></span> Plastic <span class="pct"
+                  data-pct="Plastic">0%</span></div>
+              <div class="legendLine"><span class="dot dotPaper"></span> Paper <span class="pct"
+                  data-pct="Paper">0%</span></div>
+              <div class="legendLine"><span class="dot dotMetal"></span> Metal <span class="pct"
+                  data-pct="Metal">0%</span></div>
+              <div class="legendLine"><span class="dot dotOrganic"></span> Organic <span class="pct"
+                  data-pct="Organic">0%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mapCard" style="grid-column: 1 / -1;">
+          <div class="cardHeader">
+            <h2>Smart bin city map</h2>
+            <div class="mutedSmall"><span class="legendSwatch green"></span> 0–69% <span
+                class="legendSwatch yellow"></span> 70–89% <span class="legendSwatch red"></span> 90–100%</div>
+          </div>
+          <div class="cityMap" id="cityMap" aria-label="City map of smart bins"></div>
+        </div>
+
+        <div class="card historyCard" style="grid-column: 1 / -1;">
+          <div class="cardHeader">
+            <h2>Collection history</h2>
+            <div class="mutedSmall" id="modelBadge">Model: —</div>
+          </div>
+          <div class="historyTable" id="historyTable">
+            <div class="historyRow historyHead">
+              <div>Time</div>
+              <div>Type</div>
+            </div>
+            <div class="historyEmpty" id="historyEmpty">Waiting for detections…</div>
+          </div>
+        </div>
+
+        <div class="bin binPlastic" id="bin-Plastic" data-bin="Plastic">
+          <div class="binTop">
+            <div class="binIcon">🧴</div>
+            <div class="binTitle">Plastic</div>
+          </div>
+          <div class="binCount"><span class="countNum" data-cat="Plastic">0</span><span class="countUnit">items</span>
+          </div>
+          <div class="binFill">
+            <div class="binFillLabel">Fill</div>
+            <div class="binFillValue"><span data-fill="Plastic">0</span>%</div>
+          </div>
+          <div class="binBar">
+            <div class="binBarFill" data-bar="Plastic"></div>
+          </div>
+        </div>
+
+        <div class="bin binPaper" id="bin-Paper" data-bin="Paper">
+          <div class="binTop">
+            <div class="binIcon">📄</div>
+            <div class="binTitle">Paper</div>
+          </div>
+          <div class="binCount"><span class="countNum" data-cat="Paper">0</span><span class="countUnit">items</span>
+          </div>
+          <div class="binFill">
+            <div class="binFillLabel">Fill</div>
+            <div class="binFillValue"><span data-fill="Paper">0</span>%</div>
+          </div>
+          <div class="binBar">
+            <div class="binBarFill" data-bar="Paper"></div>
+          </div>
+        </div>
+
+        <div class="bin binMetal" id="bin-Metal" data-bin="Metal">
+          <div class="binTop">
+            <div class="binIcon">🥫</div>
+            <div class="binTitle">Metal</div>
+          </div>
+          <div class="binCount"><span class="countNum" data-cat="Metal">0</span><span class="countUnit">items</span>
+          </div>
+          <div class="binFill">
+            <div class="binFillLabel">Fill</div>
+            <div class="binFillValue"><span data-fill="Metal">0</span>%</div>
+          </div>
+          <div class="binBar">
+            <div class="binBarFill" data-bar="Metal"></div>
+          </div>
+        </div>
+
+        <div class="bin binOrganic" id="bin-Organic" data-bin="Organic">
+          <div class="binTop">
+            <div class="binIcon">🍌</div>
+            <div class="binTitle">Organic</div>
+          </div>
+          <div class="binCount"><span class="countNum" data-cat="Organic">0</span><span class="countUnit">items</span>
+          </div>
+          <div class="binFill">
+            <div class="binFillLabel">Fill</div>
+            <div class="binFillValue"><span data-fill="Organic">0</span>%</div>
+          </div>
+          <div class="binBar">
+            <div class="binBarFill" data-bar="Organic"></div>
+          </div>
+        </div>
+
+        <div class="note">
+          <div class="noteTitle">Live updates</div>
+          <div class="noteText">Counts refresh ~3x/sec. Each new detection drops a waste token into the correct bin.
+          </div>
+        </div>
+
+        <div class="card insightsCard" id="insightsCard" style="grid-column: 1 / -1;">
+          <div class="cardHeader">
+            <h2>AI Waste Insights</h2>
+            <div class="insightsRight">
+              <span class="bioBadge bioUnknown" id="bioBadge">—</span>
+            </div>
+          </div>
+          <div class="mutedSmall" id="insightsSub">Recycling/reuse suggestions update after each new detection.</div>
+          <div class="suggestionsGrid" id="suggestionsGrid" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const statusEl = document.getElementById("status");
+    const latestEl = document.getElementById("latestValue");
+    const alertBanner = document.getElementById("alertBanner");
+    const alertText = document.getElementById("alertText");
+    const toast = document.getElementById("toast");
+    const toastText = document.getElementById("toastText");
+    const cityMap = document.getElementById("cityMap");
+    const modelBadge = document.getElementById("modelBadge");
+    const historyTable = document.getElementById("historyTable");
+    const historyEmpty = document.getElementById("historyEmpty");
+    const countEls = [...document.querySelectorAll("[data-cat]")];
+    const fillEls = new Map(
+      [...document.querySelectorAll("[data-fill]")].map((el) => [el.getAttribute("data-fill"), el]),
+    );
+    const barEls = new Map(
+      [...document.querySelectorAll("[data-bar]")].map((el) => [el.getAttribute("data-bar"), el]),
+    );
+    const pctEls = new Map(
+      [...document.querySelectorAll("[data-pct]")].map((el) => [el.getAttribute("data-pct"), el]),
+    );
+    const dropZone = document.getElementById("dropZone");
+    const insightsCard = document.getElementById("insightsCard");
+    const bioBadge = document.getElementById("bioBadge");
+    const suggestionsGrid = document.getElementById("suggestionsGrid");
+
+    const kpiTotalEl = document.getElementById("kpiTotal");
+    const kpiRateEl = document.getElementById("kpiRate");
+    const kpiFullestEl = document.getElementById("kpiFullest");
+    const impactCo2El = document.getElementById("impactCo2");
+    const impactEffEl = document.getElementById("impactEff");
+    const impactTodayEl = document.getElementById("impactToday");
+
+    const chart = document.getElementById("distChart");
+    const ctx = chart?.getContext?.("2d");
+
+    const COLORS = {
+      Plastic: "#29b6f6",
+      Paper: "#f5a623",
+      Metal: "#9e9eff",
+      Organic: "#4caf7d",
+    };
+
+    let lastCategory = null;
+    let lastAlertKey = null;
+    let lastHistoryKey = null;
+    let lastInsightsCategory = null;
+
+    function setStatus(ok) {
+      statusEl.textContent = ok ? "Live" : "Offline";
+      statusEl.classList.toggle("pillOk", ok);
+      statusEl.classList.toggle("pillBad", !ok);
+    }
+
+    function baselineBio(category) {
+      if (category === "Organic") return "yes";
+      if (category === "Paper") return "partial";
+      if (category === "Plastic" || category === "Metal") return "no";
+      return "unknown";
+    }
+
+    function setBioBadge(category) {
+      if (!bioBadge) return;
+      const b = baselineBio(category);
+      bioBadge.classList.remove("bioYes", "bioNo", "bioPartial", "bioUnknown");
+      if (b === "yes") {
+        bioBadge.textContent = "Biodegradable ✓";
+        bioBadge.classList.add("bioYes");
+      } else if (b === "no") {
+        bioBadge.textContent = "Non-Biodegradable ✗";
+        bioBadge.classList.add("bioNo");
+      } else if (b === "partial") {
+        bioBadge.textContent = "Partially Biodegradable ~";
+        bioBadge.classList.add("bioPartial");
+      } else {
+        bioBadge.textContent = "—";
+        bioBadge.classList.add("bioUnknown");
+      }
+
+      if (insightsCard) {
+        insightsCard.classList.remove("glowGreen", "glowRed", "glowYellow");
+        if (b === "yes") insightsCard.classList.add("glowGreen");
+        else if (b === "no") insightsCard.classList.add("glowRed");
+        else if (b === "partial") insightsCard.classList.add("glowYellow");
+      }
+    }
+
+    function renderSuggestions(category, suggestions) {
+      if (!suggestionsGrid) return;
+      const icons = ["♻️", "🔄", "🛠️"];
+      const titles = ["Recycle", "Reuse", "Quick action"];
+      suggestionsGrid.innerHTML = "";
+      const b = baselineBio(category);
+      const glowClass = b === "yes" ? "suggestionGlowGreen" : b === "no" ? "suggestionGlowRed" : "suggestionGlowYellow";
+
+      for (let i = 0; i < 3; i++) {
+        const s = (suggestions?.[i] || "—").toString();
+        const card = document.createElement("div");
+        card.className = `suggestionCard ${glowClass}`;
+
+        const ic = document.createElement("div");
+        ic.className = "suggestionIcon";
+        ic.textContent = icons[i] || "♻️";
+
+        const text = document.createElement("div");
+        text.className = "suggestionText";
+
+        const t = document.createElement("div");
+        t.className = "suggestionTitle";
+        t.textContent = titles[i] || `Suggestion ${i + 1}`;
+
+        const d = document.createElement("div");
+        d.className = "suggestionDesc";
+        d.textContent = s;
+
+        text.appendChild(t);
+        text.appendChild(d);
+        card.appendChild(ic);
+        card.appendChild(text);
+        suggestionsGrid.appendChild(card);
+      }
+
+      suggestionsGrid.classList.remove("fadeIn");
+      requestAnimationFrame(() => suggestionsGrid.classList.add("fadeIn"));
+    }
+
+    async function refreshInsights(category) {
+      if (!category || category === "—") return;
+      setBioBadge(category);
+      try {
+        const r = await fetch("/api/insights", { cache: "no-store" });
+        const data = await r.json();
+        if (!data.ok) throw new Error("not ok");
+        const suggestions = Array.isArray(data.suggestions) ? data.suggestions : [];
+        renderSuggestions(category, suggestions);
+      } catch (e) {
+        renderSuggestions(category, ["Try again in a moment.", "Check internet/Gemini quota.", "Fallback tips will appear if needed."]);
+      }
+    }
+
+    function showToast(message) {
+      toastText.textContent = message;
+      toast.hidden = false;
+      toast.classList.remove("toastIn");
+      requestAnimationFrame(() => toast.classList.add("toastIn"));
+      setTimeout(() => {
+        toast.classList.remove("toastIn");
+        setTimeout(() => (toast.hidden = true), 300);
+      }, 2600);
+    }
+
+    function animateDrop(category) {
+      const bin = document.getElementById(`bin-${category}`);
+      if (!bin || !dropZone) return;
+
+      const token = document.createElement("div");
+      token.className = "wasteToken";
+      token.textContent = "⬤";
+      token.style.color = COLORS[category] || "#fff";
+      token.setAttribute("aria-hidden", "true");
+      document.body.appendChild(token);
+
+      const from = dropZone.getBoundingClientRect();
+      const to = bin.querySelector(".binIcon").getBoundingClientRect();
+
+      // Start near the drop zone (over the video)
+      const startX = from.left + from.width * 0.7;
+      const startY = from.top + from.height * 0.25;
+      token.style.left = `${startX}px`;
+      token.style.top = `${startY}px`;
+
+      // Trigger transition on next frame
+      requestAnimationFrame(() => {
+        const endX = to.left + to.width * 0.5;
+        const endY = to.top + to.height * 0.6;
+        token.style.transform = `translate(${endX - startX}px, ${endY - startY}px) scale(0.6)`;
+        token.style.opacity = "0.25";
+      });
+
+      token.addEventListener(
+        "transitionend",
+        () => {
+          token.remove();
+          bin.classList.add("binPulse");
+          setTimeout(() => bin.classList.remove("binPulse"), 420);
+        },
+        { once: true },
+      );
+    }
+
+    function updateFill(fillPct) {
+      for (const [cat, el] of barEls.entries()) {
+        const pct = Math.max(0, Math.min(100, Number(fillPct?.[cat] ?? 0)));
+        el.style.width = `${pct}%`;
+      }
+      for (const [cat, el] of fillEls.entries()) {
+        el.textContent = Math.round(Number(fillPct?.[cat] ?? 0));
+      }
+    }
+
+    function drawDonut(distributionPct) {
+      if (!ctx || !chart) return;
+      const w = chart.width;
+      const h = chart.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Backplate
+      ctx.fillStyle = "rgba(255,255,255,0.04)";
+      ctx.fillRect(0, 0, w, h);
+
+      const cx = Math.round(w * 0.32);
+      const cy = Math.round(h * 0.52);
+      const rOuter = Math.round(Math.min(w, h) * 0.33);
+      const rInner = Math.round(rOuter * 0.62);
+
+      const cats = ["Plastic", "Paper", "Metal", "Organic"];
+      const values = cats.map((c) => Math.max(0, Number(distributionPct?.[c] ?? 0)));
+      const sum = values.reduce((a, b) => a + b, 0) || 1;
+
+      let a0 = -Math.PI / 2;
+      for (let i = 0; i < cats.length; i++) {
+        const c = cats[i];
+        const v = values[i] / sum;
+        const a1 = a0 + v * Math.PI * 2;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, rOuter, a0, a1);
+        ctx.closePath();
+        ctx.fillStyle = COLORS[c] || "#fff";
+        ctx.globalAlpha = 0.9;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        a0 = a1;
+      }
+
+      // Cut the hole
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(cx, cy, rInner, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = "source-over";
+
+      // Center text
+      const totalPct = Math.round(sum);
+      ctx.fillStyle = "rgba(238,242,255,0.92)";
+      ctx.font = "900 22px ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial";
+      ctx.textAlign = "center";
+      ctx.fillText(`${totalPct}%`, cx, cy - 2);
+      ctx.fillStyle = "rgba(238,242,255,0.72)";
+      ctx.font = "800 12px ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial";
+      ctx.fillText("distribution", cx, cy + 18);
+    }
+
+    function renderCityMap(city) {
+      if (!cityMap) return;
+      const bins = city?.bins || [];
+      cityMap.innerHTML = "";
+      for (const b of bins) {
+        const m = document.createElement("div");
+        m.className = `marker ${b.status || "green"}`;
+        m.style.left = `${b.x}%`;
+        m.style.top = `${b.y}%`;
+        m.title = `${b.name} (${b.id}) • ${b.fill_pct}%`;
+
+        const label = document.createElement("div");
+        label.className = "markerLabel";
+        label.textContent = `${b.fill_pct}%`;
+        m.appendChild(label);
+
+        cityMap.appendChild(m);
+      }
+    }
+
+    async function refresh() {
+      try {
+        const r = await fetch("/api/stats", { cache: "no-store" });
+        const data = await r.json();
+        if (!data.ok) throw new Error("not ok");
+
+        setStatus(true);
+
+        const latest = data.latest || {};
+        const cat = latest.category || "—";
+        const conf = typeof latest.confidence === "number" ? Math.round(latest.confidence * 100) : null;
+        const src = latest.source || "simulated";
+        latestEl.textContent = conf === null ? `${cat}` : `${cat} • ${conf}%`;
+        modelBadge.textContent = `Model: ${src}`;
+
+        const counts = data.counts || {};
+        for (const el of countEls) {
+          const k = el.getAttribute("data-cat");
+          el.textContent = counts[k] ?? 0;
+        }
+
+        updateFill(data.fill_pct || {});
+
+        const dist = data.distribution_pct || {};
+        for (const [catName, el] of pctEls.entries()) {
+          const v = Number(dist?.[catName] ?? 0);
+          el.textContent = `${v}%`;
+        }
+        drawDonut(dist);
+
+        kpiTotalEl.textContent = Number(data.total ?? 0);
+        kpiRateEl.textContent = Number(data.kpis?.items_per_min ?? 0);
+        const fb = data.kpis?.fullest_bin ?? "—";
+        const fbp = Number(data.kpis?.fullest_bin_fill_pct ?? 0);
+        kpiFullestEl.textContent = fb === "—" ? "—" : `${fb} (${Math.round(fbp)}%)`;
+
+        const impact = data.impact || {};
+        impactCo2El.textContent = Number(impact.co2_saved_kg ?? 0).toFixed(2);
+        impactEffEl.textContent = Number(impact.recycling_efficiency_pct ?? 0);
+        impactTodayEl.textContent = Number(impact.waste_processed_today ?? 0);
+
+        const alerts = data.alerts || [];
+        if (alerts.length > 0) {
+          const a = alerts[0];
+          alertBanner.hidden = false;
+          alertText.textContent = a.message || "Bin Full - Collection Required";
+          const key = `${a.category}-${a.fill_pct}`;
+          if (key !== lastAlertKey) {
+            showToast(alertText.textContent);
+            lastAlertKey = key;
+          }
+        } else {
+          alertBanner.hidden = true;
+          lastAlertKey = null;
+        }
+
+        renderCityMap(data.city || {});
+
+        const history = data.history || [];
+        const hKey = JSON.stringify(history.slice(0, 8));
+        if (hKey !== lastHistoryKey) {
+          // Clear old rows (keep header)
+          const keep = historyTable.querySelector(".historyHead");
+          historyTable.innerHTML = "";
+          historyTable.appendChild(keep);
+
+          if (history.length === 0) {
+            historyEmpty.hidden = false;
+          } else {
+            historyEmpty.hidden = true;
+            for (const item of history.slice(0, 12)) {
+              const row = document.createElement("div");
+              row.className = "historyRow";
+              const t = document.createElement("div");
+              t.className = "historyTime";
+              t.textContent = item.time || "—";
+              const c = document.createElement("div");
+              c.className = `historyType type${(item.category || "").replace(/[^a-z]/gi, "")}`;
+              c.textContent = item.category || "—";
+              row.appendChild(t);
+              row.appendChild(c);
+              historyTable.appendChild(row);
+            }
+          }
+          lastHistoryKey = hKey;
+        }
+
+        if (cat !== "—" && cat && cat !== lastCategory) {
+          animateDrop(cat);
+          lastCategory = cat;
+        }
+
+        if (cat !== "—" && cat && cat !== lastInsightsCategory) {
+          lastInsightsCategory = cat;
+          refreshInsights(cat);
+        }
+      } catch (e) {
+        setStatus(false);
+      }
+    }
+
+    refresh();
+    setInterval(refresh, 300);
+  </script>
+</body>
+
+</html>

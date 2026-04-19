@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% set active_page = 'history' %}
+{% block page_title %}Collection History{% endblock %}
+{% block page_sub %}Activity Log{% endblock %}
+
+{% block content %}
+<div class="card historyCard">
+  <div class="cardHeader" style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>30-Day Collection History</h2>
+    <div class="mutedSmall" id="historyCount">Loading logs...</div>
+  </div>
+  
+  <div style="overflow-x:auto;">
+    <table class="data-table" style="width:100%; border-collapse:collapse; margin-top:20px;">
+      <thead>
+        <tr style="border-bottom:1px solid #1a3a2a; color:#5a7499; font-size:12px; text-align:left;">
+          <th style="padding:10px;">TIMESTAMP</th>
+          <th style="padding:10px;">WASTE TYPE</th>
+          <th style="padding:10px;">COLLECTOR</th>
+          <th style="padding:10px;">TRUCK ID</th>
+          <th style="padding:10px;">WEIGHT</th>
+          <th style="padding:10px;">CO₂ SAVED</th>
+        </tr>
+      </thead>
+      <tbody id="historyTableBody">
+        <tr><td colspan="6" style="padding:20px; text-align:center;">Fetching Database...</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; border-top:1px solid #1a3a2a; padding-top:10px;">
+    <button id="btnPrev" onclick="changePage(-1)" style="padding:6px 16px; background:#0b1120; border:1px solid #1a3a2a; color:#fff; cursor:pointer;" disabled>Previous</button>
+    <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-muted);">Page <span id="pageId">1</span> of <span id="pageTotal">1</span></div>
+    <button id="btnNext" onclick="changePage(1)" style="padding:6px 16px; background:#0b1120; border:1px solid #1a3a2a; color:#fff; cursor:pointer;" disabled>Next</button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let allLogs = [];
+  let currentPage = 1;
+  const itemsPerPage = 10;
+
+  async function loadHistory() {
+    try {
+      const r = await fetch('/api/data/logs');
+      allLogs = await r.json();
+      // sort newest first
+      allLogs.sort((a,b) => new Date(b.collected_at) - new Date(a.collected_at));
+      
+      document.getElementById('historyCount').textContent = `${allLogs.length} verified indore collections`;
+      renderTable();
+    } catch(e) { }
+  }
+  
+  function renderTable() {
+    const totalPages = Math.ceil(allLogs.length / itemsPerPage) || 1;
+    document.getElementById('pageTotal').textContent = totalPages;
+    document.getElementById('pageId').textContent = currentPage;
+    
+    document.getElementById('btnPrev').disabled = currentPage === 1;
+    document.getElementById('btnNext').disabled = currentPage === totalPages;
+    
+    const start = (currentPage - 1) * itemsPerPage;
+    const paginated = allLogs.slice(start, start + itemsPerPage);
+    
+    const tbody = document.getElementById('historyTableBody');
+    tbody.innerHTML = '';
+    
+    paginated.forEach(log => {
+      const typeClass = `color:var(--${log.waste_type.toLowerCase()}); font-weight:700; text-transform:uppercase;`;
+      tbody.innerHTML += `
+        <tr style="border-bottom:1px solid #0b1120;">
+          <td style="padding:10px; font-family:var(--font-mono); font-size:10px;">${log.collected_at}</td>
+          <td style="padding:10px; ${typeClass}">${log.waste_type}</td>
+          <td style="padding:10px;">${log.collector_name}</td>
+          <td style="padding:10px; font-family:var(--font-mono); font-size:11px; color:#5a7499;">${log.truck_id}</td>
+          <td style="padding:10px;">${log.weight_kg} kg</td>
+          <td style="padding:10px; color:#6cffc5;">${log.carbon_saved_kg} kg</td>
+        </tr>
+      `;
+    });
+  }
+  
+  window.changePage = function(dir) {
+    const totalPages = Math.ceil(allLogs.length / itemsPerPage) || 1;
+    currentPage += dir;
+    if(currentPage < 1) currentPage = 1;
+    if(currentPage > totalPages) currentPage = totalPages;
+    renderTable();
+  }
+
+  window.addEventListener('load', loadHistory);
+</script>
+{% endblock %}

@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SmartSort AI — Login</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #060910;
+            --card: #0d1320;
+            --border: #1a2640;
+            --accent: #00ffa3;
+            --accent2: #00c8ff;
+            --err: #ff4d6d;
+            --text: #e8f0ff;
+            --muted: #6b7fa3;
+            --mono: 'DM Mono', monospace;
+            --sans: 'Syne', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .bg-lines {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 60px,
+                    rgba(0, 255, 163, .03) 60px, rgba(0, 255, 163, .03) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px,
+                    rgba(0, 200, 255, .03) 60px, rgba(0, 200, 255, .03) 61px);
+        }
+
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+            background: rgba(0, 255, 163, .06);
+        }
+
+        .orb2 {
+            width: 350px;
+            height: 350px;
+            bottom: -80px;
+            right: -80px;
+            background: rgba(0, 200, 255, .06);
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 48px 40px;
+            width: 420px;
+            animation: cardIn .6s cubic-bezier(.16, 1, .3, 1) both;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(0, 255, 163, .15), rgba(0, 200, 255, .15));
+            border: 1px solid rgba(0, 255, 163, .3);
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 15px;
+            border: 1px solid var(--accent);
+            opacity: 0;
+            animation: ringPulse 2.5s infinite;
+        }
+
+        @keyframes ringPulse {
+            0% {
+                transform: scale(1);
+                opacity: .5
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 0
+            }
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -.5px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .welcome {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -.5px;
+        }
+
+        .welcome-sub {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 14px;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .field input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 255, 163, .1);
+        }
+
+        .field input::placeholder {
+            color: var(--muted);
+        }
+
+        .role-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .role-btn {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            text-align: center;
+        }
+
+        .role-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 255, 163, .08);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #060910;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: .5px;
+            transition: opacity .2s, transform .15s;
+            margin-top: 4px;
+        }
+
+        .login-btn:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .err-msg {
+            color: var(--err);
+            font-size: 12px;
+            margin-top: 12px;
+            text-align: center;
+            min-height: 18px;
+            font-family: var(--mono);
+        }
+
+        .hint {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--muted);
+            text-align: center;
+            font-family: var(--mono);
+        }
+
+        .hint b {
+            color: var(--text);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-lines"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="card">
+        <div class="logo">
+            <div class="logo-mark">S</div>
+            <div>
+                <div class="logo-text">SmartSort <span>AI</span></div>
+                <div class="logo-sub">Waste Intelligence System</div>
+            </div>
+        </div>
+
+        <div class="welcome">Welcome back</div>
+        <div class="welcome-sub">Sign in to access the smart city dashboard</div>
+
+        <div class="role-row">
+            <button class="role-btn active" id="roleAdmin" onclick="setRole('admin')">Admin</button>
+            <button class="role-btn" id="roleGuest" onclick="setRole('guest')">Guest View</button>
+        </div>
+
+        <div class="field">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="admin" autocomplete="username" />
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"
+                onkeydown="if(event.key==='Enter')doLogin()" />
+        </div>
+
+        <button class="login-btn" onclick="doLogin()">SIGN IN →</button>
+        <div class="err-msg" id="errMsg">{{ error if error else '' }}</div>
+
+        <div class="hint">
+            Demo credentials — Admin: <b>admin / admin123</b><br />
+            Guest: <b>guest / guest123</b>
+        </div>
+    </div>
+
+    <form id="loginForm" method="POST" action="/login" style="display:none;">
+        <input type="hidden" name="username" id="formUser">
+        <input type="hidden" name="password" id="formPass">
+    </form>
+
+    <script>
+        let selectedRole = 'admin';
+        function setRole(r) {
+            selectedRole = r;
+            document.getElementById('roleAdmin').classList.toggle('active', r === 'admin');
+            document.getElementById('roleGuest').classList.toggle('active', r === 'guest');
+            document.getElementById('username').value = r === 'admin' ? 'admin' : 'guest';
+            document.getElementById('password').value = '';
+            document.getElementById('errMsg').textContent = '';
+        }
+
+        function doLogin() {
+            const u = document.getElementById('username').value.trim();
+            const p = document.getElementById('password').value;
+            const err = document.getElementById('errMsg');
+            
+            if (!u || !p) {
+                err.textContent = 'Please enter both credentials';
+                return;
+            }
+
+            // Set hidden form values and submit
+            document.getElementById('formUser').value = u;
+            document.getElementById('formPass').value = p;
+            document.getElementById('loginForm').submit();
+        }
+    </script>
+</body>
+
+</html>

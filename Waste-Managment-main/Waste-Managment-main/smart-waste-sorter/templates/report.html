@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% set active_page = 'report' %}
+{% block page_title %}Data Export{% endblock %}
+{% block page_sub %}Download Reports{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 20px;">
+  <div class="cardHeader"><h2>Download System Reports</h2></div>
+  <p style="color:var(--text-muted); font-size:12px;">Export raw data generated from the SmartSort AI backend (Indore Smart City Nodes).</p>
+  <div style="display: flex; gap: 15px; margin-top: 15px;">
+    <button onclick="downloadCSV('logs')" style="flex:1; padding: 20px; border-radius: 12px; border: 1px solid #1a3a2a; background: #0b1120; color: #6cffc5; font-weight: 700; cursor: pointer; transition: 0.2s;">📄 Export Event Logs (CSV)</button>
+    <button onclick="downloadCSV('zones')" style="flex:1; padding: 20px; border-radius: 12px; border: 1px solid #1a3a2a; background: #0b1120; color: #29b6f6; font-weight: 700; cursor: pointer; transition: 0.2s;">📊 Export Zone Aggregations</button>
+  </div>
+  <div id="reportInfo" style="margin-top: 15px; color: var(--text-muted); font-size: 13px; text-align: center; font-family:var(--font-mono);">Ready to export session data</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function downloadCSV(type) {
+    try {
+      document.getElementById('reportInfo').textContent = `Fetching ${type} from database...`;
+      const r = await fetch(`/api/data/${type}`); 
+      const data = await r.json();
+      
+      if(!data || !data.length) {
+          document.getElementById('reportInfo').textContent = `No data found for ${type}`;
+          return;
+      }
+      
+      // Extract headers from first object automatically
+      const headers = Object.keys(data[0]);
+      const csvRows = [headers.join(',')];
+      
+      data.forEach(row => {
+          const values = headers.map(header => {
+              const escaped = (''+row[header]).replace(/"/g, '\\"');
+              return `"${escaped}"`;
+          });
+          csvRows.push(values.join(','));
+      });
+      
+      const csv = csvRows.join('\n');
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a'); 
+      a.href = URL.createObjectURL(blob); 
+      a.download = `smartsort-${type}-export.csv`;
+      a.click(); 
+      document.getElementById('reportInfo').textContent = `${type.toUpperCase()} CSV Exported successfully at ${new Date().toLocaleTimeString()}`;
+    } catch(e) {
+      document.getElementById('reportInfo').textContent = `Export failed: ${e.message}`;
+    }
+  }
+</script>
+{% endblock %}

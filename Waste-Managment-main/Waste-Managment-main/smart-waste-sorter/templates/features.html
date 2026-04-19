@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% set active_page = 'features' %}
+{% block page_title %}City OS Command Center{% endblock %}
+{% block page_sub %}11 Advanced Intelligence Modules — Real-time Urban Waste Operating System{% endblock %}
+
+{% block content %}
+<main class="hub-grid">
+  
+  <!-- 1. Predictive Surge -->
+  <div class="feature-card">
+    <div class="feature-title">🔮 Predictive Waste Surge <span class="feature-badge">Intelligence</span></div>
+    <div class="feature-content" id="content-surge">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Loading AI forecast…</div>
+    </div>
+  </div>
+
+  <!-- 2. Waste DNA -->
+  <div class="feature-card">
+    <div class="feature-title">🧬 Waste DNA Fingerprinting <span class="feature-badge">Analytics</span></div>
+    <div class="feature-content" id="content-dna">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Mapping zone signatures…</div>
+    </div>
+  </div>
+
+  <!-- 3. Gamification -->
+  <div class="feature-card">
+    <div class="feature-title">🏆 GreenCoins Engine <span class="feature-badge">Gamification</span></div>
+    <div class="feature-content" id="content-game">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Loading leaderboard…</div>
+    </div>
+  </div>
+
+  <!-- 4. Assistant -->
+  <div class="feature-card">
+    <div class="feature-title">💬 Waste Assistant <span class="feature-badge">Multilingual</span></div>
+    <div class="feature-content">
+      <input type="text" id="chat-inp" placeholder="Ask: How do I dispose of a battery?">
+      <button onclick="askBot()" style="margin-top: 8px; width: 100%;">Ask SmartSort AI</button>
+      <div class="chat-box" id="content-chat">AI response will appear here…</div>
+    </div>
+  </div>
+
+  <!-- 5. Contamination -->
+  <div class="feature-card">
+    <div class="feature-title">🦠 Contamination Trace <span class="feature-badge">Root Cause</span></div>
+    <div class="feature-content" id="content-contam">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Scanning batches…</div>
+    </div>
+  </div>
+
+  <!-- 6. Marketplace -->
+  <div class="feature-card">
+    <div class="feature-title">🔄 Waste Marketplace <span class="feature-badge">Circular</span></div>
+    <div class="feature-content" id="content-market">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Matching resources…</div>
+    </div>
+  </div>
+
+  <!-- 7. City Metabolism -->
+  <div class="feature-card">
+    <div class="feature-title">🫀 City Metabolism <span class="feature-badge">Live Flow</span></div>
+    <div class="feature-content" id="content-meta">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Routing telemetry…</div>
+    </div>
+  </div>
+
+  <!-- 8. Compliance -->
+  <div class="feature-card">
+    <div class="feature-title">🏢 Compliance Scores <span class="feature-badge">WCS Rating</span></div>
+    <div class="feature-content" id="content-compliance">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Evaluating zones…</div>
+    </div>
+  </div>
+
+  <!-- 9. Simulator -->
+  <div class="feature-card">
+    <div class="feature-title">🕹️ What-If Simulator <span class="feature-badge">Decision AI</span></div>
+    <div class="feature-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+        <span style="font-size: 12px; color: var(--text-secondary);">Smart Bins to Add:</span>
+        <input type="number" id="sim-bins" value="20" style="width: 64px;">
+      </div>
+      <button onclick="runSim()" style="width:100%;">Run Simulation</button>
+      <div class="chat-box" id="content-sim">Simulation output will appear here…</div>
+    </div>
+  </div>
+
+  <!-- 10. Inequality Index -->
+  <div class="feature-card">
+    <div class="feature-title">⚖️ Waste Inequality Index <span class="feature-badge">Equity</span></div>
+    <div class="feature-content" id="content-ineq">
+      <div style="text-align:center; padding: 24px 0; color: var(--text-muted);">Analyzing service levels…</div>
+    </div>
+  </div>
+
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function loadFeatures() {
+    // 1. Surge
+    try {
+      const r1 = await fetch('/api/cityos/surge');
+      const d1 = await r1.json();
+      document.getElementById('content-surge').innerHTML = d1.forecast.map(f => {
+        const riskColor = f.risk_level === 'High' ? 'var(--danger)' : f.risk_level === 'Medium' ? 'var(--warning)' : 'var(--accent)';
+        return `<div class="list-item">
+          <span style="font-weight:500;">${f.day_name}</span>
+          <span style="font-family:var(--font-mono); font-size:11px; color:${riskColor};">${f.projected_volume_kg} kg</span>
+        </div>
+        ${f.event ? `<div style="font-size:11px; color:var(--metal); padding:4px 0 8px; border-bottom:1px solid var(--border);">⚡ ${f.event.name} — ${f.event.impact}</div>` : ''}`;
+      }).join('');
+    } catch(e) { document.getElementById('content-surge').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 2. DNA
+    try {
+      const r2 = await fetch('/api/cityos/dna');
+      const d2 = await r2.json();
+      document.getElementById('content-dna').innerHTML = d2.profiles.map(p => {
+        const barHTML = Object.entries(p.signature).map(([k,v]) => 
+          `<div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+            <span style="font-family:var(--font-mono); font-size:10px; width:48px; color:var(--text-muted);">${k}</span>
+            <div style="flex:1; height:4px; background:var(--surface); border-radius:999px; overflow:hidden;">
+              <div style="width:${v}%; height:100%; background:var(--${k.toLowerCase()}); border-radius:999px;"></div>
+            </div>
+            <span style="font-family:var(--font-mono); font-size:10px; color:var(--text-secondary); width:28px; text-align:right;">${v}%</span>
+          </div>`
+        ).join('');
+        return `<div style="margin-bottom:12px;">
+          <div style="font-weight:600; font-size:12px; margin-bottom:4px;">${p.zone}</div>
+          ${barHTML}
+        </div>`;
+      }).join('');
+    } catch(e) { document.getElementById('content-dna').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 3. Game
+    try {
+      const r3 = await fetch('/api/data/gamification');
+      const d3 = await r3.json();
+      document.getElementById('content-game').innerHTML = 
+        d3.slice(0,5).map(l => 
+          `<div class="list-item">
+            <span style="display:flex; align-items:center; gap:8px;">
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--text-muted); width:20px;">#${l.monthly_rank}</span>
+              <span style="font-weight:500;">${l.name}</span>
+            </span>
+            <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent); font-weight:700;">${l.green_coins_earned.toLocaleString()} 🪙</span>
+          </div>`
+        ).join('') +
+        `<div style="margin-top:12px; padding-top:8px; border-top:1px solid var(--border);">
+          <div style="font-family:var(--font-mono); font-size:9px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Rewards Network</div>
+          <div style="font-size:11px; color:var(--text-secondary); padding:3px 0;">Data syncing live...</div>
+        </div>`;
+    } catch(e) { document.getElementById('content-game').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 5. Contamination
+    try {
+      const r5 = await fetch('/api/cityos/contamination');
+      const d5 = await r5.json();
+      document.getElementById('content-contam').innerHTML = d5.logs.map(l => 
+        `<div style="margin-bottom:12px; padding-left:10px; border-left:2px solid var(--danger);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-family:var(--font-mono); font-size:11px; font-weight:600; color:var(--danger);">${l.id}</span>
+            <span style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted);">${l.time}</span>
+          </div>
+          <div style="font-size:12px; margin-top:4px; color:var(--text);">${l.issue}</div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">↳ ${l.action_taken}</div>
+        </div>`
+      ).join('');
+    } catch(e) { document.getElementById('content-contam').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 6. Marketplace
+    try {
+      const r6 = await fetch('/api/cityos/marketplace');
+      const d6 = await r6.json();
+      document.getElementById('content-market').innerHTML = 
+        `<div style="font-family:var(--font-mono); font-size:9px; color:var(--accent); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Supply Available</div>` + 
+        d6.market.supply.map(s => `<div class="list-item"><span>${s.material}</span><span style="color:var(--accent); font-family:var(--font-mono); font-size:11px;">${s.quantity}</span></div>`).join('') +
+        `<div style="font-family:var(--font-mono); font-size:9px; color:var(--warning); text-transform:uppercase; letter-spacing:1px; margin:12px 0 6px;">Active Demand</div>` +
+        d6.market.demand.map(d => `<div class="list-item"><span>${d.material}</span><span style="color:var(--plastic); font-family:var(--font-mono); font-size:11px;">Match: ${d.match_score}</span></div>`).join('');
+    } catch(e) { document.getElementById('content-market').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 7. Metabolism
+    try {
+      const r7 = await fetch('/api/data/zones');
+      const d7 = await r7.json();
+      let totalWaste = d7.reduce((a,b) => a + b.monthly_waste_kg, 0);
+      let totalNodes = d7.reduce((a,b) => a + b.total_bins, 0);
+      document.getElementById('content-meta').innerHTML = 
+        `<div style="text-align:center; padding:8px 0 16px;">
+          <div style="font-family:var(--font-display); font-size:40px; font-weight:800; letter-spacing:-2px; color:var(--accent); line-height:1;">${totalWaste}</div>
+          <div style="font-family:var(--font-mono); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:4px;">kg/month throughput</div>
+        </div>` +
+        `<div class="list-item"><span style="color:var(--text-secondary);">Active Indore Bins</span><span style="font-family:var(--font-mono); font-weight:600;">${totalNodes}</span></div>` +
+        `<div class="list-item"><span style="color:var(--text-secondary);">Avg City Compliance</span><span style="font-family:var(--font-mono); font-weight:600;">${(d7.reduce((a,b)=>a+b.compliance_score,0)/d7.length).toFixed(1)}%</span></div>` +
+        d7.slice(0,3).map(l => 
+          `<div style="font-size:11px; color:var(--text-muted); padding:2px 0;">${l.zone_name} → Recycled: ${l.recycled_percent}% (${l.monthly_waste_kg}kg)</div>`
+        ).join('');
+    } catch(e) { document.getElementById('content-meta').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 8. Compliance
+    try {
+      const r8 = await fetch('/api/cityos/compliance');
+      const d8 = await r8.json();
+      document.getElementById('content-compliance').innerHTML = d8.scores.map(s => {
+        const gradeColor = s.score >= 85 ? 'var(--accent)' : s.score >= 70 ? 'var(--warning)' : 'var(--danger)';
+        return `<div class="list-item">
+          <span style="font-weight:500;">${s.building}</span>
+          <span style="display:flex; align-items:center; gap:8px;">
+            <span style="font-family:var(--font-mono); font-size:12px; color:${gradeColor}; font-weight:700;">${s.grade}</span>
+            <span style="font-family:var(--font-mono); font-size:10px; color:${s.trend.startsWith('+') ? 'var(--accent)' : 'var(--danger)'};">${s.trend}</span>
+          </span>
+        </div>`;
+      }).join('');
+    } catch(e) { document.getElementById('content-compliance').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+
+    // 10. Inequality
+    try {
+      const r11 = await fetch('/api/cityos/inequality');
+      const d11 = await r11.json();
+      document.getElementById('content-ineq').innerHTML = d11.index.map(i => {
+        const statusColor = i.equity_status === 'Under-served' ? 'var(--danger)' : i.equity_status === 'Over-served' ? 'var(--warning)' : 'var(--accent)';
+        return `<div class="list-item">
+          <span style="font-weight:500;">${i.zone}</span>
+          <span style="font-family:var(--font-mono); font-size:11px; color:${statusColor}; font-weight:600;">${i.equity_status}</span>
+        </div>
+        <div style="font-size:10px; color:var(--text-muted); font-family:var(--font-mono); padding-bottom:4px;">${i.bins_per_10k} bins per 10k population</div>`;
+      }).join('');
+    } catch(e) { document.getElementById('content-ineq').innerHTML = '<div style="text-align:center; padding: 24px 0; color: #ef5350;">Unavailable</div>'; }
+  }
+
+  async function askBot() {
+    const val = document.getElementById('chat-inp').value;
+    if(!val) return;
+    document.getElementById('content-chat').innerHTML = '<span style="color:var(--accent);">● Processing query…</span>';
+    try {
+      const res = await fetch('/api/cityos/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({message: val})
+      });
+      const data = await res.json();
+      document.getElementById('content-chat').innerHTML = data.reply;
+    } catch(e) {
+      document.getElementById('content-chat').innerHTML = '<span style="color:var(--danger);">Connection error. Retrying…</span>';
+    }
+  }
+
+  async function runSim() {
+    const bins = document.getElementById('sim-bins').value;
+    document.getElementById('content-sim').innerHTML = '<span style="color:var(--accent);">● Running Monte Carlo simulation…</span>';
+    try {
+      const res = await fetch('/api/cityos/simulate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({add_bins: parseInt(bins)})
+      });
+      const data = await res.json();
+      const s = data.simulation;
+      const recColor = s.recommendation.includes('Recommended') ? 'var(--accent)' : 'var(--danger)';
+      document.getElementById('content-sim').innerHTML = 
+        `<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+          <div><span style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">Cost Impact</span><br><span style="font-size:16px; font-weight:700; color:var(--accent);">$${s.projected_cost_savings_usd}</span></div>
+          <div><span style="font-size:10px; color:var(--text-muted); text-transform:uppercase;">CO₂ Change</span><br><span style="font-size:16px; font-weight:700; color:var(--plastic);">${s.carbon_emissions_change_kg} kg</span></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding-top:8px; border-top:1px solid var(--border);">
+          <span style="font-size:11px;">Overflow Risk: ${s.overflow_risk_pct}%</span>
+          <span style="font-size:11px; font-weight:700; color:${recColor};">${s.recommendation}</span>
+        </div>`;
+    } catch(e) {
+      document.getElementById('content-sim').innerHTML = '<span style="color:var(--danger);">Simulation failed.</span>';
+    }
+  }
+
+  // Enter key support for chat
+  document.getElementById('chat-inp')?.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') askBot();
+  });
+
+  loadFeatures();
+</script>
+{% endblock %}

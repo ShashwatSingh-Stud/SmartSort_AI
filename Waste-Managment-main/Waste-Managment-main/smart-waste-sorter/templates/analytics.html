@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% set active_page = 'analytics' %}
+{% block page_title %}Analytics{% endblock %}
+{% block page_sub %}Statistics & Breakdown{% endblock %}
+
+{% block content %}
+<div class="kpis" style="margin-bottom: 20px;">
+  <div class="kpi">
+    <div class="kpiLabel">Items Today</div>
+    <div class="kpiValue" id="statToday">--</div>
+  </div>
+  <div class="kpi">
+    <div class="kpiLabel">Total Items (All time)</div>
+    <div class="kpiValue" id="statTotal">--</div>
+  </div>
+  <div class="kpi">
+    <div class="kpiLabel">Most Common Waste</div>
+    <div class="kpiValue" id="statCommon">--</div>
+  </div>
+  <div class="kpi">
+    <div class="kpiLabel">Peak Hour</div>
+    <div class="kpiValue" id="statPeak">--</div>
+  </div>
+</div>
+
+<div class="layout" style="grid-template-columns: 1fr 1fr; margin-bottom: 20px;">
+  <div class="card chartCard">
+    <div class="cardHeader"><h2>Weekly Breakdown</h2></div>
+    <div style="height: 250px;"><canvas id="weeklyChart"></canvas></div>
+  </div>
+  <div class="card chartCard">
+    <div class="cardHeader"><h2>Overall Distribution</h2></div>
+    <div style="height: 250px;"><canvas id="donutChart"></canvas></div>
+  </div>
+</div>
+<!-- START MODAL -->
+<style>
+  .details-modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 100000; align-items: center; justify-content: center; padding: 20px; }
+  .details-modal.active { display: flex; animation: fade-in 0.3s ease; }
+  .details-content { background: #060d0a; border: 1px solid #1a3a2a; width: 100%; max-width: 900px; max-height: 90vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); display: flex; flex-direction: column; overflow: hidden; }
+  .details-header { padding: 16px; border-bottom: 1px solid #1a3a2a; display: flex; justify-content: space-between; align-items: center; background: #08120e; }
+  .details-header h2 { font-size: 18px; text-transform: uppercase; margin:0; letter-spacing: 2px; }
+  .close-btn { background: none; border: none; color: #5a7499; font-size: 24px; cursor: pointer; }
+  .close-btn:hover { color: #fff; }
+  .details-body { padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; }
+  .data-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; }
+  .data-table th, .data-table td { padding: 8px; text-align: left; border-bottom: 1px solid #1a3a2a; }
+  .data-table th { color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .clickable-card { cursor: pointer; transition: transform 0.2s; }
+  .clickable-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,255,100,0.1); }
+</style>
+<div id="detailsModal" class="details-modal" onclick="if(event.target===this) this.classList.remove('active')">
+  <div class="details-content">
+    <div class="details-header">
+      <h2 id="modalTitle">Analytics Deep Dive</h2>
+      <button class="close-btn" onclick="document.getElementById('detailsModal').classList.remove('active')">&times;</button>
+    </div>
+    <div class="details-body" id="modalBody">
+      Loading...
+    </div>
+  </div>
+</div>
+<!-- END MODAL -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Initialize charts with Chart.js
+  const weeklyCtx = document.getElementById('weeklyChart')?.getContext('2d');
+  const donutCtx = document.getElementById('donutChart')?.getContext('2d');
+  
+  const dailyData = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+        { label: 'Plastic', backgroundColor: '#29b6f6', data: [12, 19, 8, 15, 22, 18, 14] },
+        { label: 'Paper', backgroundColor: '#f5a623', data: [8, 14, 11, 9, 17, 13, 10] },
+        { label: 'Metal', backgroundColor: '#9e9eff', data: [5, 8, 6, 11, 9, 7, 8] },
+        { label: 'Organic', backgroundColor: '#4caf7d', data: [15, 11, 18, 13, 20, 16, 12] }
+    ]
+  };
+  
+  const weeklyChart = new Chart(weeklyCtx, {
+      type: 'bar',
+      data: dailyData,
+      options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: {
+            x: { stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#5a7499', font: { family: 'IBM Plex Mono', size: 10 } } },
+            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#5a7499', font: { family: 'IBM Plex Mono', size: 10 } } }
+          },
+          plugins: { legend: { labels: { color: '#5a7499', font: { family: 'DM Sans', size: 12 } } } }
+      }
+  });
+
+  const donutChart = new Chart(donutCtx, {
+      type: 'doughnut',
+      data: {
+          labels: ['Plastic', 'Paper', 'Metal', 'Organic'],
+          datasets: [{
+              data: [25, 25, 25, 25],
+              backgroundColor: ['#29b6f6', '#f5a623', '#9e9eff', '#4caf7d'],
+              borderWidth: 0
+          }]
+      },
+      options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'right', labels: { color: '#5a7499', font: { family: 'DM Sans', size: 12 } } } }
+      }
+  });
+
+  async function refreshAnalytics() {
+    try {
+      const r = await fetch('/api/data/logs');
+      const logs = await r.json();
+      if(logs && logs.length > 0) {
+        document.getElementById('statTotal').textContent = logs.length;
+        document.getElementById('statToday').textContent = logs.length; // simplified
+
+        let sums = { plastic: 0, paper: 0, metal: 0, organic: 0 };
+        let days = { 
+            0: {plastic:0, paper:0, metal:0, organic:0}, // Mon
+            1: {plastic:0, paper:0, metal:0, organic:0},
+            2: {plastic:0, paper:0, metal:0, organic:0},
+            3: {plastic:0, paper:0, metal:0, organic:0},
+            4: {plastic:0, paper:0, metal:0, organic:0},
+            5: {plastic:0, paper:0, metal:0, organic:0},
+            6: {plastic:0, paper:0, metal:0, organic:0}  // Sun
+        };
+        
+        logs.forEach(l => {
+            const t = l.waste_type.toLowerCase();
+            const w = l.weight_kg;
+            if(sums[t] !== undefined) sums[t] += w;
+            
+            // simple parse to weekday
+            const d = new Date(l.collected_at);
+            let idx = d.getDay() - 1; 
+            if(idx === -1) idx = 6;
+            if(days[idx] && days[idx][t] !== undefined) {
+                days[idx][t] += Math.round(w);
+            }
+        });
+
+        // Most common
+        let maxVal = -1; let maxCat = '--';
+        for(const [c, v] of Object.entries(sums)) {
+            if(v > maxVal) { maxVal = v; maxCat = c; }
+        }
+        document.getElementById('statCommon').textContent = maxCat.toUpperCase();
+        document.getElementById('statPeak').textContent = "16:00 (Weekend)"; 
+
+        // Donut
+        donutChart.data.datasets[0].data = [sums.plastic, sums.paper, sums.metal, sums.organic];
+        donutChart.update();
+
+        // Weekly
+        for(let i=0; i<7; i++) {
+            weeklyChart.data.datasets[0].data[i] = days[i].plastic;
+            weeklyChart.data.datasets[1].data[i] = days[i].paper;
+            weeklyChart.data.datasets[2].data[i] = days[i].metal;
+            weeklyChart.data.datasets[3].data[i] = days[i].organic;
+        }
+        weeklyChart.update();
+      }
+    } catch(e) { }
+  }
+  refreshAnalytics(); setInterval(refreshAnalytics, 30000);
+
+</script>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% set active_page = 'impact' %}
+{% block page_title %}Environmental Impact{% endblock %}
+{% block page_sub %}Smart Sorting Benefits{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align: center; padding: 40px; margin-bottom: 20px;">
+  <h2 style="font-size: 24px; color: var(--muted); margin-bottom: 10px;">Total CO₂ Saved</h2>
+  <div style="font-size: 64px; font-weight: 1000; color: #6cffc5; text-shadow: 0 0 20px rgba(108, 255, 197, 0.4);"><span id="impactCo2Big">0</span> <span style="font-size: 24px;">kg</span></div>
+</div>
+
+<div class="impactGrid" style="margin-bottom: 20px;">
+  <div class="impact">
+    <div class="impactLabel">🌳 CO2 Saved (kg)</div>
+    <div class="impactValue" id="impactCo2">0</div>
+  </div>
+  <div class="impact">
+    <div class="impactLabel">♻️ Recycling Efficiency</div>
+    <div class="impactValue"><span id="impactEff">0</span><span class="impactUnit">%</span></div>
+  </div>
+  <div class="impact">
+    <div class="impactLabel">📦 Items Processed Today</div>
+    <div class="impactValue" id="impactToday">0</div>
+  </div>
+</div>
+
+<div class="kpis" style="margin-bottom: 20px;">
+  <div class="kpi"><h3 style="color:var(--plastic); margin:0 0 5px;">Plastic</h3>Recycled processing saves peak CO2.</div>
+  <div class="kpi"><h3 style="color:var(--paper); margin:0 0 5px;">Paper</h3>Forest remediation equivalent.</div>
+  <div class="kpi"><h3 style="color:var(--metal); margin:0 0 5px;">Metal</h3>High energy offset value.</div>
+  <div class="kpi"><h3 style="color:var(--organic); margin:0 0 5px;">Organic</h3>Bio-gas conversion value.</div>
+</div>
+
+<div class="card mapCard">
+  <div class="cardHeader">
+    <h2>TOP 15 INDORE GAMIFICATION LEADERBOARD</h2>
+    <div class="mutedSmall" style="color:#6cffc5;">GREEN COINS REWARD NETWORK</div>
+  </div>
+  <div style="padding: 20px; overflow-x:auto;">
+    <table class="data-table" style="width:100%; text-align:left; border-collapse:collapse; font-family:var(--font-mono);">
+      <thead>
+        <tr style="border-bottom:1px solid #1a3a2a; color:#5a7499; font-size:12px;">
+          <th style="padding:10px;">RANK</th>
+          <th style="padding:10px;">CITIZEN NAME</th>
+          <th style="padding:10px;">ZONE</th>
+          <th style="padding:10px;">COMPLIANCE</th>
+          <th style="padding:10px;">WASTE REDUCED</th>
+          <th style="padding:10px;">GREEN COINS</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboardBody">
+        <tr><td colspan="6" style="padding:20px; text-align:center;">Loading Gamification Network...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  async function loadImpactData() {
+    try {
+      const pLogs = fetch('/api/data/logs').then(r=>r.json());
+      const pGam  = fetch('/api/data/gamification').then(r=>r.json());
+      const [logs, users] = await Promise.all([pLogs, pGam]);
+      
+      // Calculate CO2 over 30 days
+      if(logs && logs.length) {
+          const totalCo2 = logs.reduce((acc, log) => acc + log.carbon_saved_kg, 0);
+          document.getElementById('impactCo2Big').textContent = totalCo2.toFixed(1);
+          document.getElementById('impactCo2').textContent = totalCo2.toFixed(1);
+          document.getElementById('impactEff').textContent = 92; // Mock realistic efficiency
+          document.getElementById('impactToday').textContent = logs.length * 12; // Estimate
+      }
+      
+      // Render Leaderboard
+      if(users && users.length) {
+          const tbody = document.getElementById('leaderboardBody');
+          tbody.innerHTML = '';
+          users.forEach(u => {
+              const compColor = u.compliance_score > 90 ? '#4caf7d' : (u.compliance_score > 70 ? '#f5a623' : '#ef5350');
+              tbody.innerHTML += `
+               <tr style="border-bottom:1px solid #1a3a2a;">
+                 <td style="padding:10px; color:#4caf7d; font-weight:bold;">#${u.monthly_rank}</td>
+                 <td style="padding:10px; font-weight:bold;">${u.name}</td>
+                 <td style="padding:10px; color:#5a7499;">${u.zone}</td>
+                 <td style="padding:10px; color:${compColor};">${u.compliance_score}%</td>
+                 <td style="padding:10px; color:#29b6f6;">${u.waste_reduced_kg} kg</td>
+                 <td style="padding:10px; color:#f5a623; font-weight:bold;">🪙 ${u.green_coins_earned}</td>
+               </tr>
+              `;
+          });
+      }
+    } catch(e) {}
+  }
+  window.addEventListener('load', loadImpactData);
+</script>
+{% endblock %}

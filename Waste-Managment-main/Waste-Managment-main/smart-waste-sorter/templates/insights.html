@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% set active_page = 'insights' %}
+{% block page_title %}AI Insights{% endblock %}
+{% block page_sub %}Powered by Gemini AI{% endblock %}
+
+{% block content %}
+<div class="kpis" style="margin-bottom: 20px;">
+  {% for cat in ['Plastic', 'Paper', 'Metal', 'Organic'] %}
+  <div class="kpi" style="cursor: pointer; transition: background 0.2s;" onclick="loadInsights('{{ cat }}')" id="btn-{{ cat }}">
+    <div class="kpiLabel" style="font-size: 14px; text-align: center;">{{ cat }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card insightsCard" id="insightsCard">
+  <div class="cardHeader">
+    <h2 id="insightsTitle">Select a category ↑</h2>
+    <div class="insightsRight"><span class="bioBadge" id="bioBadge" style="display:none;">—</span></div>
+  </div>
+  <div class="mutedSmall" id="insightsSub" style="margin-bottom: 15px;">AI-generated recycling & disposal tips</div>
+  <div class="suggestionsGrid" id="suggestionsGrid"></div>
+  <div id="loading" style="display:none; color: var(--accent); font-family: var(--mono); text-align: center; padding: 20px;">Gemini is thinking...</div>
+</div>
+
+<div class="card insightsCard" style="margin-top: 20px;">
+  <div class="cardHeader">
+    <h2>PREDICTIVE FILL FORECAST (30 DAYS)</h2>
+  </div>
+  <div style="height: 300px; padding: 20px;">
+    <canvas id="predictiveChart"></canvas>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  async function loadInsights(category) {
+    document.querySelectorAll('.kpi').forEach(el => el.style.background = '');
+    document.getElementById('btn-'+category).style.background = 'rgba(255,255,255,0.1)';
+    
+    document.getElementById('insightsTitle').textContent = category + ' Insights';
+    document.getElementById('suggestionsGrid').innerHTML = '';
+    document.getElementById('bioBadge').style.display = 'none';
+    const errObj = document.getElementById('loading');
+    errObj.style.display = 'block';
+    errObj.textContent = 'Gemini is thinking...';
+    
+    try {
+      const r = await fetch(`/api/insights/tips/${category}`);
+      const data = await r.json();
+      errObj.style.display = 'none';
+      
+      const badge = document.getElementById('bioBadge');
+      badge.style.display = 'inline-block';
+      if(data.biodegradable) {
+          badge.textContent = "Biodegradable ✓"; badge.className = "bioBadge bioYes";
+      } else {
+          badge.textContent = "Non-Biodegradable ✗"; badge.className = "bioBadge bioNo";
+      }
+      
+      const grid = document.getElementById('suggestionsGrid');
+      grid.innerHTML = '';
+      (data.tips || []).forEach((tip, i) => {
+         const card = document.createElement("div");
+         card.className = "suggestionCard";
+         card.innerHTML = `<div class="suggestionIcon">💡</div>
+                           <div class="suggestionText">
+                             <div class="suggestionTitle">Tip #${i+1}</div>
+                             <div class="suggestionDesc">${tip}</div>
+                           </div>`;
+         grid.appendChild(card);
+      });
+      grid.classList.add("fadeIn");
+    } catch(e) {
+      errObj.textContent = 'Failed to load tips. Gemini API Error.';
+    }
+  }
+
+  // Predictive Analytics Graph
+  async function loadPredictiveAnalytics() {
+    try {
+      const r = await fetch('/api/data/analytics');
+      const data = await r.json();
+      if(!data || !data.length) return;
+      
+      // Filter for just BIN_100 and BIN_101 to avoid clutter
+      const bin100 = data.filter(d => d.bin_id === 'BIN_100').slice(-30);
+      const bin101 = data.filter(d => d.bin_id === 'BIN_101').slice(-30);
+      
+      const ctx = document.getElementById('predictiveChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: bin100.map(d => d.timestamp.split(' ')[0].substring(5)),
+          datasets: [
+            {
+              label: 'BIN_100 Forecast %',
+              data: bin100.map(d => d.fill_percent),
+              borderColor: '#4caf7d', backgroundColor: 'rgba(76,175,125,0.1)', fill: true, tension: 0.4
+            },
+            {
+              label: 'BIN_101 Forecast %',
+              data: bin101.map(d => d.fill_percent),
+              borderColor: '#f5a623', backgroundColor: 'rgba(245,166,35,0.1)', fill: true, tension: 0.4
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#5a7499', font: { family: 'DM Sans' } } } },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#5a7499' } },
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#5a7499' } }
+          }
+        }
+      });
+    } catch(e) {}
+  }
+  
+  window.addEventListener('load', loadPredictiveAnalytics);
+</script>
+{% endblock %}

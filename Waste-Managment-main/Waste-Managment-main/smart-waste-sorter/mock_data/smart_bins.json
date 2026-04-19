@@ -1,0 +1,142 @@
+[
+    {
+        "bin_id": "BIN_100",
+        "location_name": "Palasia Square",
+        "zone": "Palasia",
+        "type": "plastic",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_101",
+        "location_name": "56 Dukan",
+        "zone": "Nipania",
+        "type": "glass",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_102",
+        "location_name": "Apollo Premier",
+        "zone": "Super Corridor",
+        "type": "plastic",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_103",
+        "location_name": "C21 Mall",
+        "zone": "Vijay Nagar",
+        "type": "metal",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_104",
+        "location_name": "Rajwada Palace",
+        "zone": "Bhawarkuan",
+        "type": "plastic",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_105",
+        "location_name": "Khajrana Temple",
+        "zone": "Vijay Nagar",
+        "type": "metal",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_106",
+        "location_name": "Holkar Stadium",
+        "zone": "Bhawarkuan",
+        "type": "metal",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_107",
+        "location_name": "Bhawarkuan Square",
+        "zone": "Bhawarkuan",
+        "type": "plastic",
+        "capacity": 500
+    },
+    {
+        "bin_id": "BIN_108",
+        "location_name": "IT Park",
+        "zone": "Rajwada",
+        "type": "organic",
+        "capacity": 500
+    },
+    {
+        "bin_id": "BIN_109",
+        "location_name": "Super Corridor TCS",
+        "zone": "Nipania",
+        "type": "plastic",
+        "capacity": 500
+    },
+    {
+        "bin_id": "BIN_110",
+        "location_name": "Rau Circle",
+        "zone": "Nipania",
+        "type": "organic",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_111",
+        "location_name": "Silicon City",
+        "zone": "Palasia",
+        "type": "glass",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_112",
+        "location_name": "Nipania Bypass",
+        "zone": "Rau",
+        "type": "glass",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_113",
+        "location_name": "Bombay Hospital",
+        "zone": "Bhawarkuan",
+        "type": "organic",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_114",
+        "location_name": "Geeta Bhawan Square",
+        "zone": "Nipania",
+        "type": "metal",
+        "capacity": 500
+    },
+    {
+        "bin_id": "BIN_115",
+        "location_name": "MY Hospital",
+        "zone": "Bhawarkuan",
+        "type": "plastic",
+        "capacity": 100
+    },
+    {
+        "bin_id": "BIN_116",
+        "location_name": "LIG Square",
+        "zone": "Bhawarkuan",
+        "type": "plastic",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_117",
+        "location_name": "SGSITS College",
+        "zone": "Nipania",
+        "type": "metal",
+        "capacity": 500
+    },
+    {
+        "bin_id": "BIN_118",
+        "location_name": "Pheonix Citadel",
+        "zone": "Geeta Bhawan",
+        "type": "metal",
+        "capacity": 200
+    },
+    {
+        "bin_id": "BIN_119",
+        "location_name": "Brilliant Convention",
+        "zone": "Bhawarkuan",
+        "type": "plastic",
+        "capacity": 200
+    }
+]

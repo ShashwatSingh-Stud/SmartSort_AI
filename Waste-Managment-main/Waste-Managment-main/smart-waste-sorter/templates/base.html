@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SmartSort AI — Intelligent Waste Management Command Center powered by Computer Vision and AI" />
+    <title>SmartSort AI — {% block title %}Overview{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="bgGlow"></div>
+    
+    <!-- Sidebar — Sticky with blur backdrop -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header" style="padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 16px;">
+            <div class="logoMark" style="margin-bottom: 8px;">S</div>
+            <div style="font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--text); letter-spacing: -0.3px;">SmartSort AI</div>
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;">Waste Intelligence</div>
+        </div>
+        
+        <a href="/" class="nav-link {% if active_page == 'overview' %}active{% endif %}">🏠 Overview</a>
+        <a href="/features" class="nav-link {% if active_page == 'features' %}active{% endif %}">🚀 City OS</a>
+        <a href="/map" class="nav-link {% if active_page == 'map' %}active{% endif %}">🗺️ City Bin Map</a>
+        <a href="/analytics" class="nav-link {% if active_page == 'analytics' %}active{% endif %}">📊 Analytics</a>
+        <a href="/insights" class="nav-link {% if active_page == 'insights' %}active{% endif %}">🤖 AI Insights</a>
+        <a href="/impact" class="nav-link {% if active_page == 'impact' %}active{% endif %}">🌿 Impact</a>
+        <a href="/history" class="nav-link {% if active_page == 'history' %}active{% endif %}">📋 History</a>
+        <a href="/report" class="nav-link {% if active_page == 'report' %}active{% endif %}">📥 Report</a>
+        
+        <div style="padding: 20px 20px 8px; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">Categories</div>
+        <a href="/category/Plastic" class="nav-link plastic {% if active_page == 'Plastic' %}active plastic{% endif %}">🧴 Plastic</a>
+        <a href="/category/Paper" class="nav-link paper {% if active_page == 'Paper' %}active paper{% endif %}">📄 Paper</a>
+        <a href="/category/Metal" class="nav-link metal {% if active_page == 'Metal' %}active metal{% endif %}">🥫 Metal</a>
+        <a href="/category/Organic" class="nav-link organic {% if active_page == 'Organic' %}active organic{% endif %}">🍌 Organic</a>
+
+        <div style="margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--border);">
+            <div style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted); letter-spacing: 0.5px;">v2.0 — AI Powered</div>
+        </div>
+    </nav>
+
+    <!-- Main Content — Scrollable -->
+    <div class="main-content">
+        <div class="container">
+            <header class="status-bar">
+                <div class="status-left">
+                    <span class="system-name">SmartSort AI</span>
+                    <span class="version-tag">v2.1.0</span>
+                </div>
+                <div class="status-center">
+                    <div id="live-clock" class="mono">00:00:00</div>
+                </div>
+                <div class="status-right">
+                    <span class="uptime mono" id="uptime-display">UPTIME: 02:14:33</span>
+                    <div class="status-indicators">
+                        <span class="indicator" id="status-webcam"><span class="dot"></span> WEBCAM</span>
+                        <span class="indicator" id="status-gemini"><span class="dot"></span> GEMINI</span>
+                        <span class="indicator" id="status-model"><span class="dot"></span> MODEL</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="ticker-wrap">
+                <div class="ticker">
+                    <span class="ticker-item">SYSTEM ACTIVE</span>
+                    <span class="ticker-item">WEBCAM: ONLINE</span>
+                    <span class="ticker-item">GEMINI: CONNECTED</span>
+                    <span class="ticker-item">LAST DETECTION: 0.3s AGO</span>
+                    <span class="ticker-item">SESSION ITEMS: 160</span>
+                    <span class="ticker-item">BINS MONITORED: 6</span>
+                    <!-- Duplicate for seamless scroll -->
+                    <span class="ticker-item">SYSTEM ACTIVE</span>
+                    <span class="ticker-item">WEBCAM: ONLINE</span>
+                    <span class="ticker-item">GEMINI: CONNECTED</span>
+                    <span class="ticker-item">LAST DETECTION: 0.3s AGO</span>
+                    <span class="ticker-item">SESSION ITEMS: 160</span>
+                    <span class="ticker-item">BINS MONITORED: 6</span>
+                </div>
+            </div>
+            
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+    <script>
+      function setStatus(ok) {
+        const webcamDot = document.querySelector("#status-webcam .dot");
+        const geminiDot = document.querySelector("#status-gemini .dot");
+        const modelDot = document.querySelector("#status-model .dot");
+        
+        if (webcamDot) webcamDot.style.background = ok ? "var(--success)" : "var(--danger)";
+        if (geminiDot) geminiDot.style.background = ok ? "var(--success)" : "var(--warning)";
+        if (modelDot) modelDot.style.background = ok ? "var(--warning)" : "var(--text-muted)";
+      }
+
+      // Live Clock
+      setInterval(() => {
+        const now = new Date();
+        document.getElementById('live-clock').textContent = now.toTimeString().split(' ')[0];
+      }, 1000);
+
+      // Uptime Counter
+      let uptimeSeconds = 2 * 3600 + 14 * 60 + 33; // 02:14:33
+      setInterval(() => {
+        uptimeSeconds++;
+        const h = String(Math.floor(uptimeSeconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((uptimeSeconds % 3600) / 60)).padStart(2, '0');
+        const s = String(uptimeSeconds % 60).padStart(2, '0');
+        document.getElementById('uptime-display').textContent = `UPTIME: ${h}:${m}:${s}`;
+      }, 1000);
+
+      // Micro-interaction: button click ripple
+      document.addEventListener('click', function(e) {
+        if (e.target.tagName === 'BUTTON') {
+          e.target.style.transform = 'scale(0.96)';
+          setTimeout(() => { e.target.style.transform = ''; }, 150);
+        }
+      });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,4202 @@
+[
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-26 00:00:00",
+        "fill_percent": 8,
+        "temperature": 26.6,
+        "humidity": 31.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-26 06:00:00",
+        "fill_percent": 14,
+        "temperature": 29.6,
+        "humidity": 44.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-26 12:00:00",
+        "fill_percent": 16,
+        "temperature": 31.4,
+        "humidity": 72.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-26 18:00:00",
+        "fill_percent": 24,
+        "temperature": 35.3,
+        "humidity": 60.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-27 00:00:00",
+        "fill_percent": 30,
+        "temperature": 29.8,
+        "humidity": 30.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-27 06:00:00",
+        "fill_percent": 33,
+        "temperature": 26.5,
+        "humidity": 76.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-27 12:00:00",
+        "fill_percent": 37,
+        "temperature": 26.7,
+        "humidity": 43.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-27 18:00:00",
+        "fill_percent": 40,
+        "temperature": 25.5,
+        "humidity": 46.1
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-28 00:00:00",
+        "fill_percent": 48,
+        "temperature": 35.5,
+        "humidity": 69.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-28 06:00:00",
+        "fill_percent": 53,
+        "temperature": 32.5,
+        "humidity": 38.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-28 12:00:00",
+        "fill_percent": 66,
+        "temperature": 35.3,
+        "humidity": 78.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-02-28 18:00:00",
+        "fill_percent": 78,
+        "temperature": 25.2,
+        "humidity": 71.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-01 00:00:00",
+        "fill_percent": 87,
+        "temperature": 31.8,
+        "humidity": 65.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-01 06:00:00",
+        "fill_percent": 98,
+        "temperature": 32.8,
+        "humidity": 59.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-01 12:00:00",
+        "fill_percent": 1,
+        "temperature": 28.7,
+        "humidity": 32.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-01 18:00:00",
+        "fill_percent": 6,
+        "temperature": 36.7,
+        "humidity": 75.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-02 00:00:00",
+        "fill_percent": 10,
+        "temperature": 39.1,
+        "humidity": 54.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-02 06:00:00",
+        "fill_percent": 18,
+        "temperature": 37.9,
+        "humidity": 54.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-02 12:00:00",
+        "fill_percent": 21,
+        "temperature": 29.9,
+        "humidity": 62.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-02 18:00:00",
+        "fill_percent": 26,
+        "temperature": 32.2,
+        "humidity": 34.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-03 00:00:00",
+        "fill_percent": 33,
+        "temperature": 28.1,
+        "humidity": 43.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-03 06:00:00",
+        "fill_percent": 40,
+        "temperature": 30.8,
+        "humidity": 64.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-03 12:00:00",
+        "fill_percent": 47,
+        "temperature": 39.0,
+        "humidity": 36.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-03 18:00:00",
+        "fill_percent": 51,
+        "temperature": 34.3,
+        "humidity": 73.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-04 00:00:00",
+        "fill_percent": 54,
+        "temperature": 33.3,
+        "humidity": 63.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-04 06:00:00",
+        "fill_percent": 60,
+        "temperature": 30.2,
+        "humidity": 60.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-04 12:00:00",
+        "fill_percent": 64,
+        "temperature": 34.7,
+        "humidity": 54.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-04 18:00:00",
+        "fill_percent": 66,
+        "temperature": 34.4,
+        "humidity": 66.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-05 00:00:00",
+        "fill_percent": 69,
+        "temperature": 39.3,
+        "humidity": 52.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-05 06:00:00",
+        "fill_percent": 72,
+        "temperature": 38.7,
+        "humidity": 40.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-05 12:00:00",
+        "fill_percent": 76,
+        "temperature": 33.8,
+        "humidity": 78.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-05 18:00:00",
+        "fill_percent": 82,
+        "temperature": 26.3,
+        "humidity": 57.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-06 00:00:00",
+        "fill_percent": 84,
+        "temperature": 30.6,
+        "humidity": 46.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-06 06:00:00",
+        "fill_percent": 86,
+        "temperature": 33.5,
+        "humidity": 40.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-06 12:00:00",
+        "fill_percent": 90,
+        "temperature": 30.7,
+        "humidity": 65.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-06 18:00:00",
+        "fill_percent": 98,
+        "temperature": 30.6,
+        "humidity": 37.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-07 00:00:00",
+        "fill_percent": 4,
+        "temperature": 40.2,
+        "humidity": 64.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-07 06:00:00",
+        "fill_percent": 16,
+        "temperature": 40.2,
+        "humidity": 58.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-07 12:00:00",
+        "fill_percent": 22,
+        "temperature": 32.9,
+        "humidity": 71.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-07 18:00:00",
+        "fill_percent": 36,
+        "temperature": 29.4,
+        "humidity": 45.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-08 00:00:00",
+        "fill_percent": 43,
+        "temperature": 27.9,
+        "humidity": 53.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-08 06:00:00",
+        "fill_percent": 56,
+        "temperature": 35.1,
+        "humidity": 39.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-08 12:00:00",
+        "fill_percent": 63,
+        "temperature": 25.2,
+        "humidity": 69.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-08 18:00:00",
+        "fill_percent": 72,
+        "temperature": 32.3,
+        "humidity": 47.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-09 00:00:00",
+        "fill_percent": 78,
+        "temperature": 27.8,
+        "humidity": 38.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-09 06:00:00",
+        "fill_percent": 85,
+        "temperature": 29.8,
+        "humidity": 79.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-09 12:00:00",
+        "fill_percent": 89,
+        "temperature": 33.7,
+        "humidity": 46.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-09 18:00:00",
+        "fill_percent": 94,
+        "temperature": 31.4,
+        "humidity": 48.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-10 00:00:00",
+        "fill_percent": 3,
+        "temperature": 30.7,
+        "humidity": 76.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-10 06:00:00",
+        "fill_percent": 9,
+        "temperature": 32.1,
+        "humidity": 51.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-10 12:00:00",
+        "fill_percent": 17,
+        "temperature": 39.9,
+        "humidity": 68.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-10 18:00:00",
+        "fill_percent": 20,
+        "temperature": 36.9,
+        "humidity": 31.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-11 00:00:00",
+        "fill_percent": 26,
+        "temperature": 41.2,
+        "humidity": 31.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-11 06:00:00",
+        "fill_percent": 31,
+        "temperature": 32.3,
+        "humidity": 72.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-11 12:00:00",
+        "fill_percent": 35,
+        "temperature": 28.9,
+        "humidity": 49.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-11 18:00:00",
+        "fill_percent": 39,
+        "temperature": 33.4,
+        "humidity": 41.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-12 00:00:00",
+        "fill_percent": 44,
+        "temperature": 40.8,
+        "humidity": 70.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-12 06:00:00",
+        "fill_percent": 48,
+        "temperature": 37.1,
+        "humidity": 38.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-12 12:00:00",
+        "fill_percent": 55,
+        "temperature": 36.9,
+        "humidity": 44.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-12 18:00:00",
+        "fill_percent": 60,
+        "temperature": 28.2,
+        "humidity": 55.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-13 00:00:00",
+        "fill_percent": 63,
+        "temperature": 33.1,
+        "humidity": 41.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-13 06:00:00",
+        "fill_percent": 65,
+        "temperature": 27.1,
+        "humidity": 63.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-13 12:00:00",
+        "fill_percent": 72,
+        "temperature": 28.3,
+        "humidity": 43.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-13 18:00:00",
+        "fill_percent": 74,
+        "temperature": 31.4,
+        "humidity": 65.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-14 00:00:00",
+        "fill_percent": 84,
+        "temperature": 33.8,
+        "humidity": 60.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-14 06:00:00",
+        "fill_percent": 98,
+        "temperature": 31.1,
+        "humidity": 45.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-14 12:00:00",
+        "fill_percent": 5,
+        "temperature": 34.0,
+        "humidity": 62.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-14 18:00:00",
+        "fill_percent": 17,
+        "temperature": 30.0,
+        "humidity": 37.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-15 00:00:00",
+        "fill_percent": 31,
+        "temperature": 38.8,
+        "humidity": 32.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-15 06:00:00",
+        "fill_percent": 38,
+        "temperature": 25.2,
+        "humidity": 61.1
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-15 12:00:00",
+        "fill_percent": 44,
+        "temperature": 34.4,
+        "humidity": 49.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-15 18:00:00",
+        "fill_percent": 55,
+        "temperature": 32.5,
+        "humidity": 49.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-16 00:00:00",
+        "fill_percent": 61,
+        "temperature": 37.6,
+        "humidity": 73.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-16 06:00:00",
+        "fill_percent": 67,
+        "temperature": 40.6,
+        "humidity": 31.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-16 12:00:00",
+        "fill_percent": 73,
+        "temperature": 36.4,
+        "humidity": 76.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-16 18:00:00",
+        "fill_percent": 75,
+        "temperature": 39.0,
+        "humidity": 58.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-17 00:00:00",
+        "fill_percent": 79,
+        "temperature": 35.3,
+        "humidity": 58.1
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-17 06:00:00",
+        "fill_percent": 83,
+        "temperature": 38.6,
+        "humidity": 44.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-17 12:00:00",
+        "fill_percent": 89,
+        "temperature": 41.6,
+        "humidity": 45.1
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-17 18:00:00",
+        "fill_percent": 92,
+        "temperature": 41.0,
+        "humidity": 72.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-18 00:00:00",
+        "fill_percent": 96,
+        "temperature": 32.7,
+        "humidity": 66.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-18 06:00:00",
+        "fill_percent": 99,
+        "temperature": 33.7,
+        "humidity": 45.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-18 12:00:00",
+        "fill_percent": 1,
+        "temperature": 37.4,
+        "humidity": 78.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-18 18:00:00",
+        "fill_percent": 7,
+        "temperature": 28.4,
+        "humidity": 41.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-19 00:00:00",
+        "fill_percent": 14,
+        "temperature": 33.7,
+        "humidity": 68.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-19 06:00:00",
+        "fill_percent": 21,
+        "temperature": 37.4,
+        "humidity": 51.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-19 12:00:00",
+        "fill_percent": 29,
+        "temperature": 28.2,
+        "humidity": 55.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-19 18:00:00",
+        "fill_percent": 35,
+        "temperature": 25.8,
+        "humidity": 45.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-20 00:00:00",
+        "fill_percent": 37,
+        "temperature": 35.2,
+        "humidity": 78.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-20 06:00:00",
+        "fill_percent": 45,
+        "temperature": 41.0,
+        "humidity": 67.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-20 12:00:00",
+        "fill_percent": 51,
+        "temperature": 41.9,
+        "humidity": 50.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-20 18:00:00",
+        "fill_percent": 53,
+        "temperature": 30.3,
+        "humidity": 74.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-21 00:00:00",
+        "fill_percent": 68,
+        "temperature": 40.3,
+        "humidity": 36.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-21 06:00:00",
+        "fill_percent": 82,
+        "temperature": 40.2,
+        "humidity": 50.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-21 12:00:00",
+        "fill_percent": 88,
+        "temperature": 25.5,
+        "humidity": 65.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-21 18:00:00",
+        "fill_percent": 4,
+        "temperature": 31.0,
+        "humidity": 41.6
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-22 00:00:00",
+        "fill_percent": 16,
+        "temperature": 32.4,
+        "humidity": 50.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-22 06:00:00",
+        "fill_percent": 27,
+        "temperature": 27.4,
+        "humidity": 47.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-22 12:00:00",
+        "fill_percent": 41,
+        "temperature": 36.1,
+        "humidity": 74.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-22 18:00:00",
+        "fill_percent": 52,
+        "temperature": 27.0,
+        "humidity": 67.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-23 00:00:00",
+        "fill_percent": 56,
+        "temperature": 25.8,
+        "humidity": 76.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-23 06:00:00",
+        "fill_percent": 63,
+        "temperature": 33.5,
+        "humidity": 33.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-23 12:00:00",
+        "fill_percent": 71,
+        "temperature": 39.7,
+        "humidity": 71.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-23 18:00:00",
+        "fill_percent": 79,
+        "temperature": 37.0,
+        "humidity": 46.7
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-24 00:00:00",
+        "fill_percent": 85,
+        "temperature": 25.1,
+        "humidity": 41.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-24 06:00:00",
+        "fill_percent": 89,
+        "temperature": 41.8,
+        "humidity": 40.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-24 12:00:00",
+        "fill_percent": 92,
+        "temperature": 36.5,
+        "humidity": 39.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-24 18:00:00",
+        "fill_percent": 96,
+        "temperature": 28.9,
+        "humidity": 64.5
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-25 00:00:00",
+        "fill_percent": 0,
+        "temperature": 31.4,
+        "humidity": 38.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-25 06:00:00",
+        "fill_percent": 8,
+        "temperature": 32.8,
+        "humidity": 36.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-25 12:00:00",
+        "fill_percent": 13,
+        "temperature": 36.3,
+        "humidity": 49.9
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-25 18:00:00",
+        "fill_percent": 15,
+        "temperature": 41.7,
+        "humidity": 72.8
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-26 00:00:00",
+        "fill_percent": 18,
+        "temperature": 28.8,
+        "humidity": 66.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-26 06:00:00",
+        "fill_percent": 23,
+        "temperature": 25.4,
+        "humidity": 38.2
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-26 12:00:00",
+        "fill_percent": 27,
+        "temperature": 26.9,
+        "humidity": 55.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-26 18:00:00",
+        "fill_percent": 31,
+        "temperature": 41.8,
+        "humidity": 42.3
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-27 00:00:00",
+        "fill_percent": 37,
+        "temperature": 35.5,
+        "humidity": 63.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-27 06:00:00",
+        "fill_percent": 42,
+        "temperature": 28.0,
+        "humidity": 43.0
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-27 12:00:00",
+        "fill_percent": 47,
+        "temperature": 30.5,
+        "humidity": 77.4
+    },
+    {
+        "bin_id": "BIN_100",
+        "timestamp": "2026-03-27 18:00:00",
+        "fill_percent": 53,
+        "temperature": 28.3,
+        "humidity": 68.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-26 00:00:00",
+        "fill_percent": 22,
+        "temperature": 33.2,
+        "humidity": 77.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-26 06:00:00",
+        "fill_percent": 24,
+        "temperature": 35.5,
+        "humidity": 71.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-26 12:00:00",
+        "fill_percent": 29,
+        "temperature": 27.8,
+        "humidity": 78.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-26 18:00:00",
+        "fill_percent": 36,
+        "temperature": 36.9,
+        "humidity": 36.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-27 00:00:00",
+        "fill_percent": 41,
+        "temperature": 38.8,
+        "humidity": 60.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-27 06:00:00",
+        "fill_percent": 45,
+        "temperature": 41.0,
+        "humidity": 78.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-27 12:00:00",
+        "fill_percent": 50,
+        "temperature": 35.9,
+        "humidity": 73.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-27 18:00:00",
+        "fill_percent": 54,
+        "temperature": 36.1,
+        "humidity": 36.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-28 00:00:00",
+        "fill_percent": 64,
+        "temperature": 27.0,
+        "humidity": 55.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-28 06:00:00",
+        "fill_percent": 77,
+        "temperature": 29.2,
+        "humidity": 63.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-28 12:00:00",
+        "fill_percent": 90,
+        "temperature": 28.1,
+        "humidity": 54.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-02-28 18:00:00",
+        "fill_percent": 96,
+        "temperature": 36.6,
+        "humidity": 49.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-01 00:00:00",
+        "fill_percent": 5,
+        "temperature": 39.0,
+        "humidity": 61.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-01 06:00:00",
+        "fill_percent": 20,
+        "temperature": 27.3,
+        "humidity": 63.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-01 12:00:00",
+        "fill_percent": 26,
+        "temperature": 32.2,
+        "humidity": 58.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-01 18:00:00",
+        "fill_percent": 39,
+        "temperature": 32.3,
+        "humidity": 42.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-02 00:00:00",
+        "fill_percent": 46,
+        "temperature": 26.0,
+        "humidity": 47.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-02 06:00:00",
+        "fill_percent": 52,
+        "temperature": 36.8,
+        "humidity": 35.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-02 12:00:00",
+        "fill_percent": 55,
+        "temperature": 31.3,
+        "humidity": 56.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-02 18:00:00",
+        "fill_percent": 61,
+        "temperature": 37.8,
+        "humidity": 34.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-03 00:00:00",
+        "fill_percent": 68,
+        "temperature": 41.2,
+        "humidity": 40.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-03 06:00:00",
+        "fill_percent": 75,
+        "temperature": 35.2,
+        "humidity": 74.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-03 12:00:00",
+        "fill_percent": 77,
+        "temperature": 38.1,
+        "humidity": 35.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-03 18:00:00",
+        "fill_percent": 84,
+        "temperature": 32.8,
+        "humidity": 45.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-04 00:00:00",
+        "fill_percent": 89,
+        "temperature": 38.8,
+        "humidity": 47.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-04 06:00:00",
+        "fill_percent": 92,
+        "temperature": 28.7,
+        "humidity": 75.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-04 12:00:00",
+        "fill_percent": 97,
+        "temperature": 37.7,
+        "humidity": 75.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-04 18:00:00",
+        "fill_percent": 1,
+        "temperature": 29.8,
+        "humidity": 31.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-05 00:00:00",
+        "fill_percent": 3,
+        "temperature": 35.9,
+        "humidity": 34.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-05 06:00:00",
+        "fill_percent": 11,
+        "temperature": 30.0,
+        "humidity": 60.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-05 12:00:00",
+        "fill_percent": 16,
+        "temperature": 26.2,
+        "humidity": 39.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-05 18:00:00",
+        "fill_percent": 22,
+        "temperature": 26.9,
+        "humidity": 77.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-06 00:00:00",
+        "fill_percent": 25,
+        "temperature": 38.9,
+        "humidity": 38.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-06 06:00:00",
+        "fill_percent": 29,
+        "temperature": 38.8,
+        "humidity": 57.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-06 12:00:00",
+        "fill_percent": 34,
+        "temperature": 28.6,
+        "humidity": 38.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-06 18:00:00",
+        "fill_percent": 42,
+        "temperature": 34.1,
+        "humidity": 50.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-07 00:00:00",
+        "fill_percent": 54,
+        "temperature": 34.9,
+        "humidity": 75.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-07 06:00:00",
+        "fill_percent": 66,
+        "temperature": 26.1,
+        "humidity": 76.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-07 12:00:00",
+        "fill_percent": 80,
+        "temperature": 38.8,
+        "humidity": 67.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-07 18:00:00",
+        "fill_percent": 95,
+        "temperature": 39.9,
+        "humidity": 51.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-08 00:00:00",
+        "fill_percent": 2,
+        "temperature": 35.6,
+        "humidity": 73.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-08 06:00:00",
+        "fill_percent": 15,
+        "temperature": 26.5,
+        "humidity": 72.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-08 12:00:00",
+        "fill_percent": 22,
+        "temperature": 28.3,
+        "humidity": 32.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-08 18:00:00",
+        "fill_percent": 30,
+        "temperature": 41.5,
+        "humidity": 34.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-09 00:00:00",
+        "fill_percent": 33,
+        "temperature": 26.4,
+        "humidity": 73.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-09 06:00:00",
+        "fill_percent": 36,
+        "temperature": 39.7,
+        "humidity": 72.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-09 12:00:00",
+        "fill_percent": 44,
+        "temperature": 26.2,
+        "humidity": 73.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-09 18:00:00",
+        "fill_percent": 51,
+        "temperature": 31.2,
+        "humidity": 31.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-10 00:00:00",
+        "fill_percent": 57,
+        "temperature": 37.1,
+        "humidity": 48.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-10 06:00:00",
+        "fill_percent": 63,
+        "temperature": 35.5,
+        "humidity": 38.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-10 12:00:00",
+        "fill_percent": 69,
+        "temperature": 27.4,
+        "humidity": 60.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-10 18:00:00",
+        "fill_percent": 77,
+        "temperature": 35.7,
+        "humidity": 42.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-11 00:00:00",
+        "fill_percent": 80,
+        "temperature": 26.0,
+        "humidity": 68.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-11 06:00:00",
+        "fill_percent": 86,
+        "temperature": 30.1,
+        "humidity": 52.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-11 12:00:00",
+        "fill_percent": 89,
+        "temperature": 26.8,
+        "humidity": 57.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-11 18:00:00",
+        "fill_percent": 91,
+        "temperature": 30.7,
+        "humidity": 51.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-12 00:00:00",
+        "fill_percent": 99,
+        "temperature": 32.4,
+        "humidity": 56.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-12 06:00:00",
+        "fill_percent": 5,
+        "temperature": 37.8,
+        "humidity": 46.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-12 12:00:00",
+        "fill_percent": 10,
+        "temperature": 33.0,
+        "humidity": 77.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-12 18:00:00",
+        "fill_percent": 15,
+        "temperature": 36.5,
+        "humidity": 62.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-13 00:00:00",
+        "fill_percent": 22,
+        "temperature": 39.1,
+        "humidity": 40.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-13 06:00:00",
+        "fill_percent": 26,
+        "temperature": 31.6,
+        "humidity": 67.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-13 12:00:00",
+        "fill_percent": 34,
+        "temperature": 34.4,
+        "humidity": 50.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-13 18:00:00",
+        "fill_percent": 38,
+        "temperature": 27.9,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-14 00:00:00",
+        "fill_percent": 46,
+        "temperature": 30.0,
+        "humidity": 64.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-14 06:00:00",
+        "fill_percent": 56,
+        "temperature": 31.4,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-14 12:00:00",
+        "fill_percent": 70,
+        "temperature": 37.4,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-14 18:00:00",
+        "fill_percent": 81,
+        "temperature": 34.8,
+        "humidity": 52.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-15 00:00:00",
+        "fill_percent": 86,
+        "temperature": 34.4,
+        "humidity": 35.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-15 06:00:00",
+        "fill_percent": 1,
+        "temperature": 35.5,
+        "humidity": 61.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-15 12:00:00",
+        "fill_percent": 8,
+        "temperature": 29.3,
+        "humidity": 63.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-15 18:00:00",
+        "fill_percent": 16,
+        "temperature": 37.4,
+        "humidity": 73.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-16 00:00:00",
+        "fill_percent": 19,
+        "temperature": 26.4,
+        "humidity": 33.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-16 06:00:00",
+        "fill_percent": 25,
+        "temperature": 38.0,
+        "humidity": 55.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-16 12:00:00",
+        "fill_percent": 29,
+        "temperature": 41.9,
+        "humidity": 62.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-16 18:00:00",
+        "fill_percent": 31,
+        "temperature": 31.0,
+        "humidity": 32.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-17 00:00:00",
+        "fill_percent": 36,
+        "temperature": 41.0,
+        "humidity": 30.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-17 06:00:00",
+        "fill_percent": 38,
+        "temperature": 38.2,
+        "humidity": 63.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-17 12:00:00",
+        "fill_percent": 46,
+        "temperature": 34.5,
+        "humidity": 55.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-17 18:00:00",
+        "fill_percent": 51,
+        "temperature": 36.9,
+        "humidity": 53.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-18 00:00:00",
+        "fill_percent": 54,
+        "temperature": 27.9,
+        "humidity": 43.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-18 06:00:00",
+        "fill_percent": 59,
+        "temperature": 31.7,
+        "humidity": 58.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-18 12:00:00",
+        "fill_percent": 64,
+        "temperature": 37.9,
+        "humidity": 42.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-18 18:00:00",
+        "fill_percent": 66,
+        "temperature": 32.5,
+        "humidity": 32.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-19 00:00:00",
+        "fill_percent": 71,
+        "temperature": 37.7,
+        "humidity": 75.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-19 06:00:00",
+        "fill_percent": 79,
+        "temperature": 36.0,
+        "humidity": 37.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-19 12:00:00",
+        "fill_percent": 83,
+        "temperature": 26.8,
+        "humidity": 69.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-19 18:00:00",
+        "fill_percent": 88,
+        "temperature": 28.8,
+        "humidity": 32.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-20 00:00:00",
+        "fill_percent": 95,
+        "temperature": 28.8,
+        "humidity": 68.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-20 06:00:00",
+        "fill_percent": 4,
+        "temperature": 27.2,
+        "humidity": 47.6
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-20 12:00:00",
+        "fill_percent": 12,
+        "temperature": 26.8,
+        "humidity": 37.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-20 18:00:00",
+        "fill_percent": 19,
+        "temperature": 34.2,
+        "humidity": 66.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-21 00:00:00",
+        "fill_percent": 32,
+        "temperature": 39.8,
+        "humidity": 66.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-21 06:00:00",
+        "fill_percent": 42,
+        "temperature": 26.3,
+        "humidity": 31.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-21 12:00:00",
+        "fill_percent": 51,
+        "temperature": 25.7,
+        "humidity": 48.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-21 18:00:00",
+        "fill_percent": 57,
+        "temperature": 30.3,
+        "humidity": 68.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-22 00:00:00",
+        "fill_percent": 64,
+        "temperature": 39.7,
+        "humidity": 44.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-22 06:00:00",
+        "fill_percent": 78,
+        "temperature": 41.7,
+        "humidity": 74.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-22 12:00:00",
+        "fill_percent": 90,
+        "temperature": 32.1,
+        "humidity": 37.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-22 18:00:00",
+        "fill_percent": 4,
+        "temperature": 37.0,
+        "humidity": 42.0
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-23 00:00:00",
+        "fill_percent": 11,
+        "temperature": 35.3,
+        "humidity": 61.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-23 06:00:00",
+        "fill_percent": 13,
+        "temperature": 26.4,
+        "humidity": 45.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-23 12:00:00",
+        "fill_percent": 19,
+        "temperature": 38.2,
+        "humidity": 39.5
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-23 18:00:00",
+        "fill_percent": 25,
+        "temperature": 33.3,
+        "humidity": 56.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-24 00:00:00",
+        "fill_percent": 28,
+        "temperature": 35.7,
+        "humidity": 63.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-24 06:00:00",
+        "fill_percent": 36,
+        "temperature": 31.0,
+        "humidity": 34.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-24 12:00:00",
+        "fill_percent": 41,
+        "temperature": 25.4,
+        "humidity": 64.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-24 18:00:00",
+        "fill_percent": 49,
+        "temperature": 32.2,
+        "humidity": 67.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-25 00:00:00",
+        "fill_percent": 54,
+        "temperature": 33.0,
+        "humidity": 69.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-25 06:00:00",
+        "fill_percent": 56,
+        "temperature": 36.3,
+        "humidity": 79.1
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-25 12:00:00",
+        "fill_percent": 64,
+        "temperature": 28.0,
+        "humidity": 79.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-25 18:00:00",
+        "fill_percent": 72,
+        "temperature": 38.3,
+        "humidity": 55.8
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-26 00:00:00",
+        "fill_percent": 75,
+        "temperature": 34.7,
+        "humidity": 56.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-26 06:00:00",
+        "fill_percent": 81,
+        "temperature": 37.4,
+        "humidity": 68.3
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-26 12:00:00",
+        "fill_percent": 89,
+        "temperature": 36.3,
+        "humidity": 36.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-26 18:00:00",
+        "fill_percent": 97,
+        "temperature": 40.3,
+        "humidity": 65.9
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-27 00:00:00",
+        "fill_percent": 99,
+        "temperature": 34.9,
+        "humidity": 49.2
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-27 06:00:00",
+        "fill_percent": 3,
+        "temperature": 31.8,
+        "humidity": 52.7
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-27 12:00:00",
+        "fill_percent": 6,
+        "temperature": 41.9,
+        "humidity": 49.4
+    },
+    {
+        "bin_id": "BIN_101",
+        "timestamp": "2026-03-27 18:00:00",
+        "fill_percent": 14,
+        "temperature": 30.2,
+        "humidity": 35.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-26 00:00:00",
+        "fill_percent": 15,
+        "temperature": 41.4,
+        "humidity": 68.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-26 06:00:00",
+        "fill_percent": 23,
+        "temperature": 31.4,
+        "humidity": 48.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-26 12:00:00",
+        "fill_percent": 31,
+        "temperature": 41.5,
+        "humidity": 38.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-26 18:00:00",
+        "fill_percent": 37,
+        "temperature": 40.1,
+        "humidity": 31.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-27 00:00:00",
+        "fill_percent": 42,
+        "temperature": 33.5,
+        "humidity": 32.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-27 06:00:00",
+        "fill_percent": 50,
+        "temperature": 29.0,
+        "humidity": 39.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-27 12:00:00",
+        "fill_percent": 55,
+        "temperature": 39.8,
+        "humidity": 40.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-27 18:00:00",
+        "fill_percent": 60,
+        "temperature": 39.2,
+        "humidity": 31.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-28 00:00:00",
+        "fill_percent": 74,
+        "temperature": 30.2,
+        "humidity": 36.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-28 06:00:00",
+        "fill_percent": 89,
+        "temperature": 30.1,
+        "humidity": 74.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-28 12:00:00",
+        "fill_percent": 99,
+        "temperature": 27.3,
+        "humidity": 47.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-02-28 18:00:00",
+        "fill_percent": 5,
+        "temperature": 41.6,
+        "humidity": 75.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-01 00:00:00",
+        "fill_percent": 10,
+        "temperature": 30.7,
+        "humidity": 51.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-01 06:00:00",
+        "fill_percent": 24,
+        "temperature": 41.6,
+        "humidity": 49.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-01 12:00:00",
+        "fill_percent": 32,
+        "temperature": 30.3,
+        "humidity": 43.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-01 18:00:00",
+        "fill_percent": 38,
+        "temperature": 31.4,
+        "humidity": 60.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-02 00:00:00",
+        "fill_percent": 42,
+        "temperature": 33.5,
+        "humidity": 36.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-02 06:00:00",
+        "fill_percent": 46,
+        "temperature": 34.1,
+        "humidity": 48.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-02 12:00:00",
+        "fill_percent": 49,
+        "temperature": 29.8,
+        "humidity": 44.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-02 18:00:00",
+        "fill_percent": 55,
+        "temperature": 35.2,
+        "humidity": 53.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-03 00:00:00",
+        "fill_percent": 57,
+        "temperature": 37.0,
+        "humidity": 41.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-03 06:00:00",
+        "fill_percent": 60,
+        "temperature": 37.0,
+        "humidity": 78.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-03 12:00:00",
+        "fill_percent": 68,
+        "temperature": 27.1,
+        "humidity": 52.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-03 18:00:00",
+        "fill_percent": 76,
+        "temperature": 40.7,
+        "humidity": 53.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-04 00:00:00",
+        "fill_percent": 79,
+        "temperature": 35.6,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-04 06:00:00",
+        "fill_percent": 85,
+        "temperature": 41.3,
+        "humidity": 47.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-04 12:00:00",
+        "fill_percent": 93,
+        "temperature": 25.6,
+        "humidity": 61.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-04 18:00:00",
+        "fill_percent": 98,
+        "temperature": 32.5,
+        "humidity": 34.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-05 00:00:00",
+        "fill_percent": 5,
+        "temperature": 41.2,
+        "humidity": 32.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-05 06:00:00",
+        "fill_percent": 9,
+        "temperature": 30.2,
+        "humidity": 72.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-05 12:00:00",
+        "fill_percent": 13,
+        "temperature": 25.1,
+        "humidity": 46.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-05 18:00:00",
+        "fill_percent": 17,
+        "temperature": 35.6,
+        "humidity": 72.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-06 00:00:00",
+        "fill_percent": 19,
+        "temperature": 26.1,
+        "humidity": 38.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-06 06:00:00",
+        "fill_percent": 26,
+        "temperature": 41.4,
+        "humidity": 79.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-06 12:00:00",
+        "fill_percent": 28,
+        "temperature": 31.9,
+        "humidity": 60.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-06 18:00:00",
+        "fill_percent": 35,
+        "temperature": 38.8,
+        "humidity": 79.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-07 00:00:00",
+        "fill_percent": 46,
+        "temperature": 37.4,
+        "humidity": 32.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-07 06:00:00",
+        "fill_percent": 51,
+        "temperature": 28.2,
+        "humidity": 35.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-07 12:00:00",
+        "fill_percent": 63,
+        "temperature": 31.5,
+        "humidity": 50.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-07 18:00:00",
+        "fill_percent": 76,
+        "temperature": 37.6,
+        "humidity": 41.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-08 00:00:00",
+        "fill_percent": 81,
+        "temperature": 29.4,
+        "humidity": 61.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-08 06:00:00",
+        "fill_percent": 95,
+        "temperature": 26.3,
+        "humidity": 31.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-08 12:00:00",
+        "fill_percent": 1,
+        "temperature": 33.4,
+        "humidity": 72.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-08 18:00:00",
+        "fill_percent": 9,
+        "temperature": 38.1,
+        "humidity": 72.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-09 00:00:00",
+        "fill_percent": 14,
+        "temperature": 29.7,
+        "humidity": 39.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-09 06:00:00",
+        "fill_percent": 22,
+        "temperature": 26.2,
+        "humidity": 68.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-09 12:00:00",
+        "fill_percent": 25,
+        "temperature": 30.9,
+        "humidity": 60.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-09 18:00:00",
+        "fill_percent": 27,
+        "temperature": 32.9,
+        "humidity": 67.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-10 00:00:00",
+        "fill_percent": 32,
+        "temperature": 36.9,
+        "humidity": 32.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-10 06:00:00",
+        "fill_percent": 38,
+        "temperature": 41.2,
+        "humidity": 45.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-10 12:00:00",
+        "fill_percent": 40,
+        "temperature": 31.2,
+        "humidity": 41.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-10 18:00:00",
+        "fill_percent": 48,
+        "temperature": 35.4,
+        "humidity": 40.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-11 00:00:00",
+        "fill_percent": 54,
+        "temperature": 28.0,
+        "humidity": 78.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-11 06:00:00",
+        "fill_percent": 58,
+        "temperature": 29.0,
+        "humidity": 69.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-11 12:00:00",
+        "fill_percent": 64,
+        "temperature": 33.1,
+        "humidity": 40.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-11 18:00:00",
+        "fill_percent": 72,
+        "temperature": 31.5,
+        "humidity": 56.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-12 00:00:00",
+        "fill_percent": 78,
+        "temperature": 35.4,
+        "humidity": 57.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-12 06:00:00",
+        "fill_percent": 86,
+        "temperature": 38.1,
+        "humidity": 32.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-12 12:00:00",
+        "fill_percent": 92,
+        "temperature": 39.8,
+        "humidity": 35.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-12 18:00:00",
+        "fill_percent": 97,
+        "temperature": 38.3,
+        "humidity": 73.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-13 00:00:00",
+        "fill_percent": 1,
+        "temperature": 35.6,
+        "humidity": 49.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-13 06:00:00",
+        "fill_percent": 5,
+        "temperature": 36.2,
+        "humidity": 33.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-13 12:00:00",
+        "fill_percent": 8,
+        "temperature": 31.2,
+        "humidity": 32.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-13 18:00:00",
+        "fill_percent": 12,
+        "temperature": 30.6,
+        "humidity": 46.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-14 00:00:00",
+        "fill_percent": 22,
+        "temperature": 25.5,
+        "humidity": 41.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-14 06:00:00",
+        "fill_percent": 29,
+        "temperature": 34.1,
+        "humidity": 57.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-14 12:00:00",
+        "fill_percent": 44,
+        "temperature": 27.4,
+        "humidity": 55.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-14 18:00:00",
+        "fill_percent": 53,
+        "temperature": 31.9,
+        "humidity": 63.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-15 00:00:00",
+        "fill_percent": 58,
+        "temperature": 39.5,
+        "humidity": 65.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-15 06:00:00",
+        "fill_percent": 67,
+        "temperature": 30.9,
+        "humidity": 72.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-15 12:00:00",
+        "fill_percent": 77,
+        "temperature": 35.7,
+        "humidity": 63.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-15 18:00:00",
+        "fill_percent": 83,
+        "temperature": 29.7,
+        "humidity": 30.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-16 00:00:00",
+        "fill_percent": 90,
+        "temperature": 37.3,
+        "humidity": 31.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-16 06:00:00",
+        "fill_percent": 97,
+        "temperature": 41.0,
+        "humidity": 38.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-16 12:00:00",
+        "fill_percent": 4,
+        "temperature": 39.0,
+        "humidity": 46.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-16 18:00:00",
+        "fill_percent": 6,
+        "temperature": 34.2,
+        "humidity": 63.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-17 00:00:00",
+        "fill_percent": 14,
+        "temperature": 30.7,
+        "humidity": 72.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-17 06:00:00",
+        "fill_percent": 19,
+        "temperature": 30.8,
+        "humidity": 51.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-17 12:00:00",
+        "fill_percent": 21,
+        "temperature": 35.3,
+        "humidity": 70.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-17 18:00:00",
+        "fill_percent": 23,
+        "temperature": 26.0,
+        "humidity": 50.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-18 00:00:00",
+        "fill_percent": 27,
+        "temperature": 31.7,
+        "humidity": 53.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-18 06:00:00",
+        "fill_percent": 29,
+        "temperature": 30.2,
+        "humidity": 78.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-18 12:00:00",
+        "fill_percent": 31,
+        "temperature": 40.9,
+        "humidity": 75.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-18 18:00:00",
+        "fill_percent": 36,
+        "temperature": 25.5,
+        "humidity": 71.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-19 00:00:00",
+        "fill_percent": 39,
+        "temperature": 33.3,
+        "humidity": 58.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-19 06:00:00",
+        "fill_percent": 45,
+        "temperature": 31.1,
+        "humidity": 77.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-19 12:00:00",
+        "fill_percent": 50,
+        "temperature": 30.0,
+        "humidity": 75.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-19 18:00:00",
+        "fill_percent": 57,
+        "temperature": 40.5,
+        "humidity": 44.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-20 00:00:00",
+        "fill_percent": 63,
+        "temperature": 36.3,
+        "humidity": 69.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-20 06:00:00",
+        "fill_percent": 71,
+        "temperature": 40.3,
+        "humidity": 38.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-20 12:00:00",
+        "fill_percent": 76,
+        "temperature": 38.4,
+        "humidity": 61.5
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-20 18:00:00",
+        "fill_percent": 78,
+        "temperature": 32.0,
+        "humidity": 39.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-21 00:00:00",
+        "fill_percent": 84,
+        "temperature": 36.0,
+        "humidity": 63.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-21 06:00:00",
+        "fill_percent": 94,
+        "temperature": 26.7,
+        "humidity": 59.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-21 12:00:00",
+        "fill_percent": 1,
+        "temperature": 40.7,
+        "humidity": 58.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-21 18:00:00",
+        "fill_percent": 12,
+        "temperature": 35.2,
+        "humidity": 68.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-22 00:00:00",
+        "fill_percent": 27,
+        "temperature": 27.0,
+        "humidity": 34.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-22 06:00:00",
+        "fill_percent": 33,
+        "temperature": 34.3,
+        "humidity": 70.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-22 12:00:00",
+        "fill_percent": 40,
+        "temperature": 34.4,
+        "humidity": 37.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-22 18:00:00",
+        "fill_percent": 55,
+        "temperature": 36.4,
+        "humidity": 59.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-23 00:00:00",
+        "fill_percent": 58,
+        "temperature": 32.8,
+        "humidity": 56.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-23 06:00:00",
+        "fill_percent": 61,
+        "temperature": 30.7,
+        "humidity": 68.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-23 12:00:00",
+        "fill_percent": 69,
+        "temperature": 32.5,
+        "humidity": 78.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-23 18:00:00",
+        "fill_percent": 76,
+        "temperature": 36.2,
+        "humidity": 79.2
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-24 00:00:00",
+        "fill_percent": 79,
+        "temperature": 36.1,
+        "humidity": 39.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-24 06:00:00",
+        "fill_percent": 81,
+        "temperature": 39.9,
+        "humidity": 62.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-24 12:00:00",
+        "fill_percent": 88,
+        "temperature": 34.7,
+        "humidity": 77.3
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-24 18:00:00",
+        "fill_percent": 93,
+        "temperature": 26.5,
+        "humidity": 74.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-25 00:00:00",
+        "fill_percent": 99,
+        "temperature": 34.1,
+        "humidity": 47.9
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-25 06:00:00",
+        "fill_percent": 4,
+        "temperature": 31.6,
+        "humidity": 51.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-25 12:00:00",
+        "fill_percent": 6,
+        "temperature": 32.3,
+        "humidity": 47.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-25 18:00:00",
+        "fill_percent": 10,
+        "temperature": 32.9,
+        "humidity": 30.8
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-26 00:00:00",
+        "fill_percent": 12,
+        "temperature": 35.4,
+        "humidity": 47.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-26 06:00:00",
+        "fill_percent": 16,
+        "temperature": 38.3,
+        "humidity": 50.1
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-26 12:00:00",
+        "fill_percent": 21,
+        "temperature": 28.8,
+        "humidity": 78.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-26 18:00:00",
+        "fill_percent": 28,
+        "temperature": 36.5,
+        "humidity": 46.6
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-27 00:00:00",
+        "fill_percent": 36,
+        "temperature": 33.0,
+        "humidity": 36.4
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-27 06:00:00",
+        "fill_percent": 39,
+        "temperature": 30.6,
+        "humidity": 58.7
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-27 12:00:00",
+        "fill_percent": 42,
+        "temperature": 41.6,
+        "humidity": 36.0
+    },
+    {
+        "bin_id": "BIN_102",
+        "timestamp": "2026-03-27 18:00:00",
+        "fill_percent": 48,
+        "temperature": 38.1,
+        "humidity": 36.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-26 00:00:00",
+        "fill_percent": 25,
+        "temperature": 26.7,
+        "humidity": 39.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-26 06:00:00",
+        "fill_percent": 28,
+        "temperature": 31.9,
+        "humidity": 71.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-26 12:00:00",
+        "fill_percent": 34,
+        "temperature": 36.8,
+        "humidity": 76.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-26 18:00:00",
+        "fill_percent": 38,
+        "temperature": 28.0,
+        "humidity": 61.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-27 00:00:00",
+        "fill_percent": 44,
+        "temperature": 30.8,
+        "humidity": 67.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-27 06:00:00",
+        "fill_percent": 52,
+        "temperature": 33.4,
+        "humidity": 66.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-27 12:00:00",
+        "fill_percent": 56,
+        "temperature": 33.9,
+        "humidity": 52.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-27 18:00:00",
+        "fill_percent": 58,
+        "temperature": 26.6,
+        "humidity": 35.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-28 00:00:00",
+        "fill_percent": 67,
+        "temperature": 41.6,
+        "humidity": 40.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-28 06:00:00",
+        "fill_percent": 78,
+        "temperature": 28.3,
+        "humidity": 43.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-28 12:00:00",
+        "fill_percent": 84,
+        "temperature": 31.6,
+        "humidity": 56.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-02-28 18:00:00",
+        "fill_percent": 98,
+        "temperature": 38.6,
+        "humidity": 52.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-01 00:00:00",
+        "fill_percent": 1,
+        "temperature": 27.1,
+        "humidity": 47.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-01 06:00:00",
+        "fill_percent": 14,
+        "temperature": 33.9,
+        "humidity": 61.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-01 12:00:00",
+        "fill_percent": 25,
+        "temperature": 36.4,
+        "humidity": 61.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-01 18:00:00",
+        "fill_percent": 34,
+        "temperature": 41.7,
+        "humidity": 41.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-02 00:00:00",
+        "fill_percent": 38,
+        "temperature": 37.0,
+        "humidity": 49.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-02 06:00:00",
+        "fill_percent": 46,
+        "temperature": 30.7,
+        "humidity": 39.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-02 12:00:00",
+        "fill_percent": 54,
+        "temperature": 38.9,
+        "humidity": 78.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-02 18:00:00",
+        "fill_percent": 61,
+        "temperature": 41.7,
+        "humidity": 79.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-03 00:00:00",
+        "fill_percent": 66,
+        "temperature": 26.1,
+        "humidity": 34.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-03 06:00:00",
+        "fill_percent": 71,
+        "temperature": 28.5,
+        "humidity": 34.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-03 12:00:00",
+        "fill_percent": 79,
+        "temperature": 31.5,
+        "humidity": 31.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-03 18:00:00",
+        "fill_percent": 81,
+        "temperature": 26.5,
+        "humidity": 36.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-04 00:00:00",
+        "fill_percent": 86,
+        "temperature": 27.3,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-04 06:00:00",
+        "fill_percent": 88,
+        "temperature": 29.5,
+        "humidity": 45.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-04 12:00:00",
+        "fill_percent": 92,
+        "temperature": 32.7,
+        "humidity": 74.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-04 18:00:00",
+        "fill_percent": 98,
+        "temperature": 36.3,
+        "humidity": 33.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-05 00:00:00",
+        "fill_percent": 0,
+        "temperature": 31.2,
+        "humidity": 40.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-05 06:00:00",
+        "fill_percent": 8,
+        "temperature": 29.4,
+        "humidity": 36.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-05 12:00:00",
+        "fill_percent": 11,
+        "temperature": 28.3,
+        "humidity": 49.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-05 18:00:00",
+        "fill_percent": 13,
+        "temperature": 34.8,
+        "humidity": 37.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-06 00:00:00",
+        "fill_percent": 21,
+        "temperature": 38.5,
+        "humidity": 68.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-06 06:00:00",
+        "fill_percent": 26,
+        "temperature": 28.6,
+        "humidity": 63.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-06 12:00:00",
+        "fill_percent": 31,
+        "temperature": 40.5,
+        "humidity": 46.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-06 18:00:00",
+        "fill_percent": 39,
+        "temperature": 27.9,
+        "humidity": 78.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-07 00:00:00",
+        "fill_percent": 49,
+        "temperature": 38.8,
+        "humidity": 57.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-07 06:00:00",
+        "fill_percent": 54,
+        "temperature": 27.4,
+        "humidity": 76.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-07 12:00:00",
+        "fill_percent": 67,
+        "temperature": 33.7,
+        "humidity": 76.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-07 18:00:00",
+        "fill_percent": 73,
+        "temperature": 33.3,
+        "humidity": 52.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-08 00:00:00",
+        "fill_percent": 84,
+        "temperature": 37.8,
+        "humidity": 47.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-08 06:00:00",
+        "fill_percent": 96,
+        "temperature": 27.6,
+        "humidity": 49.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-08 12:00:00",
+        "fill_percent": 4,
+        "temperature": 27.7,
+        "humidity": 36.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-08 18:00:00",
+        "fill_percent": 14,
+        "temperature": 37.6,
+        "humidity": 68.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-09 00:00:00",
+        "fill_percent": 22,
+        "temperature": 39.7,
+        "humidity": 43.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-09 06:00:00",
+        "fill_percent": 30,
+        "temperature": 35.1,
+        "humidity": 45.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-09 12:00:00",
+        "fill_percent": 34,
+        "temperature": 40.9,
+        "humidity": 69.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-09 18:00:00",
+        "fill_percent": 42,
+        "temperature": 41.5,
+        "humidity": 43.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-10 00:00:00",
+        "fill_percent": 45,
+        "temperature": 26.8,
+        "humidity": 74.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-10 06:00:00",
+        "fill_percent": 49,
+        "temperature": 33.4,
+        "humidity": 35.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-10 12:00:00",
+        "fill_percent": 54,
+        "temperature": 39.3,
+        "humidity": 31.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-10 18:00:00",
+        "fill_percent": 56,
+        "temperature": 36.1,
+        "humidity": 74.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-11 00:00:00",
+        "fill_percent": 63,
+        "temperature": 40.2,
+        "humidity": 40.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-11 06:00:00",
+        "fill_percent": 70,
+        "temperature": 28.7,
+        "humidity": 76.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-11 12:00:00",
+        "fill_percent": 77,
+        "temperature": 28.5,
+        "humidity": 64.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-11 18:00:00",
+        "fill_percent": 85,
+        "temperature": 28.4,
+        "humidity": 40.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-12 00:00:00",
+        "fill_percent": 93,
+        "temperature": 35.5,
+        "humidity": 78.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-12 06:00:00",
+        "fill_percent": 97,
+        "temperature": 37.8,
+        "humidity": 57.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-12 12:00:00",
+        "fill_percent": 2,
+        "temperature": 40.3,
+        "humidity": 64.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-12 18:00:00",
+        "fill_percent": 10,
+        "temperature": 39.4,
+        "humidity": 47.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-13 00:00:00",
+        "fill_percent": 17,
+        "temperature": 26.5,
+        "humidity": 75.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-13 06:00:00",
+        "fill_percent": 25,
+        "temperature": 29.2,
+        "humidity": 78.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-13 12:00:00",
+        "fill_percent": 27,
+        "temperature": 27.2,
+        "humidity": 67.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-13 18:00:00",
+        "fill_percent": 33,
+        "temperature": 36.8,
+        "humidity": 63.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-14 00:00:00",
+        "fill_percent": 39,
+        "temperature": 40.0,
+        "humidity": 61.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-14 06:00:00",
+        "fill_percent": 53,
+        "temperature": 38.4,
+        "humidity": 56.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-14 12:00:00",
+        "fill_percent": 60,
+        "temperature": 39.5,
+        "humidity": 61.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-14 18:00:00",
+        "fill_percent": 70,
+        "temperature": 26.5,
+        "humidity": 33.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-15 00:00:00",
+        "fill_percent": 83,
+        "temperature": 27.0,
+        "humidity": 41.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-15 06:00:00",
+        "fill_percent": 93,
+        "temperature": 34.4,
+        "humidity": 67.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-15 12:00:00",
+        "fill_percent": 1,
+        "temperature": 26.2,
+        "humidity": 74.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-15 18:00:00",
+        "fill_percent": 9,
+        "temperature": 38.6,
+        "humidity": 56.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-16 00:00:00",
+        "fill_percent": 14,
+        "temperature": 39.9,
+        "humidity": 30.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-16 06:00:00",
+        "fill_percent": 16,
+        "temperature": 36.6,
+        "humidity": 77.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-16 12:00:00",
+        "fill_percent": 18,
+        "temperature": 25.0,
+        "humidity": 50.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-16 18:00:00",
+        "fill_percent": 24,
+        "temperature": 38.3,
+        "humidity": 57.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-17 00:00:00",
+        "fill_percent": 32,
+        "temperature": 38.6,
+        "humidity": 47.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-17 06:00:00",
+        "fill_percent": 35,
+        "temperature": 27.2,
+        "humidity": 37.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-17 12:00:00",
+        "fill_percent": 42,
+        "temperature": 31.2,
+        "humidity": 74.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-17 18:00:00",
+        "fill_percent": 48,
+        "temperature": 28.0,
+        "humidity": 33.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-18 00:00:00",
+        "fill_percent": 50,
+        "temperature": 27.7,
+        "humidity": 65.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-18 06:00:00",
+        "fill_percent": 53,
+        "temperature": 34.7,
+        "humidity": 62.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-18 12:00:00",
+        "fill_percent": 56,
+        "temperature": 31.4,
+        "humidity": 37.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-18 18:00:00",
+        "fill_percent": 62,
+        "temperature": 28.3,
+        "humidity": 57.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-19 00:00:00",
+        "fill_percent": 69,
+        "temperature": 30.7,
+        "humidity": 33.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-19 06:00:00",
+        "fill_percent": 77,
+        "temperature": 41.7,
+        "humidity": 31.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-19 12:00:00",
+        "fill_percent": 84,
+        "temperature": 26.9,
+        "humidity": 34.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-19 18:00:00",
+        "fill_percent": 87,
+        "temperature": 26.8,
+        "humidity": 56.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-20 00:00:00",
+        "fill_percent": 94,
+        "temperature": 28.6,
+        "humidity": 46.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-20 06:00:00",
+        "fill_percent": 1,
+        "temperature": 29.1,
+        "humidity": 76.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-20 12:00:00",
+        "fill_percent": 5,
+        "temperature": 32.4,
+        "humidity": 42.8
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-20 18:00:00",
+        "fill_percent": 7,
+        "temperature": 31.6,
+        "humidity": 49.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-21 00:00:00",
+        "fill_percent": 19,
+        "temperature": 36.7,
+        "humidity": 56.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-21 06:00:00",
+        "fill_percent": 24,
+        "temperature": 30.5,
+        "humidity": 53.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-21 12:00:00",
+        "fill_percent": 38,
+        "temperature": 31.7,
+        "humidity": 55.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-21 18:00:00",
+        "fill_percent": 48,
+        "temperature": 30.5,
+        "humidity": 46.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-22 00:00:00",
+        "fill_percent": 54,
+        "temperature": 39.3,
+        "humidity": 46.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-22 06:00:00",
+        "fill_percent": 61,
+        "temperature": 26.2,
+        "humidity": 50.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-22 12:00:00",
+        "fill_percent": 71,
+        "temperature": 28.7,
+        "humidity": 42.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-22 18:00:00",
+        "fill_percent": 84,
+        "temperature": 37.2,
+        "humidity": 64.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-23 00:00:00",
+        "fill_percent": 91,
+        "temperature": 31.4,
+        "humidity": 64.9
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-23 06:00:00",
+        "fill_percent": 96,
+        "temperature": 26.1,
+        "humidity": 71.6
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-23 12:00:00",
+        "fill_percent": 4,
+        "temperature": 39.2,
+        "humidity": 37.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-23 18:00:00",
+        "fill_percent": 8,
+        "temperature": 33.1,
+        "humidity": 37.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-24 00:00:00",
+        "fill_percent": 16,
+        "temperature": 37.2,
+        "humidity": 31.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-24 06:00:00",
+        "fill_percent": 23,
+        "temperature": 35.8,
+        "humidity": 70.3
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-24 12:00:00",
+        "fill_percent": 28,
+        "temperature": 38.9,
+        "humidity": 55.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-24 18:00:00",
+        "fill_percent": 33,
+        "temperature": 35.7,
+        "humidity": 77.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-25 00:00:00",
+        "fill_percent": 39,
+        "temperature": 31.9,
+        "humidity": 56.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-25 06:00:00",
+        "fill_percent": 45,
+        "temperature": 30.7,
+        "humidity": 71.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-25 12:00:00",
+        "fill_percent": 51,
+        "temperature": 36.1,
+        "humidity": 75.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-25 18:00:00",
+        "fill_percent": 54,
+        "temperature": 30.7,
+        "humidity": 63.2
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-26 00:00:00",
+        "fill_percent": 56,
+        "temperature": 35.9,
+        "humidity": 63.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-26 06:00:00",
+        "fill_percent": 64,
+        "temperature": 33.5,
+        "humidity": 41.1
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-26 12:00:00",
+        "fill_percent": 66,
+        "temperature": 29.0,
+        "humidity": 55.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-26 18:00:00",
+        "fill_percent": 69,
+        "temperature": 41.9,
+        "humidity": 64.7
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-27 00:00:00",
+        "fill_percent": 74,
+        "temperature": 35.9,
+        "humidity": 30.5
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-27 06:00:00",
+        "fill_percent": 79,
+        "temperature": 26.0,
+        "humidity": 34.0
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-27 12:00:00",
+        "fill_percent": 84,
+        "temperature": 30.4,
+        "humidity": 73.4
+    },
+    {
+        "bin_id": "BIN_103",
+        "timestamp": "2026-03-27 18:00:00",
+        "fill_percent": 87,
+        "temperature": 25.1,
+        "humidity": 36.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-26 00:00:00",
+        "fill_percent": 13,
+        "temperature": 30.8,
+        "humidity": 40.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-26 06:00:00",
+        "fill_percent": 19,
+        "temperature": 32.4,
+        "humidity": 62.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-26 12:00:00",
+        "fill_percent": 27,
+        "temperature": 33.6,
+        "humidity": 62.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-26 18:00:00",
+        "fill_percent": 30,
+        "temperature": 33.2,
+        "humidity": 31.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-27 00:00:00",
+        "fill_percent": 34,
+        "temperature": 41.0,
+        "humidity": 44.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-27 06:00:00",
+        "fill_percent": 42,
+        "temperature": 27.6,
+        "humidity": 72.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-27 12:00:00",
+        "fill_percent": 50,
+        "temperature": 29.7,
+        "humidity": 77.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-27 18:00:00",
+        "fill_percent": 57,
+        "temperature": 41.8,
+        "humidity": 48.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-28 00:00:00",
+        "fill_percent": 64,
+        "temperature": 27.3,
+        "humidity": 68.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-28 06:00:00",
+        "fill_percent": 79,
+        "temperature": 30.5,
+        "humidity": 46.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-28 12:00:00",
+        "fill_percent": 84,
+        "temperature": 31.9,
+        "humidity": 51.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-02-28 18:00:00",
+        "fill_percent": 99,
+        "temperature": 32.3,
+        "humidity": 47.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-01 00:00:00",
+        "fill_percent": 5,
+        "temperature": 25.7,
+        "humidity": 69.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-01 06:00:00",
+        "fill_percent": 10,
+        "temperature": 25.4,
+        "humidity": 78.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-01 12:00:00",
+        "fill_percent": 20,
+        "temperature": 38.8,
+        "humidity": 30.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-01 18:00:00",
+        "fill_percent": 30,
+        "temperature": 31.0,
+        "humidity": 33.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-02 00:00:00",
+        "fill_percent": 35,
+        "temperature": 40.4,
+        "humidity": 33.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-02 06:00:00",
+        "fill_percent": 42,
+        "temperature": 30.7,
+        "humidity": 61.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-02 12:00:00",
+        "fill_percent": 46,
+        "temperature": 27.8,
+        "humidity": 70.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-02 18:00:00",
+        "fill_percent": 49,
+        "temperature": 27.6,
+        "humidity": 66.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-03 00:00:00",
+        "fill_percent": 51,
+        "temperature": 37.0,
+        "humidity": 65.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-03 06:00:00",
+        "fill_percent": 56,
+        "temperature": 32.1,
+        "humidity": 49.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-03 12:00:00",
+        "fill_percent": 60,
+        "temperature": 25.2,
+        "humidity": 54.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-03 18:00:00",
+        "fill_percent": 63,
+        "temperature": 31.2,
+        "humidity": 57.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-04 00:00:00",
+        "fill_percent": 71,
+        "temperature": 40.1,
+        "humidity": 75.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-04 06:00:00",
+        "fill_percent": 77,
+        "temperature": 34.1,
+        "humidity": 44.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-04 12:00:00",
+        "fill_percent": 83,
+        "temperature": 26.6,
+        "humidity": 58.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-04 18:00:00",
+        "fill_percent": 88,
+        "temperature": 32.3,
+        "humidity": 60.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-05 00:00:00",
+        "fill_percent": 91,
+        "temperature": 34.2,
+        "humidity": 36.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-05 06:00:00",
+        "fill_percent": 98,
+        "temperature": 25.5,
+        "humidity": 69.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-05 12:00:00",
+        "fill_percent": 1,
+        "temperature": 30.1,
+        "humidity": 51.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-05 18:00:00",
+        "fill_percent": 9,
+        "temperature": 27.7,
+        "humidity": 79.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-06 00:00:00",
+        "fill_percent": 17,
+        "temperature": 31.7,
+        "humidity": 40.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-06 06:00:00",
+        "fill_percent": 23,
+        "temperature": 35.2,
+        "humidity": 68.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-06 12:00:00",
+        "fill_percent": 27,
+        "temperature": 38.0,
+        "humidity": 49.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-06 18:00:00",
+        "fill_percent": 30,
+        "temperature": 40.0,
+        "humidity": 33.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-07 00:00:00",
+        "fill_percent": 42,
+        "temperature": 34.5,
+        "humidity": 43.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-07 06:00:00",
+        "fill_percent": 54,
+        "temperature": 28.1,
+        "humidity": 69.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-07 12:00:00",
+        "fill_percent": 60,
+        "temperature": 41.1,
+        "humidity": 67.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-07 18:00:00",
+        "fill_percent": 74,
+        "temperature": 36.2,
+        "humidity": 63.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-08 00:00:00",
+        "fill_percent": 82,
+        "temperature": 41.7,
+        "humidity": 61.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-08 06:00:00",
+        "fill_percent": 94,
+        "temperature": 36.4,
+        "humidity": 30.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-08 12:00:00",
+        "fill_percent": 1,
+        "temperature": 29.4,
+        "humidity": 68.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-08 18:00:00",
+        "fill_percent": 8,
+        "temperature": 39.8,
+        "humidity": 45.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-09 00:00:00",
+        "fill_percent": 16,
+        "temperature": 39.2,
+        "humidity": 47.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-09 06:00:00",
+        "fill_percent": 20,
+        "temperature": 30.8,
+        "humidity": 30.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-09 12:00:00",
+        "fill_percent": 22,
+        "temperature": 38.8,
+        "humidity": 57.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-09 18:00:00",
+        "fill_percent": 28,
+        "temperature": 34.3,
+        "humidity": 62.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-10 00:00:00",
+        "fill_percent": 32,
+        "temperature": 26.2,
+        "humidity": 60.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-10 06:00:00",
+        "fill_percent": 37,
+        "temperature": 40.4,
+        "humidity": 76.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-10 12:00:00",
+        "fill_percent": 44,
+        "temperature": 30.5,
+        "humidity": 43.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-10 18:00:00",
+        "fill_percent": 47,
+        "temperature": 40.9,
+        "humidity": 62.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-11 00:00:00",
+        "fill_percent": 54,
+        "temperature": 39.7,
+        "humidity": 37.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-11 06:00:00",
+        "fill_percent": 56,
+        "temperature": 30.5,
+        "humidity": 51.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-11 12:00:00",
+        "fill_percent": 61,
+        "temperature": 29.8,
+        "humidity": 69.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-11 18:00:00",
+        "fill_percent": 64,
+        "temperature": 36.0,
+        "humidity": 68.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-12 00:00:00",
+        "fill_percent": 72,
+        "temperature": 37.8,
+        "humidity": 41.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-12 06:00:00",
+        "fill_percent": 75,
+        "temperature": 31.0,
+        "humidity": 49.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-12 12:00:00",
+        "fill_percent": 79,
+        "temperature": 40.9,
+        "humidity": 44.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-12 18:00:00",
+        "fill_percent": 81,
+        "temperature": 26.4,
+        "humidity": 67.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-13 00:00:00",
+        "fill_percent": 86,
+        "temperature": 25.5,
+        "humidity": 34.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-13 06:00:00",
+        "fill_percent": 94,
+        "temperature": 38.3,
+        "humidity": 35.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-13 12:00:00",
+        "fill_percent": 3,
+        "temperature": 37.7,
+        "humidity": 64.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-13 18:00:00",
+        "fill_percent": 10,
+        "temperature": 30.9,
+        "humidity": 54.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-14 00:00:00",
+        "fill_percent": 17,
+        "temperature": 41.6,
+        "humidity": 37.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-14 06:00:00",
+        "fill_percent": 22,
+        "temperature": 40.6,
+        "humidity": 64.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-14 12:00:00",
+        "fill_percent": 28,
+        "temperature": 31.4,
+        "humidity": 30.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-14 18:00:00",
+        "fill_percent": 37,
+        "temperature": 26.1,
+        "humidity": 57.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-15 00:00:00",
+        "fill_percent": 52,
+        "temperature": 25.7,
+        "humidity": 37.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-15 06:00:00",
+        "fill_percent": 61,
+        "temperature": 31.3,
+        "humidity": 52.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-15 12:00:00",
+        "fill_percent": 71,
+        "temperature": 41.5,
+        "humidity": 32.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-15 18:00:00",
+        "fill_percent": 83,
+        "temperature": 40.1,
+        "humidity": 57.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-16 00:00:00",
+        "fill_percent": 89,
+        "temperature": 27.8,
+        "humidity": 44.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-16 06:00:00",
+        "fill_percent": 93,
+        "temperature": 37.8,
+        "humidity": 72.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-16 12:00:00",
+        "fill_percent": 2,
+        "temperature": 32.2,
+        "humidity": 77.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-16 18:00:00",
+        "fill_percent": 8,
+        "temperature": 41.6,
+        "humidity": 76.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-17 00:00:00",
+        "fill_percent": 16,
+        "temperature": 33.4,
+        "humidity": 33.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-17 06:00:00",
+        "fill_percent": 18,
+        "temperature": 36.7,
+        "humidity": 40.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-17 12:00:00",
+        "fill_percent": 21,
+        "temperature": 25.9,
+        "humidity": 40.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-17 18:00:00",
+        "fill_percent": 27,
+        "temperature": 29.4,
+        "humidity": 74.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-18 00:00:00",
+        "fill_percent": 35,
+        "temperature": 34.7,
+        "humidity": 70.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-18 06:00:00",
+        "fill_percent": 39,
+        "temperature": 36.9,
+        "humidity": 68.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-18 12:00:00",
+        "fill_percent": 46,
+        "temperature": 39.3,
+        "humidity": 43.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-18 18:00:00",
+        "fill_percent": 54,
+        "temperature": 29.4,
+        "humidity": 37.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-19 00:00:00",
+        "fill_percent": 61,
+        "temperature": 41.7,
+        "humidity": 44.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-19 06:00:00",
+        "fill_percent": 66,
+        "temperature": 41.0,
+        "humidity": 62.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-19 12:00:00",
+        "fill_percent": 68,
+        "temperature": 32.1,
+        "humidity": 74.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-19 18:00:00",
+        "fill_percent": 73,
+        "temperature": 36.8,
+        "humidity": 79.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-20 00:00:00",
+        "fill_percent": 80,
+        "temperature": 35.5,
+        "humidity": 36.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-20 06:00:00",
+        "fill_percent": 86,
+        "temperature": 40.1,
+        "humidity": 31.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-20 12:00:00",
+        "fill_percent": 89,
+        "temperature": 35.3,
+        "humidity": 35.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-20 18:00:00",
+        "fill_percent": 94,
+        "temperature": 39.9,
+        "humidity": 52.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-21 00:00:00",
+        "fill_percent": 99,
+        "temperature": 26.2,
+        "humidity": 65.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-21 06:00:00",
+        "fill_percent": 4,
+        "temperature": 35.1,
+        "humidity": 42.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-21 12:00:00",
+        "fill_percent": 19,
+        "temperature": 28.5,
+        "humidity": 70.1
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-21 18:00:00",
+        "fill_percent": 24,
+        "temperature": 39.8,
+        "humidity": 74.3
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-22 00:00:00",
+        "fill_percent": 31,
+        "temperature": 37.1,
+        "humidity": 48.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-22 06:00:00",
+        "fill_percent": 40,
+        "temperature": 28.4,
+        "humidity": 67.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-22 12:00:00",
+        "fill_percent": 54,
+        "temperature": 36.7,
+        "humidity": 77.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-22 18:00:00",
+        "fill_percent": 60,
+        "temperature": 27.4,
+        "humidity": 45.6
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-23 00:00:00",
+        "fill_percent": 63,
+        "temperature": 30.8,
+        "humidity": 69.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-23 06:00:00",
+        "fill_percent": 68,
+        "temperature": 31.4,
+        "humidity": 47.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-23 12:00:00",
+        "fill_percent": 71,
+        "temperature": 40.9,
+        "humidity": 49.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-23 18:00:00",
+        "fill_percent": 79,
+        "temperature": 30.1,
+        "humidity": 71.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-24 00:00:00",
+        "fill_percent": 84,
+        "temperature": 28.8,
+        "humidity": 61.2
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-24 06:00:00",
+        "fill_percent": 90,
+        "temperature": 41.2,
+        "humidity": 38.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-24 12:00:00",
+        "fill_percent": 94,
+        "temperature": 33.4,
+        "humidity": 40.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-24 18:00:00",
+        "fill_percent": 99,
+        "temperature": 38.8,
+        "humidity": 69.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-25 00:00:00",
+        "fill_percent": 0,
+        "temperature": 41.5,
+        "humidity": 30.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-25 06:00:00",
+        "fill_percent": 7,
+        "temperature": 39.3,
+        "humidity": 73.5
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-25 12:00:00",
+        "fill_percent": 12,
+        "temperature": 41.2,
+        "humidity": 37.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-25 18:00:00",
+        "fill_percent": 17,
+        "temperature": 35.2,
+        "humidity": 76.0
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-26 00:00:00",
+        "fill_percent": 22,
+        "temperature": 40.0,
+        "humidity": 32.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-26 06:00:00",
+        "fill_percent": 25,
+        "temperature": 33.9,
+        "humidity": 65.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-26 12:00:00",
+        "fill_percent": 28,
+        "temperature": 38.5,
+        "humidity": 79.8
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-26 18:00:00",
+        "fill_percent": 36,
+        "temperature": 29.7,
+        "humidity": 50.4
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-27 00:00:00",
+        "fill_percent": 38,
+        "temperature": 27.3,
+        "humidity": 40.7
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-27 06:00:00",
+        "fill_percent": 43,
+        "temperature": 27.1,
+        "humidity": 55.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-27 12:00:00",
+        "fill_percent": 49,
+        "temperature": 25.2,
+        "humidity": 45.9
+    },
+    {
+        "bin_id": "BIN_104",
+        "timestamp": "2026-03-27 18:00:00",
+        "fill_percent": 52,
+        "temperature": 38.0,
+        "humidity": 43.3
+    }
+]

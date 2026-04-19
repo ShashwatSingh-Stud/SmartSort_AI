@@ -1,0 +1,423 @@
+<!-- 
+  ═══════════════════════════════════════════════════════════════
+  INSTRUCTIONS: Yeh 3 cheezein apni dashboard.html mein add karo
+  ═══════════════════════════════════════════════════════════════
+
+  1. <head> mein yeh script add karo (Chart.js already hai toh skip):
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  2. </main> ke BAAD, </div> (shell closing) ke PEHLE yeh HTML paste karo
+
+  3. Apni existing <script> tag ke ANDAR, sabse neeche JS paste karo
+  ═══════════════════════════════════════════════════════════════
+-->
+
+
+<!-- ══ PART 1: HTML — </main> ke baad paste karo ══════════════════════════ -->
+
+<div class="extras-grid">
+
+    <!-- AI Disposal Tips Card -->
+    <div class="card tips-card">
+        <div class="card-header">
+            <div class="card-title">♻ AI DISPOSAL TIPS</div>
+            <div class="tips-powered">Powered by Gemini</div>
+        </div>
+        <div class="tips-detected">
+            Last detected: <span id="tipsCategory" style="color:var(--plastic)">—</span>
+        </div>
+        <div class="tips-body" id="tipsBody">
+            <div class="tips-placeholder">Detect a waste item to get AI disposal tips…</div>
+        </div>
+        <button class="tips-btn" onclick="fetchTips()">Get Tips →</button>
+    </div>
+
+    <!-- Weekly Stats Chart -->
+    <div class="card weekly-card">
+        <div class="card-header">
+            <div class="card-title">📊 WEEKLY STATISTICS</div>
+            <div class="weekly-sub">Items sorted this week</div>
+        </div>
+        <canvas id="weeklyChart" height="160"></canvas>
+    </div>
+
+    <!-- Download Report Card -->
+    <div class="card report-card">
+        <div class="card-header">
+            <div class="card-title">📥 DOWNLOAD REPORT</div>
+            <div class="report-sub">Export waste data</div>
+        </div>
+        <div class="report-btns">
+            <button class="report-btn csv-btn" onclick="downloadCSV()">
+                <span class="rbtn-icon">📄</span>
+                <span>CSV Report</span>
+            </button>
+            <button class="report-btn pdf-btn" onclick="downloadPDF()">
+                <span class="rbtn-icon">📋</span>
+                <span>PDF Summary</span>
+            </button>
+        </div>
+        <div class="report-info" id="reportInfo">Ready to export current session data</div>
+    </div>
+
+</div>
+
+
+<!-- ══ PART 2: CSS — apni style.css ke end mein paste karo ════════════════ -->
+<style id="extras-style">
+    .extras-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        padding: 0 16px 16px;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media(max-width:900px) {
+        .extras-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* AI Tips */
+    .tips-powered {
+        font-size: 9px;
+        color: var(--organic);
+        letter-spacing: 1px;
+        font-family: var(--mono);
+    }
+
+    .tips-detected {
+        font-size: 11px;
+        color: var(--muted);
+        margin-bottom: 12px;
+        font-family: var(--mono);
+    }
+
+    .tips-body {
+        min-height: 100px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: 14px;
+    }
+
+    .tips-placeholder {
+
+        .tips-item {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            background: var(--bg2);
+            border-radius: 8px;
+            border-left: 2px solid var(--organic);
+            font-size: 12px;
+            animation: tipIn .3s ease both;
+        }
+
+        @keyframes tipIn {
+            from {
+                opacity: 0;
+                transform: translateX(-6px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .tips-num {
+            color: var(--organic);
+            font-weight: 700;
+            font-family: var(--mono);
+            min-width: 16px;
+        }
+
+        .tips-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--organic);
+            background: rgba(0, 230, 118, .08);
+            color: var(--organic);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .tips-btn:hover {
+            background: rgba(0, 230, 118, .15);
+        }
+
+        .tips-btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* Weekly Chart */
+        .weekly-sub {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        /* Report */
+        .report-sub {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .report-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .report-btn {
+            padding: 14px 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transition: border-color .2s, background .2s;
+        }
+
+        .csv-btn:hover {
+            border-color: var(--plastic);
+            background: rgba(0, 212, 255, .06);
+        }
+
+        .pdf-btn:hover {
+            border-color: var(--paper);
+            background: rgba(255, 214, 10, .06);
+        }
+
+        .rbtn-icon {
+            font-size: 24px;
+        }
+
+        .report-info {
+            font-size: 11px;
+            color: var(--muted);
+            text-align: center;
+            font-family: var(--mono);
+        }
+</style>
+
+
+<!-- ══ PART 3: JS — apni existing <script> ke andar, sabse end mein paste karo ══ -->
+<script id="extras-js">
+
+    // ── Weekly Chart ──────────────────────────────────────────────────────────────
+    const weeklyCtx = document.getElementById('weeklyChart')?.getContext('2d');
+    let weeklyChart = null;
+    if (weeklyCtx) {
+        const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        weeklyChart = new Chart(weeklyCtx, {
+            type: 'bar',
+            data: {
+                labels: days,
+                datasets: [
+                    { label: 'Plastic', data: [12, 19, 8, 15, 22, 18, 14], backgroundColor: '#00d4ff44', borderColor: '#00d4ff', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Paper', data: [8, 14, 11, 9, 17, 13, 10], backgroundColor: '#ffd60a44', borderColor: '#ffd60a', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Metal', data: [5, 8, 6, 11, 9, 7, 8], backgroundColor: '#c0c0ff44', borderColor: '#c0c0ff', borderWidth: 2, borderRadius: 4 },
+                    { label: 'Organic', data: [15, 11, 18, 13, 20, 16, 12], backgroundColor: '#00e67644', borderColor: '#00e676', borderWidth: 2, borderRadius: 4 },
+                ]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 800 },
+                scales: {
+                    x: { stacked: false, ticks: { color: '#7b8db0', font: { size: 10 } }, grid: { color: '#ffffff08' } },
+                    y: { ticks: { color: '#7b8db0', font: { size: 10 } }, grid: { color: '#ffffff08' } }
+                },
+                plugins: {
+                    legend: { labels: { color: '#aab4cc', font: { size: 11 }, boxWidth: 12 } },
+                    tooltip: { backgroundColor: '#0d1526', titleColor: '#eef2ff', bodyColor: '#aab4cc', borderColor: '#1e2d4a', borderWidth: 1 }
+                }
+            }
+        });
+    }
+
+    // Update weekly chart with live data
+    function updateWeeklyChart(counts) {
+        if (!weeklyChart || !counts) return;
+        const today = new Date().getDay(); // 0=Sun
+        const idx = today === 0 ? 6 : today - 1;
+        weeklyChart.data.datasets[0].data[idx] = counts.Plastic || 0;
+        weeklyChart.data.datasets[1].data[idx] = counts.Paper || 0;
+        weeklyChart.data.datasets[2].data[idx] = counts.Metal || 0;
+        weeklyChart.data.datasets[3].data[idx] = counts.Organic || 0;
+        weeklyChart.update('none');
+    }
+
+    // ── AI Disposal Tips (Gemini) ─────────────────────────────────────────────────
+    let lastTipsCat = null;
+    let tipsLoading = false;
+
+    async function fetchTips(category) {
+        const cat = category || document.getElementById('tipsCategory')?.textContent;
+        if (!cat || cat === '—' || tipsLoading) return;
+
+        tipsLoading = true;
+        const btn = document.querySelector('.tips-btn');
+        const body = document.getElementById('tipsBody');
+        if (btn) btn.disabled = true;
+        if (body) body.innerHTML = '<div class="tips-placeholder">Gemini is thinking…</div>';
+
+        try {
+            const res = await fetch('/api/tips?category=' + encodeURIComponent(cat));
+            const data = await res.json();
+
+            if (data.tips && Array.isArray(data.tips)) {
+                body.innerHTML = data.tips.map((tip, i) =>
+                    `<div class="tips-item"><span class="tips-num">${i + 1}.</span><span>${tip}</span></div>`
+                ).join('');
+            } else {
+                body.innerHTML = '<div class="tips-placeholder">Could not fetch tips. Try again.</div>';
+            }
+        } catch (e) {
+            body.innerHTML = '<div class="tips-placeholder">Tips unavailable — check Gemini API key.</div>';
+        }
+
+        tipsLoading = false;
+        if (btn) btn.disabled = false;
+    }
+
+    // Auto-fetch tips when new category detected
+    function maybeUpdateTips(cat) {
+        const el = document.getElementById('tipsCategory');
+        if (el) el.textContent = cat;
+        el.style.color = { Plastic: '#00d4ff', Paper: '#ffd60a', Metal: '#c0c0ff', Organic: '#00e676' }[cat] || '#fff';
+        if (cat !== lastTipsCat) {
+            lastTipsCat = cat;
+            fetchTips(cat);
+        }
+    }
+
+    // ── CSV Download ──────────────────────────────────────────────────────────────
+    function downloadCSV() {
+        fetch('/api/stats', { cache: 'no-store' })
+            .then(r => r.json())
+            .then(data => {
+                const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                const rows = [
+                    ['SmartSort AI — Waste Report', now],
+                    [],
+                    ['Category', 'Count', 'Fill %', 'Distribution %'],
+                    ...['Plastic', 'Paper', 'Metal', 'Organic'].map(c => [
+                        c,
+                        data.counts?.[c] ?? 0,
+                        data.fill_pct?.[c] ?? 0,
+                        data.distribution_pct?.[c] ?? 0,
+                    ]),
+                    [],
+                    ['Total Items', data.total ?? 0],
+                    ['CO2 Saved (kg)', data.impact?.co2_saved_kg ?? 0],
+                    ['Recycling Efficiency (%)', data.impact?.recycling_efficiency_pct ?? 0],
+                    ['Processed Today', data.impact?.waste_processed_today ?? 0],
+                ];
+                const csv = rows.map(r => r.join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `smartsort-report-${Date.now()}.csv`;
+                a.click();
+                document.getElementById('reportInfo').textContent = 'CSV downloaded!';
+            });
+    }
+
+    // ── PDF Download ──────────────────────────────────────────────────────────────
+    function downloadPDF() {
+        fetch('/api/stats', { cache: 'no-store' })
+            .then(r => r.json())
+            .then(data => {
+                const now = new Date().toLocaleString();
+                const html = `
+        <html><head><title>SmartSort AI Report</title>
+        <style>
+          body{font-family:Arial,sans-serif;padding:40px;color:#1a1a2e;max-width:700px;margin:0 auto}
+          h1{font-size:28px;color:#0a3d62;border-bottom:3px solid #00b894;padding-bottom:12px}
+          h2{font-size:16px;color:#0a3d62;margin-top:28px}
+          table{width:100%;border-collapse:collapse;margin-top:12px}
+          th{background:#0a3d62;color:#fff;padding:10px;text-align:left;font-size:13px}
+          td{padding:9px 10px;border-bottom:1px solid #eee;font-size:13px}
+          tr:nth-child(even){background:#f8f9fa}
+          .stat{display:inline-block;background:#e8f8f5;border-radius:8px;padding:12px 20px;margin:6px;text-align:center}
+          .stat-val{font-size:24px;font-weight:700;color:#00b894;display:block}
+          .stat-lbl{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px}
+          .footer{margin-top:40px;font-size:11px;color:#999;border-top:1px solid #eee;padding-top:12px}
+        </style></head>
+        <body>
+          <h1>SmartSort AI — Waste Report</h1>
+          <p style="color:#666;font-size:13px">Generated: ${now}</p>
+
+          <h2>Waste Collection Summary</h2>
+          <table>
+            <tr><th>Category</th><th>Items Collected</th><th>Bin Fill %</th><th>Distribution</th></tr>
+            ${['Plastic', 'Paper', 'Metal', 'Organic'].map(c =>
+                    '<tr>' +
+                    '<td><b>' + c + '</b></td>' +
+                    '<td>' + (data.counts?.[c] ?? 0) + '</td>' +
+                    '<td>' + (data.fill_pct?.[c] ?? 0) + '%</td>' +
+                    '<td>' + (data.distribution_pct?.[c] ?? 0) + '%</td>' +
+                    '</tr>').join('')}
+            <tr style="background:#f0f0f0"><td><b>Total</b></td><td><b>${data.total ?? 0}</b></td><td>—</td><td>100%</td></tr>
+          </table>
+
+          <h2>Environmental Impact</h2>
+          <div>
+            <div class="stat"><span class="stat-val">${data.impact?.co2_saved_kg ?? 0} kg</span><span class="stat-lbl">CO₂ Saved</span></div>
+            <div class="stat"><span class="stat-val">${data.impact?.recycling_efficiency_pct ?? 0}%</span><span class="stat-lbl">Recycling Rate</span></div>
+            <div class="stat"><span class="stat-val">${data.impact?.waste_processed_today ?? 0}</span><span class="stat-lbl">Processed Today</span></div>
+          </div>
+
+          <div class="footer">SmartSort AI — Smart City Waste Intelligence System | Powered by Gemini Vision</div>
+        </body></html>`;
+
+                const w = window.open('', '_blank');
+                w.document.write(html);
+                w.document.close();
+                setTimeout(() => { w.print(); }, 500);
+                document.getElementById('reportInfo').textContent = 'PDF print dialog opened!';
+            });
+    }
+
+    // ── Hook into existing refresh() ─────────────────────────────────────────────
+    // Wrap original refresh to also update weekly chart + tips
+    const _origRefresh = typeof refresh === 'function' ? refresh : null;
+    if (_origRefresh) {
+        window._extrasHooked = true;
+        const __refresh = refresh;
+        window.refresh = async function () {
+            await __refresh();
+            try {
+                const res = await fetch('/api/stats', { cache: 'no-store' });
+                const data = await res.json();
+                if (data.ok) {
+                    updateWeeklyChart(data.counts);
+                    const cat = data.latest?.category;
+                    if (cat) maybeUpdateTips(cat);
+                }
+            } catch (e) { }
+        };
+    }
+</script> color: var(--muted);
+font-style: italic;
+font-size: 12px;
+}
+}

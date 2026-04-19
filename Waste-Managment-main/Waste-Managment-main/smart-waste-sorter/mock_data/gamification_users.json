@@ -1,0 +1,167 @@
+[
+    {
+        "user_id": "USR_206",
+        "name": "Vivek Joshi",
+        "zone": "Palasia",
+        "green_coins_earned": 1719,
+        "correct_sorts": 182,
+        "incorrect_sorts": 45,
+        "compliance_score": 80.2,
+        "monthly_rank": 1,
+        "waste_reduced_kg": 36.4
+    },
+    {
+        "user_id": "USR_205",
+        "name": "Swati Jain",
+        "zone": "Rau",
+        "green_coins_earned": 1599,
+        "correct_sorts": 493,
+        "incorrect_sorts": 15,
+        "compliance_score": 97.0,
+        "monthly_rank": 2,
+        "waste_reduced_kg": 98.6
+    },
+    {
+        "user_id": "USR_200",
+        "name": "Amit Sharma",
+        "zone": "Geeta Bhawan",
+        "green_coins_earned": 1549,
+        "correct_sorts": 179,
+        "incorrect_sorts": 8,
+        "compliance_score": 95.7,
+        "monthly_rank": 3,
+        "waste_reduced_kg": 35.8
+    },
+    {
+        "user_id": "USR_208",
+        "name": "Sachin Yadav",
+        "zone": "Rau",
+        "green_coins_earned": 1110,
+        "correct_sorts": 347,
+        "incorrect_sorts": 23,
+        "compliance_score": 93.8,
+        "monthly_rank": 4,
+        "waste_reduced_kg": 69.4
+    },
+    {
+        "user_id": "USR_212",
+        "name": "Arjun Reddy",
+        "zone": "Vijay Nagar",
+        "green_coins_earned": 1017,
+        "correct_sorts": 184,
+        "incorrect_sorts": 3,
+        "compliance_score": 98.4,
+        "monthly_rank": 5,
+        "waste_reduced_kg": 36.8
+    },
+    {
+        "user_id": "USR_207",
+        "name": "Ankita Rao",
+        "zone": "Nipania",
+        "green_coins_earned": 924,
+        "correct_sorts": 339,
+        "incorrect_sorts": 5,
+        "compliance_score": 98.5,
+        "monthly_rank": 6,
+        "waste_reduced_kg": 67.8
+    },
+    {
+        "user_id": "USR_210",
+        "name": "Vikram Chaudhary",
+        "zone": "Bhawarkuan",
+        "green_coins_earned": 748,
+        "correct_sorts": 146,
+        "incorrect_sorts": 29,
+        "compliance_score": 83.4,
+        "monthly_rank": 7,
+        "waste_reduced_kg": 29.2
+    },
+    {
+        "user_id": "USR_202",
+        "name": "Priya Singh",
+        "zone": "Vijay Nagar",
+        "green_coins_earned": 743,
+        "correct_sorts": 373,
+        "incorrect_sorts": 31,
+        "compliance_score": 92.3,
+        "monthly_rank": 8,
+        "waste_reduced_kg": 74.6
+    },
+    {
+        "user_id": "USR_201",
+        "name": "Neha Gupta",
+        "zone": "Bhawarkuan",
+        "green_coins_earned": 675,
+        "correct_sorts": 199,
+        "incorrect_sorts": 14,
+        "compliance_score": 93.4,
+        "monthly_rank": 9,
+        "waste_reduced_kg": 39.8
+    },
+    {
+        "user_id": "USR_204",
+        "name": "Karan Patel",
+        "zone": "Rajwada",
+        "green_coins_earned": 638,
+        "correct_sorts": 66,
+        "incorrect_sorts": 41,
+        "compliance_score": 61.7,
+        "monthly_rank": 10,
+        "waste_reduced_kg": 13.2
+    },
+    {
+        "user_id": "USR_214",
+        "name": "Manish Sen",
+        "zone": "Palasia",
+        "green_coins_earned": 611,
+        "correct_sorts": 397,
+        "incorrect_sorts": 5,
+        "compliance_score": 98.8,
+        "monthly_rank": 11,
+        "waste_reduced_kg": 79.4
+    },
+    {
+        "user_id": "USR_203",
+        "name": "Rahul Verma",
+        "zone": "Rajwada",
+        "green_coins_earned": 606,
+        "correct_sorts": 413,
+        "incorrect_sorts": 9,
+        "compliance_score": 97.9,
+        "monthly_rank": 12,
+        "waste_reduced_kg": 82.6
+    },
+    {
+        "user_id": "USR_213",
+        "name": "Kavita Tiwari",
+        "zone": "Super Corridor",
+        "green_coins_earned": 582,
+        "correct_sorts": 331,
+        "incorrect_sorts": 17,
+        "compliance_score": 95.1,
+        "monthly_rank": 13,
+        "waste_reduced_kg": 66.2
+    },
+    {
+        "user_id": "USR_211",
+        "name": "Riya Desai",
+        "zone": "Geeta Bhawan",
+        "green_coins_earned": 298,
+        "correct_sorts": 221,
+        "incorrect_sorts": 42,
+        "compliance_score": 84.0,
+        "monthly_rank": 14,
+        "waste_reduced_kg": 44.2
+    },
+    {
+        "user_id": "USR_209",
+        "name": "Pooja Mishra",
+        "zone": "Vijay Nagar",
+        "green_coins_earned": 261,
+        "correct_sorts": 361,
+        "incorrect_sorts": 47,
+        "compliance_score": 88.5,
+        "monthly_rank": 15,
+        "waste_reduced_kg": 72.2
+    }
+]
